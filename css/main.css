@@ -13885,3 +13885,35 @@ Arkit Template
 		opacity: 1;
 	}
 }
+
+/*--------------------------------------------------------------
+# Bootstrapmade - Herobiz Template - Theme Counter
+--------------------------------------------------------------*/
+.theme-counter {
+	background: #f8faff;
+	padding: 55px 0;
+}
+
+.theme-counter .bg {
+	background: url(/img/pattern.png) no-repeat center center;
+	text-align: center;
+	padding: 85px 0 85px 0;
+}
+
+.theme-counter h6 {
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.theme-counter h2 {
+	font-size: 42px;
+	font-weight: 700;
+	padding: 12px 0 35px 0;
+}
+
+.cunter-wrapper {
+	width: 75%;
+	margin: 0 auto;
+	text-align: center;
+}
