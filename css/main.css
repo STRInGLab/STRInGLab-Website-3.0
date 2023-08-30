@@ -10629,7 +10629,7 @@ a.full-width-icon:hover .social-text {
 
 .black-overlay-5:before,
 .dark-overlay:before {
-	background: rgba(0, 0, 0, .5);
+	background: rgba(0, 0, 0, .6);
 }
 
 .black-overlay-6:before,
@@ -11548,8 +11548,8 @@ a.full-width-icon:hover .social-text {
 	}
 
 	.video-bg .embed-responsive {
-		min-height: 42.19rem;
-		max-height: 42.19rem;
+		min-height: 100vh;
+		max-height: 100vh;
 	}
 
 	.colored-bg {
@@ -12510,7 +12510,7 @@ a.full-width-icon:hover .social-text {
 		min-width: 16.88rem;
 	}
 
-	>.main-header .i-list.i-list-i-block.i-list-i-block-sm li:first-child a {
+	.main-header .i-list.i-list-i-block.i-list-i-block-sm li:first-child a {
 		padding-left: 0;
 	}
 
@@ -13492,9 +13492,9 @@ a.full-width-icon:hover .social-text {
 	}
 
 	.content-slot .bg-stretch img {
-		margin: 0 !important !important;
-		width : 100% !important !important;
-		height: auto !important !important;
+		margin: 0 !important;
+		width : 100% !important;
+		height: auto !important;
 	}
 
 	.content-slot .img-wrap {
@@ -13900,26 +13900,22 @@ Arkit Template
 	padding: 85px 0 85px 0;
 }
 
+.theme-counter h6 {
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.theme-counter h2 {
+	font-size: 42px;
+	font-weight: 700;
+	padding: 12px 0 35px 0;
+}
+
 .cunter-wrapper {
 	width: 75%;
 	margin: 0 auto;
 	text-align: center;
-}
-
-.theme-counter .number {
-	/* font-size  : 1.25rem; */
-	line-height: 1.2;
-	/* color      : #c1c5cd; */
-}
-
-.theme-counter .text {
-	font-size  : .875rem;
-	line-height: 1.2;
-	/* color      : #fff; */
-}
-
-.theme-counter .icon {
-	font-size: 3.125rem;
 }
 
 /*--------------------------------------------------------------
@@ -13983,9 +13979,9 @@ Arkit Template
 }
 
 .services .service-item:hover .icon:before {
-	background: #00b6a1;
+	background: #E9F2FA;
 }
 
 .services .service-item:hover h3 {
-	border-color: #00b6a1;
+	border-color: #E9F2FA;
 }
