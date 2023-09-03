@@ -18,25 +18,32 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
   
-@font-face {
-  font-family: 'string-icomoon';
-  src: url("../../../fonts/icomoon/string-icomoon.eot");
-  src: url("../../../fonts/icomoon/string-icomoon.eot#iefix") format("embedded-opentype"), url("../../../fonts/icomoon/string-icomoon.ttf") format("truetype"), url("../../../fonts/icomoon/string-icomoon.woff") format("woff"), url("../../../fonts/icomoon/icomoon.svg#string-icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-[class^="string-icon-"], [class*=" string-icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'string-icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  @font-face {
+    font-family: 'stringico';
+    src:  url('../../../fonts/icomoon/stringico.eot?pm48m');
+    src:  url('../../../fonts/icomoon/stringico.eot?pm48m#iefix') format('embedded-opentype'),
+      url('../../../fonts/icomoon/stringico.ttf?pm48m') format('truetype'),
+      url('../../../fonts/icomoon/stringico.woff?pm48m') format('woff'),
+      url('../../../fonts/icomoon/stringico.svg?pm48m#stringico') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="string-"], [class*=" string-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'stringico' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
 @font-face {
   font-family: 'roxine-font-icon';
@@ -429,6 +436,197 @@
 .icon-paper-plane-1:before {
   content: '\e511'; }
 
-.string-icon-business-intelligence:before {
+/* String Icons */
+
+.string-app-design:before {
   content: "\e900";
+}
+.string-api:before {
+  content: "\e901";
+}
+.string-audience:before {
+  content: "\e902";
+}
+.string-bespoke-design:before {
+  content: "\e903";
+}
+.string-big-data-management:before {
+  content: "\e904";
+}
+.string-blueprint:before {
+  content: "\e905";
+}
+.string-build:before {
+  content: "\e906";
+}
+.string-business-analysis:before {
+  content: "\e907";
+}
+.string-business-intelligence:before {
+  content: "\e908";
+}
+.string-business-report:before {
+  content: "\e909";
+}
+.string-dashboard-design:before {
+  content: "\e90a";
+}
+.string-data-analytics:before {
+  content: "\e90b";
+}
+.string-data-integration:before {
+  content: "\e90c";
+}
+.string-data-preparation:before {
+  content: "\e90d";
+}
+.string-data-security:before {
+  content: "\e90e";
+}
+.string-data-science:before {
+  content: "\e90f";
+}
+.string-deployment:before {
+  content: "\e910";
+}
+.string-data-visualization:before {
+  content: "\e911";
+}
+.string-design-edge:before {
+  content: "\e912";
+}
+.string-detection:before {
+  content: "\e913";
+}
+.string-devops:before {
+  content: "\e914";
+}
+.string-identification:before {
+  content: "\e915";
+}
+.string-loading1:before {
+  content: "\e916";
+}
+.string-ml-approach:before {
+  content: "\e917";
+}
+.string-ml-model:before {
+  content: "\e918";
+}
+.string-operational-efficiency:before {
+  content: "\e919";
+}
+.string-pattern:before {
+  content: "\e91a";
+}
+.string-predictive-maintenance:before {
+  content: "\e91b";
+}
+.string-preliminary-peeks:before {
+  content: "\e91c";
+}
+.string-production-management:before {
+  content: "\e91d";
+}
+.string-prototype:before {
+  content: "\e91e";
+}
+.string-quality-assurance-2:before {
+  content: "\e91f";
+}
+.string-quality-assurance:before {
+  content: "\e920";
+}
+.string-recognition:before {
+  content: "\e921";
+}
+.string-risk-mitigation:before {
+  content: "\e922";
+}
+.string-rule-based-approach:before {
+  content: "\e923";
+}
+.string-saas-design:before {
+  content: "\e924";
+}
+.string-scenerio-creation:before {
+  content: "\e925";
+}
+.string-supply-chain-management:before {
+  content: "\e926";
+}
+.string-strategy:before {
+  content: "\e927";
+}
+.string-support-maintainence:before {
+  content: "\e928";
+}
+.string-supply-chain:before {
+  content: "\e929";
+}
+.string-support-maintenance:before {
+  content: "\e92a";
+}
+.string-test:before {
+  content: "\e92b";
+}
+.string-ui-alignment:before {
+  content: "\e92c";
+}
+.string-ui-ux-excellence:before {
+  content: "\e92d";
+}
+.string-user_research_analysis:before {
+  content: "\e92e";
+}
+.string-ui-ux:before {
+  content: "\e92f";
+}
+.string-user-persona:before {
+  content: "\e930";
+}
+.string-user-research:before {
+  content: "\e931";
+}
+.string-ux-mapping:before {
+  content: "\e932";
+}
+.string-values:before {
+  content: "\e933";
+}
+.string-visual-info:before {
+  content: "\e934";
+}
+.string-web-app:before {
+  content: "\e935";
+}
+.string-web-design:before {
+  content: "\e936";
+}
+.string-web-development:before {
+  content: "\e937";
+}
+.string-event-monitoring:before {
+  content: "\e938";
+}
+.string-ocr:before {
+  content: "\e939";
+}
+.string-d-model:before {
+  content: "\e93a";
+}
+.string-damage:before {
+  content: "\e93b";
+}
+.string-computer-diagnosis:before {
+  content: "\e93c";
+}
+.string-auto-counting:before {
+  content: "\e93d";
+}
+.string-grading:before {
+  content: "\e93e";
+}
+.string-emotion-analysis:before {
+  content: "\e93f";
 }
