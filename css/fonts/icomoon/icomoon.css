@@ -438,6 +438,27 @@
 
 /* String Icons */
 
+.string-back-end:before {
+  content: "\e940";
+}
+.string-cloud2:before {
+  content: "\e941";
+}
+.string-cloud:before {
+  content: "\e942";
+}
+.string-databases:before {
+  content: "\e943";
+}
+.string-front-end:before {
+  content: "\e944";
+}
+.string-mobile:before {
+  content: "\e945";
+}
+.string-platform:before {
+  content: "\e946";
+}
 .string-app-design:before {
   content: "\e900";
 }
