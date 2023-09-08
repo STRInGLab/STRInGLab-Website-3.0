@@ -5788,7 +5788,39 @@ pre {
 }
 
 .about-banner {
-	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/yellow-blue.jpeg');
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/meeting-room.jpg');
+}
+
+.design-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/web-design-bg.jpg');
+}
+
+.ui-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/ui-bg.jpg');
+}
+
+.ux-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/ux-bg.jpg');
+}
+
+.development-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/development-bg.jpg');
+}
+
+.data-analytics-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/dataanalytics-bg.jpg');
+}
+
+.data-science-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/data-science.jpg');
+}
+
+.ml-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/ml-bg.jpg');
+}
+
+.image-analysis-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/image-analysis-bg.jpeg');
 }
 
 .portfolio-banner {
@@ -5808,7 +5840,7 @@ pre {
 }
 
 .count-block {
-	background-image: url('../img/visual-small-11.jpg');
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/total-projects-bg.jpeg');
 }
 
 .quotation-block-v3 {
@@ -10649,6 +10681,31 @@ a.full-width-icon:hover .social-text {
 	background: rgba(0, 0, 0, .9);
 }
 
+.black-overlay-home-get-quote:before,
+.lighten-m-overlay:before {
+	background: rgba(0, 0, 0, .1);
+}
+
+.about-overlay:before {
+	background: rgba(0, 0, 0, .5);
+}
+
+.ui-overlay:before {
+	background: rgba(0, 0, 0, .6);
+}
+
+.ux-overlay:before {
+	background: rgba(0, 0, 0, .6);
+}
+
+.ds-overlay:before {
+	background: rgba(0, 0, 0, .6);
+}
+
+.ia-overlay:before {
+	background: rgba(0, 0, 0, .8);
+}
+
 .overlay {
 	position          : fixed;
 	top               : 0;
@@ -12049,7 +12106,7 @@ a.full-width-icon:hover .social-text {
 	.flipped-box .ico-box,
 	.flipped-box .front-box,
 	.flipped-box .back-box {
-		min-height: 11.25rem;
+		min-height: 15rem;
 	}
 
 	.picture-item {
@@ -13757,12 +13814,8 @@ Arkit Template
 	align-items: center;
 }
 
-.service-box i {}
-
 .service-box i:before {
-	background-color: #bfca02;
-	padding         : 15px;
-	color           : #fff;
+	color           : #55565B;
 	border-radius   : 2px;
 }
 
