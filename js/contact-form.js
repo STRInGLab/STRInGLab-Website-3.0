@@ -18,7 +18,7 @@
                     required: true
                 },
                 con_message: {
-                    required: true
+                    required: false
                 },
                 con_email: {
                     required: true,
@@ -38,7 +38,7 @@
                     required: 'Phone must be filled out.'
                 },
                 con_message: {
-                    required: 'Message must be filled out.'
+                    required: ''
                 },
 
                 con_email: {
