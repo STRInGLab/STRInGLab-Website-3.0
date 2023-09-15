@@ -7839,6 +7839,18 @@ a.full-width-icon:hover .social-text {
 	background: none;
 }
 
+.tab-container.tab-secondary .tab-icon-nav .nav-link:hover img,
+.tab-container.tab-secondary .tab-icon-nav .nav-link:focus img,
+.tab-container.tab-secondary .tab-icon-nav .nav-link.active img,
+.tab-container.tab-secondary .tab-icon-nav .nav-link.active:focus img,
+.tab-container.tab-secondary .tab-icon-nav .nav-link.active:hover img {
+	border-color     : #ff6138;
+	text-decoration: underline;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-radius: 50%;
+}
+
 .tab-container.tab-secondary .tab-icon-nav .nav-link:hover .icon,
 .tab-container.tab-secondary .tab-icon-nav .nav-link:focus .icon,
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active .icon,
