@@ -5823,6 +5823,10 @@ pre {
 	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/image-analysis-bg.jpeg');
 }
 
+.or-banner {
+	background-image: url('https://stringlab.blr1.cdn.digitaloceanspaces.com/or-bg.jpeg');
+}
+
 .portfolio-banner {
 	background-image: url('../img/visual-small-02.jpg');
 }
@@ -10706,6 +10710,10 @@ a.full-width-icon:hover .social-text {
 	background: rgba(0, 0, 0, .8);
 }
 
+.or-overlay:before {
+	background: rgba(0, 0, 0, .8);
+}
+
 .overlay {
 	position          : fixed;
 	top               : 0;
@@ -14037,4 +14045,11 @@ Arkit Template
 
 .services .service-item:hover h3 {
 	border-color: #E9F2FA;
+}
+
+.vertical-hr {
+	width: 1px; /* Width of the line */
+	height: 100px; /* Height of the line */
+	background-color: black; /* Color of the line */
+	margin: 0 auto; /* Centering the line if needed */
 }

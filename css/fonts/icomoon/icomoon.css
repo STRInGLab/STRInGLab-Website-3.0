@@ -651,3 +651,33 @@
 .string-emotion-analysis:before {
   content: "\e93f";
 }
+.string-retail:before {
+  content: "\e900";
+}
+.string-forecasting:before {
+  content: "\e901";
+}
+.string-decision-analysis:before {
+  content: "\e902";
+}
+.string-network-optimization:before {
+  content: "\e903";
+}
+.string-simulation-modeling:before {
+  content: "\e904";
+}
+.string-linear:before {
+  content: "\e905";
+}
+.string-finance-banking:before {
+  content: "\e906";
+}
+.string-health-care:before {
+  content: "\e907";
+}
+.string-manufacturing:before {
+  content: "\e908";
+}
+.string-supply-chain:before {
+  content: "\e909";
+}
