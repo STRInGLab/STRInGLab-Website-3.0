@@ -1,35 +1,46 @@
 <?php
+// Database connection variables
+$db_host = '82.180.152.1'; // usually localhost
+$db_user = 'u758484694_string_contact';
+$db_pass = ';@.2SGHOp5!UQ#1';
+$db_name = 'u758484694_string_contact';
 
-    $to = "shikhar516@gmail.com";
-    $from = $_REQUEST['con_email'];
-    $name = $_REQUEST['con_fname'];
-    $csubject = $_REQUEST['con_phone'];
-    $cmessage = $_REQUEST['con_message'];
+// Create connection
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
-    $headers = "From: $from";
-	$headers = "From: " . $from . "\r\n";
-	$headers .= "Reply-To: ". $from . "\r\n";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    $subject = "You have a enquiry from website.";
-    $logo = 'https://stringlab.org/String2_mail_header.png';
-    $link = 'http://stringlab.org/';
+$response = [];
 
-	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
-	$body .= "<table style='width: 100%;'>";
-	$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
-	$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
-	$body .= "</td></tr></thead><tbody><tr>";
-	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
-	$body .= "<tr><td></td></tr>";
-	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
-	$body .= "<tr><td style='border:none;'><strong>Subject:</strong> {$csubject}</td></tr>";
-	$body .= "<tr><td></td></tr>";
-	$body .= "<tr><td style='border:none;'><strong>Message:</strong> {$cmessage}</td></tr>";
-	$body .= "</tbody></table>";
-	$body .= "</body></html>";
+// Check if form is submitted
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'sendEmail') {
+    
+    date_default_timezone_set('Asia/Kolkata');
+    $timestamp = date('Y-m-d H:i:s');
+    // Capture source page
+    $page_source = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'Unknown';
+    $section = isset($_REQUEST['section']) ? $_REQUEST['section'] : 'Unknown';
 
-    $send = mail($to, $subject, $body, $headers);
-	header("location: index.html");
-?>
+    // Insert data into the database
+    $stmt = $conn->prepare("INSERT INTO contact_submissions (first_name, last_name, phone, email, message, page_source, section, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $_REQUEST['con_fname'], $_REQUEST['con_lname'], $_REQUEST['con_phone'], $_REQUEST['con_email'], $_REQUEST['con_message'], $page_source, $section, $timestamp);
+
+    if ($stmt->execute()) {
+		$send_arr['response'] = 'success';
+		$send_arr['message'] = 'Thank you for reaching out to us! We will revert soon.';
+    } else {
+		$send_arr['response'] = 'error';
+		$send_arr['message'] = "You message couldn't be sent. Please try again!";
+    }
+
+    $stmt->close();
+    
+	echo json_encode($send_arr);
+	exit;
+
+}
+
+$conn->close();

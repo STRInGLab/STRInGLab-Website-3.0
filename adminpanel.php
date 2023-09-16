@@ -5,11 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>S.T.R.In.G - Contact</title>
+    <title>S.T.R.In.G - Admin Panel</title>
     <!-- Font Icons -->
     <link media="all" rel="stylesheet" href="css/fonts/icomoon/icomoon.css">
-    <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css">
+    <!--     <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css"> -->
     <link media="all" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.css">
+    <!-- link to roxine icon font -->
+    <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css">
+    <!-- FONT AND STYLE FOR BASIC DOCUMENTS, NO NEED FOR FURTHER USAGE IN YOUR PROJECTS-->
+    <link rel="stylesheet" type="text/css" href="css/vendor-overwrites/roxine-font-icon.css">
     <!-- Vendors -->
     <link media="all" rel="stylesheet" href="vendors/owl-carousel/dist/assets/owl.carousel.min.css">
     <link media="all" rel="stylesheet" href="vendors/owl-carousel/dist/assets/owl.theme.default.min.css">
@@ -27,29 +31,82 @@
     <!-- Theme CSS -->
     <link media="all" rel="stylesheet" href="css/main.css">
     <!-- Custom CSS -->
-    <link media="all" rel="stylesheet" href="css/custom.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <link media="all" rel="stylesheet" href="css/custom.css"> -->
+    <!-- DataTables CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> -->
 </head>
 
-<body>
+<body class="white-overlay">
+<div class="preloader" id="pageLoad">
+        <div class="holder">
+            <div class="">
+                <img src="https://stringlab.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
+            </div>
+        </div>
+    </div>
+    <!--Side panel-->
+    <nav class="nav-wrap bg-white">
+        <!-- opener inside of collapsible menu -->
+        <div class="nav-trigger nav-trigger-close">
+            <a href="#">Close Panel <i class="icon-long-arrow-right"></i> </a>
+            <div class="divider-border"><span class="sr-only"></span></div>
+        </div>
+
+        <div class="col-sm-6 pb-3">
+            <a href="#" class="btn btn-black btn-small-font btn-solid-facebook has-radius-small"><span
+                    class="icon-facebook"><span class="sr-only">&nbsp;</span></span> LOGIN WITH FACEBOOK</a>
+        </div>
+        <div class="col-sm-6">
+            <a href="#" class="btn btn-black btn-small-font btn-solid-google has-radius-small"><span
+                    class="icon-google-plus"><span class="sr-only">&nbsp;</span></span> LOGIN WITH GOOGLE</a>
+        </div>
+        <div class="divider-border"><span class="sr-only"></span></div>
+        <ul class="side-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog-single.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <nav class="header-links">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </nav>
+        <div class="divider-border"><span class="sr-only"></span></div>
+        <div class="p-3">
+            <ul class="social-network square-icon shadowed-icon">
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-google-plus"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+            </ul>
+        </div>
+    </nav>
     <!-- main wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" class="no-overflow-x">
         <div class="page-wrapper">
             <!-- header of the page -->
-            <header class="fixed-top main-header header-white no-top-header" id="waituk-main-header">
+            <header class="fixed-top main-header header-white transparent" id="waituk-main-header">
                 <div id="nav-section">
                     <div class="bottom-header container-fluid mega-menus" id="mega-menus">
-                        <nav class="navbar navbar-toggleable-md no-border-radius no-margin mega-menu-multiple" id="navbar-inner-container">
+                        <nav class="navbar navbar-toggleable-md no-border-radius no-margin mega-menu-multiple"
+                            id="navbar-inner-container">
                             <form action="mega-menu-5.html" id="top-search" class="no-margin top-search">
                                 <div class="form-group no-margin">
-                                    <input class="form-control no-border" id="search_term" name="search_term" placeholder="Type & Press Enter" type="text">
+                                    <input class="form-control no-border" id="search_term" name="search_term"
+                                        placeholder="Type & Press Enter" type="text">
                                 </div>
                             </form>
-                            <button type="button" class="navbar-toggler navbar-toggler-left" data-toggle="collapse" data-target="#mega-menu">
+                            <button type="button" class="navbar-toggler navbar-toggler-left" data-toggle="collapse"
+                                data-target="#mega-menu">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <a class="navbar-brand mr-auto m-sm-auto" href="index.html"> <img src="img/string-black-logo.png" alt="string" width="350"> </a>
-                            <div class="collapse navbar-collapse flex-row-reverse" id="mega-menu"><div class="collapse navbar-collapse flex-row-reverse justify-content-center"
+                            <a class="navbar-brand mr-auto m-sm-auto" href="index.html"> <img src="img/string-logo.png"
+                                    alt="string" width="350"> <img src="img/string-black-logo.png" alt="string"
+                                    width="350"> </a>
+                            <div class="collapse navbar-collapse flex-row-reverse justify-content-center"
                                 id="mega-menu">
                                 <ul class="nav navbar-nav">
                                     <li>
@@ -88,106 +145,37 @@
                 </div>
             </header>
             <!--/header of the page -->
-            <main class="no-banner">
-                <!-- visual/banner of the page -->
-                <section class="visual visual-sub visual-no-bg">
-                    <div class="visual-inner no-overlay bg-gray-light">
-                        <div class="centered">
-                            <div class="container">
-                                <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title">Contact Us</h1>
-                                    <div class="breadcrumb-block">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
-                                            <li class="breadcrumb-item active"> Contact Us </li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--/visual/banner of the page -->
-                <!-- main content wrapper -->
+            <main>
                 <div class="content-wrapper">
-                    <section class="content-block pb-0">
-                        <div class="container">
-                            <div class="contact-container">
-                                <h6 class="content-title contact-title">GET IN TOUCH WITH US</h6>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <!-- contact form -->
-                                        <form action="./php/send_email.php" method="post" id="contact_form" class="waituk_contact-form">
-                                            <input type="hidden" name="action" value="sendEmail">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="FIRST NAME *" id="con_fname" name="con_fname" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="tel" placeholder="PHONE NUMBER *" id="con_phone" name="con_phone" class="form-control" oninput="validatePhoneNumber(this)">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="email" placeholder="EMAIL ADDRESS *" id="con_email" name="con_email" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" placeholder="MESSAGE" id="con_message" name="con_message"></textarea>
-                                            </div>
-                                            <input type="text" name="honeypot_field" style="display: none;">
-                                            <div class="g-recaptcha" data-sitekey="6LcYySsoAAAAAA8kzluak7BUAmFe12eP1Q8Qh46X"></div>
-                                            <div class="btn-container">
-                                                <button id="btn_sent" class="btn btn-primary btn-arrow">SEND MESSAGE</button>
-                                                <p id="error_message"> </p>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-lg-6 col-xl-5 offset-xl-1">
-                                        <div class="info-slot">
-                                            <div class="icon"><span class="custom-icon-map-marker"></span></div>
-                                            <div class="text">
-                                                <address>B/29, Plot No 98,
-                                                    <br>Sai Darshan, Gorai-1, 
-                                                    <br>Borivali - West, Mumbai - 400091.                                                    
-                                                </address>
-                                            </div>
-                                        </div>
-                                        <div class="info-slot">
-                                            <div class="icon"><span class="custom-icon-headset"></span></div>
-                                            <div class="text">
-                                                <ul class="content-list contact-list">
-                                                    <li><span class="label-text">ENQUIRIE:</span> <a href="tel:+91-9769628463">+91-97696 28463</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="info-slot">
-                                            <div class="icon"><span class="custom-icon-message"></span></div>
-                                            <div class="text">
-                                                <ul class="content-list contact-list">
-                                                    <li><a href="mailto:info@stringlab.org">info@stringlab.org</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                    <div class="content-wrapper">
+                        <section class="content-block">
+                            <div class="">
+                                <div class="demo-wrapper">
+                                    <h3 class="text-center element-heading">Contact Form Submissions</h3>
+                                    <div class="data-table">
+                                        <table id="contactTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                    <th>Message</th>
+                                                    <th>Source Page</th>
+                                                    <th>Section</th>
+                                                    <th>Timestamp</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include 'php/fetch-data.php'; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <!-- <div class="map-holder embed-responsive-21by9 grayscaled-map">
-                        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.0605547231917!2d-0.33554378354576586!3d51.47540277962994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760cf99dee6c25%3A0xc9d2780dbbcbb933!2sLondon+Rd%2C+Isleworth+TW7%2C+UK!5e0!3m2!1sen!2snp!4v1473394388477" height="450" style="border:0"></iframe>
-                    </div> -->
+                        </section>
+                    </div>
                 </div>
                 <!--/main content wrapper -->
             </main>
@@ -204,7 +192,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="waituk_newsletter-form newsletter-v1 mt-2">
-                                <form action="php/send_email.php" method="post">
+                                <form action="#" method="post">
                                     <fieldset class="clearfix">
                                         <div class="form-group input-holder">
                                             <input type="email" class="form-control" placeholder="Email Address">
@@ -275,63 +263,73 @@
         </footer>
         <!--/footer of the page -->
     </div>
-     <!-- search form wrapper -->
-    <div class="search-form-wrapper">
-        <a href="#" class="nav-search-link close"><span class="icon-android-close"></span></a>
-        <div class="holder">
-            <input type="search" class="form-control form-control-v1" placeholder="Enter Your Search">
-             <button type="submit"><span class="custom-icon-search"></span></button>
+    <!-- open/close -->
+    <div class="search-form-wrapper overlay overlay-hugeinc">
+        <button type="button" class="overlay-close"><span class="custom-icon-plus"></span></button>
+        <div class="search-form">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <input type="search" class="form-control" placeholder="Enter Your Search">
+                    <button type="submit"><span class="icon-search"></span></button>
+                </div>
+            </form>
         </div>
     </div>
-
     <a href="#" class="section-scroll" id="scroll-to-top"><i class="fa fa-angle-up"></i></a>
-    <!-- jquery library -->
+    <!-- jQuery Library -->
     <script src="vendors/jquery/jquery-2.1.4.min.js"></script>
-    <!-- external scripts -->
+    <!-- Vendor Scripts -->
     <script src="vendors/tether/dist/js/tether.min.js"></script>
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendors/stellar/jquery.stellar.min.js"></script>
     <script src="vendors/isotope/javascripts/isotope.pkgd.min.js"></script>
     <script src="vendors/isotope/javascripts/packery-mode.pkgd.js"></script>
-    <script src="vendors/owl-carousel/dist/owl.carousel.js"></script>
+    <script src="vendors/owl-carousel/dist/owl.carousel.min.js"></script>
     <script src="vendors/waypoint/waypoints.min.js"></script>
     <script src="vendors/counter-up/jquery.counterup.min.js"></script>
     <script src="vendors/fancyBox/source/jquery.fancybox.pack.js"></script>
     <script src="vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.js"></script>
     <script src="vendors/image-stretcher-master/image-stretcher.js"></script>
     <script src="vendors/wow/wow.min.js"></script>
-    <script src="vendors/rateyo/jquery.rateyo.js"></script>
-    <script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="vendors/rateyo/jquery.rateyo.min.js"></script>
+    <script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="vendors/bootstrap-slider-master/src/js/bootstrap-slider.js"></script>
     <script src="vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="js/mega-menu.js"></script>
-    <!-- custom jquery script -->
+    <script src="vendors/retina/retina.min.js"></script>
+    <!-- Custom Script -->
     <script src="js/jquery.main.js"></script>
-    <script src="js/jquery.validate.js"></script>
-    <script src="js/mailchimp.js"></script>
-    <script src="js/contact-form.js"></script>
     <!-- REVOLUTION JS FILES -->
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
     <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-    <script type="text/javascript" src="vendors/rev-slider/revolution/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution/js/extensions/revolution.extension.video.min.js"></script>
     <!-- SNOW ADD ON -->
-    <script type="text/javascript" src="vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
-        <!-- revolutions slider script -->
+    <script type="text/javascript"
+        src="vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
+    <!-- Revolution Slider Script -->
     <script src="js/revolution.js"></script>
     <script>
-        function validatePhoneNumber(input) {
-            // Remove any non-numeric characters from the input
-            input.value = input.value.replace(/\D/g, '');
-        }
+        $(document).ready(function() {
+            $('#contactTable').DataTable();
+        });
     </script>
 </body>
 

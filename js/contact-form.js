@@ -54,8 +54,11 @@
                 var con_phone = $('#con_phone').val();
                 var con_message = $('#con_message').val();
                 var con_email = $('#con_email').val();
+                
+                // Extract the value of g-recaptcha-response
+                var captcha_response = grecaptcha.getResponse();
 
-                var xurl = 'php/send_email.php?action=sendEmail&con_email=' + con_email + '&con_fname=' + con_fname + '&con_lname=' + con_lname + '&con_phone=' + con_phone + '&con_message=' + con_message;
+                var xurl = 'php/send_email.php?action=sendEmail&con_email=' + con_email + '&con_fname=' + con_fname + '&con_lname=' + con_lname + '&con_phone=' + con_phone + '&con_message=' + con_message + '&g-recaptcha-response=' + captcha_response;
 
                 $('#btn_sent').val('Sending...');
                 $('#error_message').html('');
