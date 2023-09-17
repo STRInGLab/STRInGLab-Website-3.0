@@ -7835,7 +7835,7 @@ a.full-width-icon:hover .social-text {
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active,
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active:focus,
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active:hover {
-	color     : #ff6138;
+	color     : #5645FF;
 	background: none;
 }
 
@@ -7844,7 +7844,7 @@ a.full-width-icon:hover .social-text {
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active img,
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active:focus img,
 .tab-container.tab-secondary .tab-icon-nav .nav-link.active:hover img {
-	border-color     : #ff6138;
+	border-color     : #5645FF;
 	text-decoration: underline;
 	border-bottom-width: 3px;
 	border-bottom-style: solid;
