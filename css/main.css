@@ -5827,6 +5827,10 @@ pre {
 	background-image: url('https://stringlab-spaces.blr1.cdn.digitaloceanspaces.com/or-bg.jpeg');
 }
 
+.use-case-banner {
+	background-image: url('https://stringlab-spaces.blr1.cdn.digitaloceanspaces.com/usecase-bg.jpg');
+}
+
 .portfolio-banner {
 	background-image: url('../img/visual-small-02.jpg');
 }
