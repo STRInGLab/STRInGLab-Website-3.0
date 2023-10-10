@@ -1,24 +1,15 @@
-<?php
-session_start();
-
-// Check if the user is not logged in, then redirect to signin.html
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header('Location: signin.html');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>S.T.R.In.G - Admin Panel</title>
+    <title>S.T.R.In.G - Use Case</title>
     <!-- Font Icons -->
     <link media="all" rel="stylesheet" href="css/fonts/icomoon/icomoon.css">
     <!--     <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css"> -->
     <link media="all" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.css">
-    <!-- link to roxine icon font -->
     <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css">
     <!-- FONT AND STYLE FOR BASIC DOCUMENTS, NO NEED FOR FURTHER USAGE IN YOUR PROJECTS-->
     <link rel="stylesheet" type="text/css" href="css/vendor-overwrites/roxine-font-icon.css">
@@ -39,13 +30,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <!-- Theme CSS -->
     <link media="all" rel="stylesheet" href="css/main.css">
     <!-- Custom CSS -->
-    <!-- <link media="all" rel="stylesheet" href="css/custom.css"> -->
-    <!-- DataTables CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> -->
+    <link media="all" rel="stylesheet" href="css/custom.css">
 </head>
 
 <body class="white-overlay">
-<div class="preloader" id="pageLoad">
+    <div class="preloader" id="pageLoad">
         <div class="holder">
             <div class="">
                 <img src="https://stringlab-spaces.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
@@ -195,36 +184,241 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </header>
             <!--/header of the page -->
             <main>
-                <div class="content-wrapper">
-                    <div class="content-wrapper">
-                        <section class="content-block">
-                            <div class="">
-                                <div class="demo-wrapper">
-                                    <h3 class="text-center element-heading">Contact Form Submissions</h3>
-                                    <div class="data-table">
-                                        <table id="contactTable" class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                    <th>Message</th>
-                                                    <th>Source Page</th>
-                                                    <th>Section</th>
-                                                    <th>Timestamp</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php include 'php/fetch-data.php'; ?>
-                                            </tbody>
-                                        </table>
+                <!-- visual/banner of the page -->
+                <section class="visual">
+                    <div class="visual-inner use-case-banner black-overlay-4 parallax" data-stellar-background-ratio="0.55">
+                        <div class="centered">
+                            <div class="container">
+                                <div class="visual-text visual-center">
+                                    <h1 class="visual-title visual-sub-title text-white">Portfolio - Use Case</h1>
+                                    <div class="breadcrumb-block">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/"> Home </a></li>
+                                            <li class="breadcrumb-item"><a href="use-case.html"> Protfolio </a></li>
+                                            <li class="breadcrumb-item"><a> Use Case </a></li>
+                                        </ol>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                     </div>
+                </section>
+                <!--/visual/banner of the page -->
+                <!-- main content wrapper -->
+                <div class="content-wrapper">
+                    <section class="content-block portfolio-block p-5 mt-5">
+                        <div class="container-flex">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul class="filter-nav filter-nav-v2 text-center button-group filter-button-group">
+                                        <li>
+                                            <button class="is-checked" data-filter="*">ALL WORK</button>
+                                        </li>
+                                        <li>
+                                            <button data-filter=".ui">UI/UX DESIGN</button>
+                                        </li>
+                                        <li>
+                                            <button data-filter=".programming">PROGRAMMING</button>
+                                        </li>
+                                        <li>
+                                            <button data-filter=".photography">PHOTOGRAPHY</button>
+                                        </li>
+                                        <li>
+                                            <button data-filter=".ecommerce">ECOMMERCE</button>
+                                        </li>
+                                    </ul>
+                                    <div class="row masonary-block grid">
+                                        <div class="gallery-item col-md-6 col-lg-6 webapp">
+                                            <div class="col-wrap">
+                                                <div class="post-grid reverse-grid">
+                                                    <div class="img-block post-img">
+                                                        <a href="#"><img src="img/img-31.jpg" alt="images"></a>
+                                                        <time class="post-date" datetime="2016-10-10">17 Jun</time>
+                                                    </div>
+                                                    <div class="post-text-block bg-gray-light">
+                                                        <strong class="content-title mb-0"><a href="#">Heading South</a></strong>
+                                                        <span class="content-sub-title">Where’s Responsive Design?</span>
+                                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Auctor, nisi elit consequat ipsum,</p>
+                                                        <div class="post-meta clearfix">
+                                                            <div class="post-link-holder">
+                                                                <a href="#">Read Story <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+                                                            </div>
+                                                            <div class="post-social text-right">
+                                                                <ul class="social-network social-small">
+                                                                    <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                    <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item col-md-6 col-lg-6 webapp">
+                                            <div class="col-wrap">
+                                                <div class="post-grid reverse-grid">
+                                                    <div class="img-block post-img">
+                                                        <a href="#"><img src="img/img-31.jpg" alt="images"></a>
+                                                        <time class="post-date" datetime="2016-10-10">17 Jun</time>
+                                                    </div>
+                                                    <div class="post-text-block bg-gray-light">
+                                                        <strong class="content-title mb-0"><a href="#">Heading South</a></strong>
+                                                        <span class="content-sub-title">Where’s Responsive Design?</span>
+                                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Auctor, nisi elit consequat ipsum,</p>
+                                                        <div class="post-meta clearfix">
+                                                            <div class="post-link-holder">
+                                                                <a href="#">Read Story <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+                                                            </div>
+                                                            <div class="post-social text-right">
+                                                                <ul class="social-network social-small">
+                                                                    <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                    <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item col-md-6 col-lg-6 webapp">
+                                            <div class="col-wrap">
+                                                <div class="post-grid reverse-grid">
+                                                    <div class="img-block post-img">
+                                                        <a href="#"><img src="img/img-31.jpg" alt="images"></a>
+                                                        <time class="post-date" datetime="2016-10-10">17 Jun</time>
+                                                    </div>
+                                                    <div class="post-text-block bg-gray-light">
+                                                        <strong class="content-title mb-0"><a href="#">Heading South</a></strong>
+                                                        <span class="content-sub-title">Where’s Responsive Design?</span>
+                                                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Auctor, nisi elit consequat ipsum,</p>
+                                                        <div class="post-meta clearfix">
+                                                            <div class="post-link-holder">
+                                                                <a href="#">Read Story <span class="fa fa-arrow-right"><span class="sr-only">&nbsp;</span></span></a>
+                                                            </div>
+                                                            <div class="post-social text-right">
+                                                                <ul class="social-network social-small">
+                                                                    <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                    <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 flex-lg-first">
+                                    <div class="sidebar-wrap mt-5 mt-lg-0">
+                                        <div class="widget-block">
+                                            <div class="post-block">
+                                                <h4>RECENT POSTS</h4>
+                                                <div class="post-holder"><a href="#" class="post-link"></a>
+                                                    <div class="post-avatar">
+                                                        <a href="#"><img src="img/thumb.jpg" alt="image description"></a>
+                                                    </div>
+                                                    <div class="post-desc">
+                                                        <h6><a href="#">Left Sidebar Portfolio</a></h6>
+                                                        <p><a href="#">7 Comments</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="post-holder"><a href="#" class="post-link"></a>
+                                                    <div class="post-avatar">
+                                                        <a href="#"><img src="img/thumb1.jpg" alt="image description"></a>
+                                                    </div>
+                                                    <div class="post-desc">
+                                                        <h6><a href="#">Right Sidebar Portfolio</a></h6>
+                                                        <p><a href="#">12 Comments</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="post-holder"><a href="#" class="post-link"></a>
+                                                    <div class="post-avatar">
+                                                        <a href="#"><img src="img/thumb2.jpg" alt="image description"></a>
+                                                    </div>
+                                                    <div class="post-desc">
+                                                        <h6><a href="#">Metro Style Portfolio</a></h6>
+                                                        <p><a href="#">12 Comments</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="post-holder"><a href="#" class="post-link"></a>
+                                                    <div class="post-avatar">
+                                                        <a href="#"><img src="img/thumb3.jpg" alt="image description"></a>
+                                                    </div>
+                                                    <div class="post-desc">
+                                                        <h6><a href="#">Clean Sidebar Styles</a></h6>
+                                                        <p><a href="#">12 Comments</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="twitter-feed mt-5">
+                                                <h4>TWITTER FEED</h4>
+                                                <div class="tweet-holder"><a href="#" class="post-link"></a>
+                                                    <div class="twit-ico"><i class="icon-twitter"></i></div>
+                                                    <div class="twit-desc">
+                                                        <h6><a href="#">Roxine Templates</a></h6>
+                                                        <p>7 Hours Ago</p>
+                                                    </div>
+                                                </div>
+                                                <div class="tweet-holder"><a href="#" class="post-link"></a>
+                                                    <div class="twit-ico"><i class="icon-twitter"></i></div>
+                                                    <div class="twit-desc">
+                                                        <h6><a href="#">Roxine Templates</a></h6>
+                                                        <p>7 Hours Ago</p>
+                                                    </div>
+                                                </div>
+                                                <div class="tweet-holder"><a href="#" class="post-link"></a>
+                                                    <div class="twit-ico"><i class="icon-twitter"></i></div>
+                                                    <div class="twit-desc">
+                                                        <h6><a href="#">Roxine Templates</a></h6>
+                                                        <p>7 Hours Ago</p>
+                                                    </div>
+                                                </div>
+                                                <div class="tweet-holder"><a href="#" class="post-link"></a>
+                                                    <div class="twit-ico"><i class="icon-twitter"></i></div>
+                                                    <div class="twit-desc">
+                                                        <h6><a href="#">Roxine Templates</a></h6>
+                                                        <p>7 Hours Ago</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tag-block mt-5">
+                                                <h4>TAG CLOUD</h4>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">Cloud</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Bootstrap</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Web</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Web</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Cloud</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">UI/UX</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Cloud</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Bootstrap</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Web</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
                 <!--/main content wrapper -->
             </main>
@@ -251,8 +445,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </form>
                             </div>
                             <div class="my-4">
-                                <p>Your trusted partner in innovation and technology, propelling businesses forward 
-                                    with cutting-edge solutions and unparalleled expertise.</p>
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididunt</p>
                             </div>
                         </div>
                         <div class="col-lg-2">
@@ -272,42 +465,44 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             <h4>Company</h4>
                             <div class="footer-nav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="index.html#our-services-section">Services</a></li>
-                                    <li><a href="legal.html">Legal</a></li>
-                                    <li><a href="policies.html">Policies</a></li>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Services</a></li>
+                                    <li><a href="#">Our Solutions</a></li>
+                                    <li><a href="#">Legal</a></li>
+                                    <li><a href="#">Policies</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <h4>Our Solutions</h4>
+                            <h4>In the News</h4>
                             <div class="footer-nav">
                                 <ul>
-                                    <li><a href="digital-muneem.html">Digital Muneem</a></li>
-                                    <li><a href="ed-tech.html">Ed. Tech</a></li>
-                                    <li><a href="automated-document-reader.html">Automated Document Reader</a></li>
+                                    <li><a href="#">Press</a></li>
+                                    <li><a href="#">Women</a></li>
+                                    <li><a href="#">Sales</a></li>
+                                    <li><a href="#">About Us</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 pb-3">
-                                <p> © 2023 STRINGLAB TECHNOLOGY SOLUTIONS Pvt. Ltd. <br> All Rights Reserved. </p>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="social-network with-text">
-                                    <li><a href="https://www.instagram.com/s.t.r.in.g/"><span class="icon-instagram"></span></a></li>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 pb-3">
+                            <p> © 2023 STRINGLAB TECHNOLOGY SOLUTIONS Pvt. Ltd. <br> All Rights Reserved. </p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social-network with-text">
+                                <li><a href="https://www.instagram.com/s.t.r.in.g/"><span class="icon-instagram"></span></a></li>
                                     <li><a href="https://www.facebook.com/profile.php?id=61550911571127"><span class="icon-facebook"></span></a></li>
                                     <li><a href="https://twitter.com/stringlabtech"><span class="icon-twitter"></span></a></li>
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </footer>
         <!--/footer of the page -->
@@ -375,11 +570,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         src="vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
     <!-- Revolution Slider Script -->
     <script src="js/revolution.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#contactTable').DataTable();
-        });
-    </script>
 </body>
 
 </html>
