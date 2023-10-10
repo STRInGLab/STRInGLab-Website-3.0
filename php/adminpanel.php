@@ -135,46 +135,8 @@
                                     <li><a href="../automated-document-reader.html">Automated Document Reader</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown dropdown-full-width-g" data-animation="fadeIn">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" data-title="Pages">Use Cases</a>
-                                        <div class="dropdown-menu no-border-radius no-padding" data-adjust="2">
-                                            <div class="row row-autoheight no-gutters">
-                                                <div class="col-lg-4 col-autoheight clearfix">
-                                                    <div class="widget-default clearfix">
-                                                        <ul class="s-list s-list-pl s-list-mb-10 no-padding">
-                                                            <li><a href="project-management.html"><i class="icon-bookmark"></i> Project Management Tool </a></li>
-                                                            <li><a href="e-commerce.html"><i class="icon-bookmark"></i> E-Commerce </a></li>
-                                                            <li><a href="anomaly-detection.html"><i class="icon-bookmark"></i> Anomaly Detection </a></li>
-                                                            <li><a href="biomass-supplychain.html"><i class="icon-bookmark"></i> Biomass Supply Chain </a></li>
-                                                            <li><a href="ai-chat-bot.html"><i class="icon-bookmark"></i> AI Chat Bot </a></li>
-                                                            <li><a href="algo-trading.html"><i class="icon-bookmark"></i> Algorithmic Trading </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-autoheight clearfix">
-                                                    <div class="widget-default clearfix">
-                                                        <ul class="s-list s-list-pl s-list-mb-10 no-padding">
-                                                            <li><a href="college-info-portal.html"><i class="icon-bookmark"></i> College Information Portal </a></li>
-                                                            <li><a href="commodity-forecasting.html"><i class="icon-bookmark"></i> Commodity Forecasting </a></li>
-                                                            <li><a href="digital-twin.html"><i class="icon-bookmark"></i> Digital Twin </a></li>
-                                                            <li><a href="document-reader.html"><i class="icon-bookmark"></i> Document Reader </a></li>
-                                                            <li><a href="eda-lab.html"><i class="icon-bookmark"></i> Exploratory Data Analysis (EDA)</a></li>
-                                                            <li><a href="erp.html"><i class="icon-bookmark"></i> Enterprise Resource Planning </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-autoheight clearfix">
-                                                    <div class="widget-default clearfix">
-                                                        <ul class="s-list s-list-pl s-list-mb-10 no-padding">
-                                                            <li><a href="financial-sentiment-analysis.html"><i class="icon-bookmark"></i> Financial Sentiment Analysis </a></li>
-                                                            <li><a href="image-analysis.html"><i class="icon-bookmark"></i> Image Analysis </a></li>
-                                                            <li><a href="routing-problem.html"><i class="icon-bookmark"></i> Routing Problem </a></li>
-                                                            <li><a href="stacking-solution.html"><i class="icon-bookmark"></i> Stacking Solution </a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <li>
+                                        <a href="../use-case.html"> Use Cases </a>
                                     </li>
                                     <li>
                                         <a href="contact.html"> Contact </a>
