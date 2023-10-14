@@ -146,7 +146,7 @@
                                                 <div class="blog-share mt-5">
                                                     <ul class="social-network with-text">
                                                         <li><strong>Share :</strong></li>
-                                                        <li><a href="https://www.linkedin.com/shareArticle?url=https://stringlab.org/blogs/remote-working.html&title=Remote%20Working&source=https://stringlab.org"><span class="icon-linkedin"></span> LinkedIn</a></li>
+                                                        <li><a href="https://www.linkedin.com/shareArticle?url=https://stringlab.org/blogs/remote-working.html&title=Remote%20Working&summary=Exploring%20the%20transformative%20journey%20of%20remote%20work%20technology,%20from%20its%20early%20days%20to%20its%20current%20prominence,%20and%20envisioning%20its%20future%20potential%20in%20reshaping%20the%20global%20work%20landscape.&source=https://stringlab.org"><span class="icon-linkedin"></span> LinkedIn</a></li>
                                                         <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://stringlab.org/blogs/remote-working.html.html"><span class="icon-facebook"></span> Facebook</a></li>
                                                         <li><a href="https://twitter.com/intent/tweet?url=https://stringlab.org/blogs/remote-working.html.html&text=Remote%20Working"><span class="icon-twitter"></span> Twitter</a></li>
                                                     </ul>
@@ -253,9 +253,64 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal-wrap large-modal">
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-center">
+                    <div class="modal-header bg-gray-light text-center">
+                        <h4 class="modal-title content-title contact-title mb-0" id="exampleModalLongTitle" style="text-align: center !important;">Let's Get You Set Up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon-ios-close-empty"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="text-center mt-3">Dive into the Digital Transformation Wave and Stay Ahead of the Curve! ✨</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form action="../php/send_email.php" method="post" id="contact_form" class="waituk_contact-form">
+                            <input type="hidden" name="action" value="sendEmail">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="FIRST NAME *" id="con_fname" name="con_fname" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="tel" placeholder="PHONE NUMBER" id="con_phone" name="con_phone" class="form-control" oninput="validatePhoneNumber(this)">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" placeholder="EMAIL ADDRESS *" id="con_email" name="con_email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="MESSAGE *" id="con_message" name="con_message"></textarea>
+                            </div>
+                            <input type="text" name="honeypot_field" style="display: none;">
+                            <div class="g-recaptcha" data-sitekey="6LewlTEoAAAAALZdv6G9WCyPvKve5I6D8Ql-2URf"></div>
+                            <div class="btn-container">
+                                <button id="btn_sent" class="btn btn-primary btn-sm">SUBMIT</button>
+                                <p id="error_message"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <a href="#" class="section-scroll" id="scroll-to-top"><i class="fa fa-angle-up"></i></a>
-    <!-- jquery library -->
-    <script src="../vendors/jquery/jquery-2.1.4.min.js"></script>
     <!-- external scripts -->
     <script src="../vendors/tether/dist/js/tether.min.js"></script>
     <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -296,6 +351,9 @@
     <script type="text/javascript" src="../vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
         <!-- revolutions slider script -->
     <script src="../js/revolution.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/modal-mail.js"></script>
 </body>
 
 </html>
