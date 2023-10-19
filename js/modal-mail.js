@@ -12,7 +12,7 @@ $(document).ready(function() {
         // Submit the form using AJAX
         $.ajax({
             type: "POST",
-            url: "../php/send_email.php",
+            url: "../php/send_email_modal.php",
             data: $("#contact_form").serialize(), // Serialize form data for submission
             success: function(data) {
                 // Handle success, maybe show a message or whatever you'd like
