@@ -2,15 +2,6 @@
 <html lang="en">
 
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQW6G6NF3G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SQW6G6NF3G');
-</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -49,7 +40,7 @@
 <div class="preloader" id="pageLoad">
         <div class="holder">
             <div class="">
-                <img src="https://stringlab-spaces.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
+                <img src="https://stringlab.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
             </div>
         </div>
     </div>
@@ -145,10 +136,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="../use-case.html"> Use Cases </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html"> Contact </a>
+                                        <a href="../contact.html"> Contact </a>
                                     </li>
                                 </ul>
                             </div>

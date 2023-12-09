@@ -30,6 +30,6 @@ $(document).ready(function() {
 });
 
 function validatePhoneNumber(input) {
-    // Remove any non-numeric characters from the input
-    input.value = input.value.replace(/\D/g, '');
-}
+        // Remove any non-numeric characters from the input
+        input.value = input.value.replace(/\D/g, '');
+    }

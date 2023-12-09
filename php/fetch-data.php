@@ -17,6 +17,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row['page_source'] . "</td>";
         echo "<td>" . $row['section'] . "</td>";
         echo "<td>" . $row['timestamp'] . "</td>";
+        echo "<td><button class='btn-delete' data-id='" . $row['id'] . "'>Delete</button></td>";
         echo "</tr>";
     }
 }

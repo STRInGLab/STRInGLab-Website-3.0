@@ -43,10 +43,10 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'sendEmail') {
         $client = new Client($account_sid, $auth_token);
         $message = $client->messages->create(
             $destination_phone_number,
-            array(
+            [
                 'from' => $twilio_phone_number,
                 'body' => 'New form submission received from ' . $_REQUEST['con_fname'] . ' ' . $_REQUEST['con_lname'] . '.'
-            )
+            ]
         );
 
     } else {

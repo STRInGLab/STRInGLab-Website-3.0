@@ -16,6 +16,22 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
+// Check if there's a request to delete a row
+if (isset($_POST['delete_id'])) {
+    $id_to_delete = $_POST['delete_id'];
+
+    $delete_stmt = $mysqli->prepare("DELETE FROM contact_submissions WHERE id = ?");
+    $delete_stmt->bind_param("i", $id_to_delete);
+
+    if ($delete_stmt->execute()) {
+        echo "Row with ID $id_to_delete deleted successfully!";
+    } else {
+        echo "Error deleting row: " . $mysqli->error;
+    }
+
+    $delete_stmt->close();
+}
+
 ?>
 
 <!-- CREATE TABLE contact_submissions (

@@ -57,7 +57,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <div class="preloader" id="pageLoad">
         <div class="holder">
             <div class="">
-                <img src="https://stringlab-spaces.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
+                <img src="https://stringlab.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
             </div>
         </div>
     </div>

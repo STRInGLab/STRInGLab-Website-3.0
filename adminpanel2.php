@@ -1,6 +1,14 @@
+<?php
+session_start();
+
+// Check if the user is not logged in, then redirect to signin.html
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: signin.html');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQW6G6NF3G"></script>
@@ -14,7 +22,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>S.T.R.In.G - Data Analytics</title>
+    <title>S.T.R.In.G - Admin Panel</title>
     <!-- Font Icons -->
     <link media="all" rel="stylesheet" href="css/fonts/icomoon/icomoon.css">
     <!--     <link media="all" rel="stylesheet" href="css/fonts/roxine-font-icon/roxine-font.css"> -->
@@ -40,11 +48,13 @@
     <!-- Theme CSS -->
     <link media="all" rel="stylesheet" href="css/main.css">
     <!-- Custom CSS -->
-    <link media="all" rel="stylesheet" href="css/custom.css">
+    <!-- <link media="all" rel="stylesheet" href="css/custom.css"> -->
+    <!-- DataTables CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> -->
 </head>
 
 <body class="white-overlay">
-    <div class="preloader" id="pageLoad">
+<div class="preloader" id="pageLoad">
         <div class="holder">
             <div class="">
                 <img src="https://stringlab.blr1.cdn.digitaloceanspaces.com/loader.gif" width="100px" alt="">
@@ -110,20 +120,20 @@
                                 data-target="#mega-menu">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <a class="navbar-brand mr-auto m-sm-auto" href="index.html"> <img src="img/string-logo.png"
+                            <a class="navbar-brand mr-auto m-sm-auto" href="/"> <img src="img/string-logo.png"
                                     alt="string" width="350"> <img src="img/string-black-logo.png" alt="string"
                                     width="350"> </a>
                             <div class="collapse navbar-collapse flex-row-reverse justify-content-center"
                                 id="mega-menu">
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="index.html"> Home </a>
+                                        <a href="/"> Home </a>
                                     </li>
                                     <li>
                                         <a href="about.html"> About </a>
                                     </li>
                                     <li class="dropdown" data-animation="fadeIn">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="index.html"
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="/"
                                             data-title="Home"> Services </a>
                                         <ul class="dropdown-menu no-border-radius">
                                             <li><a href="design.html"> Design </a></li>
@@ -138,9 +148,8 @@
                                             data-title="Home"> Our Solutions </a>
                                         <ul class="dropdown-menu no-border-radius">
                                             <li><a href="digital-muneem.html">Digital Muneem</a></li>
-                                            <li><a href="ed-tech.html">Ed. Tech</a></li>
-                                            <li><a href="automated-document-reader.html">Automated Document Reader</a>
-                                            </li>
+                                    <li><a href="ed-tech.html">Ed. Tech</a></li>
+                                    <li><a href="automated-document-reader.html">Automated Document Reader</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -157,126 +166,37 @@
             </header>
             <!--/header of the page -->
             <main>
-                <!-- visual/banner of the page -->
-                <section class="visual">
-                    <div class="visual-inner data-analytics-banner dark-overlay parallax"
-                        data-stellar-background-ratio="0.55">
-                        <div class="centered">
-                            <div class="container">
-                                <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title">Portfolio</h1>
-                                    <div class="breadcrumb-block">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
-                                            <li class="breadcrumb-item active"> Services </li>
-                                            <li class="breadcrumb-item active">Portfolio</li>
-                                        </ol>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--/visual/banner of the page -->
-                <!-- main content wrapper -->
                 <div class="content-wrapper">
-                    <!-- Tagline -->
-                    <section class="content-block">
-                        <div class="container text-center">
-                            <div class="heading">
-                                <h2>Analyze. <span>Act. </span> Achieve</h2>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Section 1 -->
-                    <section class="content-block p-0">
-                        <div class="container-fluid">
-                            <div class="content-slot alternate-block">
-                                <div class="row bg-gray-light my-5 py-5">
-                                    <div class="col-lg-6">
-                                        <div class="wow slideInLeft">
-                                            <img src="/img/portfolio-edtech.png" alt="images" style="border-radius: 15px;">
-                                        </div>
-                                    </div>
-                                    <div class="col col-lg-6">
-                                        <div class="pt-5 px-5">
-                                            <div class="block-heading bottom-space">
-                                                <h2 class="block-main-heading">EdTech Portal</h2>
-                                            </div>
-                                            <p>Uncover insights across domains with S.T.R.In.G. We refine vast data sources, ensuring your business decisions resonate with real-time insights, irrespective of your domain. 
-                                                The Imperative of Data Analytics for Business Success. Data analytics is pivotal for modern businesses. It uncovers hidden patterns, optimizes operations, and drives informed decisions, ensuring companies stay competitive and responsive to market shifts.
-                                            </p>
-                                            <div class="btn-container py-5">
-                                                <a href="contact.html" class="btn btn-primary">KNOW MORE</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-5 py-5">
-                                    <div class="col-lg-6">
-                                        <div class="wow slideInRight">
-                                            <img src="/img/portfolio-accounting.png" alt="images" style="border-radius: 15px;">
-                                        </div>
-                                    </div>
-                                    <div class="col col-lg-6">
-                                        <div class="pt-5 px-5">
-                                            <div class="block-heading bottom-space">
-                                                <h2 class="block-main-heading">Accounting App</h2>
-                                            </div>
-                                            <p>Uncover insights across domains with S.T.R.In.G. We refine vast data sources, ensuring your business decisions resonate with real-time insights, irrespective of your domain. 
-                                                The Imperative of Data Analytics for Business Success. Data analytics is pivotal for modern businesses. It uncovers hidden patterns, optimizes operations, and drives informed decisions, ensuring companies stay competitive and responsive to market shifts.
-                                            </p>
-                                            <div class="btn-container py-5">
-                                                <a href="contact.html" class="btn btn-primary">KNOW MORE</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row bg-gray-light my-5 py-5">
-                                    <div class="col-lg-6">
-                                        <div class="wow slideInLeft">
-                                            <img src="/img/portfolio-edtech.png" alt="images" style="border-radius: 15px;">
-                                        </div>
-                                    </div>
-                                    <div class="col col-lg-6">
-                                        <div class="pt-5 px-5">
-                                            <div class="block-heading bottom-space">
-                                                <h2 class="block-main-heading">EdTech Portal</h2>
-                                            </div>
-                                            <p>Uncover insights across domains with S.T.R.In.G. We refine vast data sources, ensuring your business decisions resonate with real-time insights, irrespective of your domain. 
-                                                The Imperative of Data Analytics for Business Success. Data analytics is pivotal for modern businesses. It uncovers hidden patterns, optimizes operations, and drives informed decisions, ensuring companies stay competitive and responsive to market shifts.
-                                            </p>
-                                            <div class="btn-container py-5">
-                                                <a href="contact.html" class="btn btn-primary">KNOW MORE</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-5 py-5">
-                                    <div class="col-lg-6">
-                                        <div class="wow slideInRight">
-                                            <img src="/img/portfolio-accounting.png" alt="images" style="border-radius: 15px;">
-                                        </div>
-                                    </div>
-                                    <div class="col col-lg-6">
-                                        <div class="pt-5 px-5">
-                                            <div class="block-heading bottom-space">
-                                                <h2 class="block-main-heading">Accounting App</h2>
-                                            </div>
-                                            <p>Uncover insights across domains with S.T.R.In.G. We refine vast data sources, ensuring your business decisions resonate with real-time insights, irrespective of your domain. 
-                                                The Imperative of Data Analytics for Business Success. Data analytics is pivotal for modern businesses. It uncovers hidden patterns, optimizes operations, and drives informed decisions, ensuring companies stay competitive and responsive to market shifts.
-                                            </p>
-                                            <div class="btn-container py-5">
-                                                <a href="contact.html" class="btn btn-primary">KNOW MORE</a>
-                                            </div>
-                                        </div>
+                    <div class="content-wrapper">
+                        <section class="content-block">
+                            <div class="">
+                                <div class="demo-wrapper">
+                                    <h3 class="text-center element-heading">Contact Form Submissions</h3>
+                                    <div class="data-table">
+                                        <table id="contactTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                    <th>Message</th>
+                                                    <th>Source Page</th>
+                                                    <th>Section</th>
+                                                    <th>Timestamp</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include 'php/fetch-data.php'; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-
+                        </section>
+                    </div>
                 </div>
                 <!--/main content wrapper -->
             </main>
@@ -324,23 +244,21 @@
                             <h4>Company</h4>
                             <div class="footer-nav">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#">Our Solutions</a></li>
-                                    <li><a href="#">Legal</a></li>
-                                    <li><a href="#">Policies</a></li>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="index.html#our-services-section">Services</a></li>
+                                    <li><a href="legal.html">Legal</a></li>
+                                    <li><a href="policies.html">Policies</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <h4>In the News</h4>
+                            <h4>Our Solutions</h4>
                             <div class="footer-nav">
                                 <ul>
-                                    <li><a href="#">Press</a></li>
-                                    <li><a href="#">Women</a></li>
-                                    <li><a href="#">Sales</a></li>
-                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="digital-muneem.html">Digital Muneem</a></li>
+                                    <li><a href="ed-tech.html">Ed. Tech</a></li>
+                                    <li><a href="automated-document-reader.html">Automated Document Reader</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -354,12 +272,9 @@
                             </div>
                             <div class="col-md-6">
                                 <ul class="social-network with-text">
-                                    <li><a href="https://www.instagram.com/s.t.r.in.g/"><span
-                                                class="icon-instagram"></span></a></li>
-                                    <li><a href="https://www.facebook.com/profile.php?id=61550911571127"><span
-                                                class="icon-facebook"></span></a></li>
-                                    <li><a href="https://twitter.com/stringlabtech"><span
-                                                class="icon-twitter"></span></a></li>
+                                    <li><a href="https://www.instagram.com/s.t.r.in.g/"><span class="icon-instagram"></span></a></li>
+                                    <li><a href="https://www.facebook.com/profile.php?id=61550911571127"><span class="icon-facebook"></span></a></li>
+                                    <li><a href="https://twitter.com/stringlabtech"><span class="icon-twitter"></span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -432,6 +347,24 @@
         src="vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
     <!-- Revolution Slider Script -->
     <script src="js/revolution.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#contactTable').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#contactTable').on('click', '.btn-delete', function() {
+                var btn = $(this);
+                var id = btn.data('id');
+                $.post('delete-row.php', { id: id }, function(response) {
+                    // Remove row from table
+                    btn.closest('tr').remove();
+                    alert(response);
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
