@@ -14069,3 +14069,21 @@ Arkit Template
 	background-color: black; /* Color of the line */
 	margin: 0 auto; /* Centering the line if needed */
 }
+
+.vertical-line {
+    border-left: 2px solid black;
+    height: 100px; /* Adjust as needed */
+    margin: auto 15px; /* This centers the line and adds some space around it */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .vertical-line {
+        display: none;
+    }
+
+	.img-wrap-1 {
+        width: 60%; /* Set image container width to 60% */
+        margin: 0 auto; /* Center the image container */
+    }
+}
