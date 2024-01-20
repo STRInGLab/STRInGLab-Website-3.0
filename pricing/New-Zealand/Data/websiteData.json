@@ -1,0 +1,38 @@
+[
+    {
+      "task": "Website {5 Pages}",
+      "Hours": 30,
+      "Charges": 50
+    },
+    {
+      "task": "Extra Pages",
+      "Hours": 1.5,
+      "Charges": 50
+    },
+    {
+      "task": "Functions {Eg. Contact form PHP, Filters, etc.}",
+      "Hours": 2,
+      "Charges": 55
+    },
+    {
+      "task": "Dynamic Components",
+      "Hours": 8,
+      "Charges": 55
+    },
+    {
+      "task": "API Development {If Dynamic Components chosen}",
+      "Hours": 1.5,
+      "Charges": 45
+    },
+    {
+      "task": "DataBase Architecture & Development",
+      "Hours": 1.5,
+      "Charges": 45
+    },
+    {
+      "task": "Task",
+      "Hours": 18,
+      "Charges": 1
+    }
+  ]
+  

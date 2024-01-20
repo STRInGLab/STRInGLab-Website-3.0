@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# If the user is accessing signin.html and has a "loggedIn" cookie, redirect to invoicing.php
+#RewriteCond %{REQUEST_URI} ^/signin\.php$
+#RewriteCond %{HTTP_COOKIE} loggedIn=true
+#RewriteRule ^(.*)$ invoicing.php [R=302,L]
+
+# Redirect from index.php to invoicing.php
+RewriteRule ^index\.php$ invoicing.php [R=302,L]

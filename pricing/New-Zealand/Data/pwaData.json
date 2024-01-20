@@ -1,0 +1,23 @@
+[
+    {
+      "task": "E-Commerce",
+      "Hours": 480,
+      "Charges": 50
+    },
+    {
+      "task": "HR Portal",
+      "Hours": 450,
+      "Charges": 50
+    },
+    {
+      "task": "Dashboards",
+      "Hours": 450,
+      "Charges": 50
+    },
+    {
+      "task": "Other",
+      "Hours": 450,
+      "Charges": 50
+    }
+  ]
+  

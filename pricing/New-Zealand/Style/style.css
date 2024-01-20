@@ -1,0 +1,179 @@
+/* Create the navigation bar */
+nav {
+    background-color: black;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+/* Style the links inside the navigation bar */
+nav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: justify;
+    padding: 34px 36px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Change the color of links on hover */
+nav a:hover {
+    background-color: whitesmoke;
+    color: black;
+}
+
+/* Add a class to highlight the active link */
+nav .active {
+    background-color: #4CAF50;
+}
+
+nav img{
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 5% auto;
+    font-size: 14px;
+    padding: 25%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+
+table1 {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 5% auto;
+  font-size: 14px;
+  padding: 25%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+table2 {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 5% auto;
+  font-size: 14px;
+  padding: 25%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+table3 {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 5% auto;
+  font-size: 14px;
+  padding: 25%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+  
+  th {
+    background-color: #b4c6e7;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  td {
+    padding: 7px;
+    border: 1px solid #ddd;
+  }
+  
+  td.totalSales {
+    font-weight: bold;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    width: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 25%;
+}
+
+table:before, table:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: -1;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 5% auto;
+    font-size: 14px;
+    padding: 25%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  th {
+    padding: 8px;
+  }
+  td {
+    padding: 8px;
+  }
+  input[type="number"] {
+    padding: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 5% auto;
+    font-size: 14px;
+    padding: 25%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* Floating card style */
+.floating-card {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    width: 200px;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}

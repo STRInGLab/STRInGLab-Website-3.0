@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQW6G6NF3G"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SQW6G6NF3G');
+</script>
+<!-- head -->
+{{> head }}
+	
+<!-- Yeah i know js should not be in header. Its required for demos.-->
+
+<!-- javascript -->
+{{> javascripts }}
+
+</head>
+<body>
+<!-- header -->
+{{> header }}
+
+<!-- title -->
+{{> title }}
+<div id="docs">
+	<div class="row">
+		<div class="small-12 medium-3 large-3 columns">
+			{{> sidenav-docs }}
+		</div>
+		<div class="small-12 medium-9 large-9 columns">
+			<article class="docs-content">
+				{{> body }}
+			</article>
+		</div>
+	</div>
+</div>
+
+<!-- footer -->
+{{> footer }}
+
+<!-- vendors -->
+{{> vendors }}
+	</body>
+</html>
