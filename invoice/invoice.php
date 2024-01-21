@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // start the session
 session_start();
 
@@ -29,7 +32,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     $stmt->execute([$invoiceId]);
     $invoice = $stmt->fetch();
     
-    $stmt = $pdo->prepare('SELECT * FROM InvoiceData WHERE invoiceId = ?');
+    $stmt = $pdo->prepare('SELECT * FROM InvoiceData WHERE invoiceNo = ?');
     $stmt->execute([$invoiceId]);
     $invoiceData = $stmt->fetchAll();
 
@@ -129,7 +132,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
               <div class="tm_invoice_footer">
                 <div class="tm_left_footer">
                   <p class="tm_mb2"><b class="tm_primary_color">Payment info:</b></p>
-                  <p class="tm_m0"><?php echo $invoice['paymentInfo']; ?></p>
+                  <p class="tm_m0"><?php echo nl2br($invoice['paymentInfo']); ?></p>
                 </div>
                 <div class="tm_right_footer">
                   <table class="tm_gray_bg">
@@ -181,7 +184,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="tm_padd_15_20 tm_gray_bg">
               <p class="tm_mb5"><b class="tm_primary_color">Terms & Conditions:</b></p>
               <ul class="tm_m0 tm_note_list">
-                <?php echo $invoice['terms']; ?>
+                <?php echo nl2br($invoice['terms']); ?>
               </ul>
             </div><!-- .tm_note -->
           </div>
