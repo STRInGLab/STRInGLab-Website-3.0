@@ -47,7 +47,7 @@
         <div class="tm_invoice_in">
           <div class="tm_invoice_head tm_align_center tm_accent_bg">
             <div class="tm_invoice_left">
-              <div class="tm_logo"><img src="https://stringlabspace.blr1.cdn.digitaloceanspaces.com/string-fullform-logo.png" alt="Logo" width="350"></div>
+              <div class="tm_logo"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/string-fullform-logo.png" alt="Logo" width="350"></div>
             </div>
             <div class="tm_invoice_right">
               <div class="tm_head_address tm_white_color">
