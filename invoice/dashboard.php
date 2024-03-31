@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     
         if ($result) {
             foreach ($result as $row) {
-                echo "<tr>
+                echo "<tr data-invoice-no='{$row['invoiceNo']}'>
                         <td>{$row['id']}</td>
                         <td>{$row['invoiceTo']}</td>
                         <td>{$row['invoiceName']}</td>
@@ -164,6 +164,35 @@ $(document).on('click', '.delete-btn', function() {
             }
         });
     }
+});
+</script>
+<script>
+$(document).ready(function() {
+    // Event listener for row clicks, excluding clicks on the delete button
+    $('table').on('click', 'tr', function(e) {
+        if (!$(e.target).closest('.delete-btn').length) {
+            var invoiceNo = $(this).data('invoice-no');
+            if (invoiceNo) {
+                window.open('https://stringlab.org/invoice/invoice.php?invoiceNo=' + invoiceNo, '_blank');
+            }
+        }
+    });
+
+    // Existing AJAX call for delete button
+    $(document).on('click', '.delete-btn', function() {
+        var id = $(this).data('id');
+        var type = $(this).data('type');
+        if(confirm('Are you sure you want to delete this item?')) {
+            $.ajax({
+                url: 'dashboard.php',
+                type: 'post',
+                data: {id: id, type: type},
+                success: function(response) {
+                    location.reload();
+                }
+            });
+        }
+    });
 });
 </script>
 </body>
