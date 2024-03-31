@@ -93,7 +93,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="tm_invoice_info_right tm_text_right">
               <p class="tm_invoice_number tm_m0">Project: <b class="tm_primary_color"><?php echo $invoice['invoiceName']; ?></b></p>
               <p class="tm_invoice_number tm_m0"><?php echo $invoice['invoiceOrQuote']; ?> ID: <b class="tm_primary_color"><?php echo $invoice['invoiceNo']; ?></b></p>
-              <p class="tm_invoice_date tm_m0">Date: <b class="tm_primary_color"><?php echo $invoice['date']; ?></p></b></p>
+              <p class="tm_invoice_date tm_m0">Date: <b class="tm_primary_color"><?php echo (new DateTime($invoice['date']))->format('d-m-Y'); ?></p></b></p>
             </div>
           </div>
           <div class="tm_invoice_details">
