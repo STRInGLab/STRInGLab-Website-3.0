@@ -54,7 +54,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <td>{$row['date']}</td>
                         <td>{$row['advancePaid']}</td>
                         <td>{$row['taxType']}</td>
-                        <td><button class='btn btn-danger delete-btn' data-id='{$row['id']}' data-type='{$type}'>Delete</button></td>
+                        <td>
+                            <button class='btn btn-danger delete-btn' data-id='{$row['id']}' data-type='{$type}'>Delete</button>
+                            <a href='edit_page.php?id={$row['id']}' class='btn btn-primary'>Edit</a>
+                        </td>
                      </tr>";
             }
         } else {
