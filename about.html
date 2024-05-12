@@ -421,6 +421,29 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- Our Clients Section -->
+                <section class="content-block">
+                    <div class="container">
+                        <h2 class="block-main-heading text-center">Our Clients</h2>
+                        <div class="customer-logos slider">
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/care4sign.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/comterra.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/cultivatedesign.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/drift.svg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/helix.jpeg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/nipponIndia.jpeg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/patanjali.svg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/studiodynamics.jpg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/svagummies.jpeg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/taomish.jpeg"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/taru.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/xceler.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/nirmalainteriors.png"></div>
+                            <div class="slide"><img src="https://stringspace.s3.ap-south-1.amazonaws.com/clients/phoenixoriental.jpeg"></div>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
         <!-- footer of the pagse -->
@@ -571,5 +594,33 @@
         src="vendors/rev-slider/revolution-addons/snow/revolution.addon.snow.min.js"></script>
     <!-- revolutions slider script -->
     <script src="js/revolution.js"></script>
+    <!-- our clients setion -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+    </script>
 
 </html>
