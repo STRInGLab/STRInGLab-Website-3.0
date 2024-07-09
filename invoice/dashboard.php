@@ -39,7 +39,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     
     // Corrected fetchData function definition
     function fetchData($type, $pdo) { // Notice $pdo is now the correct parameter
-        $sql = "SELECT * FROM Invoice WHERE invoiceOrQuote = ?";
+        $sql = "SELECT * FROM Invoice WHERE invoiceOrQuote = ? ORDER BY date";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$type]);
         $result = $stmt->fetchAll();
