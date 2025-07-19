@@ -1,0 +1,39 @@
+RewriteEngine On
+
+# Redirect *.html to clean URL (e.g., /about.html → /about)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^/]+)\.html\s [NC]
+RewriteRule ^([^/]+)\.html$ /$1 [R=301,L]
+
+# Internally rewrite /about → /about.html (serve the file)
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Block sensitive files
+<FilesMatch "(^\.|\.bak$|\.ini$|\.sh$|\.log$|\.DS_Store$)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 1 week"
+</IfModule>
+
+# Default document
+DirectoryIndex index.html index.php

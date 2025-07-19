@@ -1,270 +1,219 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-  <loc>https://stringlab.org/</loc>
-  <priority>1.00</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:50+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/index.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:50+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/about.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:54+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/contact.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T09:30:10+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/design.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/development.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/data-analytics.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/data-science.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/operations-research.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/digital-muneem.html</loc>
-  <priority>0.50</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:49+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/ed-tech.html</loc>
-  <priority>0.50</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:49+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/automated-document-reader.html</loc>
-  <priority>0.50</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:47+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:56+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/legal.html</loc>
-  <priority>0.50</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:50+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/policies.html</loc>
-  <priority>0.50</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:51+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/ui.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:56+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/ux.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:56+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/dsaas.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/machine-learning.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/image-analysis.html</loc>
-  <priority>0.80</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-18T16:28:55+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/e-commerce.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/anomaly-detection.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:23+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/biomass-supplychain.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/ai-chat-bot.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:23+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/algo-trading.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/college-info-portal.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:21+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/commodity-forecasting.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:21+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/digital-twin.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:21+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/document-reader.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:21+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/eda-lab.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:21+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/erp.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:23+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/financial-sentiment-analysis.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/image-analysis.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/project-management.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/routing-problem.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:23+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/stacking-solution.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:22+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/digital-transformation.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:19+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/ai-in-business.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:19+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/online-retail-commerce.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/cloud-computing.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/marketing-automation.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/blogs/remote-working.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:19+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/use-case/simulation.html</loc>
-  <priority>0.64</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:24:20+00:00</lastmod>
-</url>
-<url>
-  <loc>https://stringlab.org/contact-our-team.html</loc>
-  <priority>0.51</priority>
-  <changefreq>weekly</changefreq>
-  <lastmod>2023-10-14T09:23:47+00:00</lastmod>
-</url>
-
-
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>http://stringlab.org/index.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/about.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/contact.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/design.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/development.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/data-analytics.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/data-science.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/operations-research.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/digital-muneem.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/ed-tech.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/automated-document-reader.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/index.html#our-services-section</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/legal.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/policies.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/tel:+91-9769628463</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/ui.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/ux.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/dsaas.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/machine-learning.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/image-analysis.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/e-commerce.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/anomaly-detection.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/biomass-supplychain.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/ai-chat-bot.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/algo-trading.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/college-info-portal.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/commodity-forecasting.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/digital-twin.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/document-reader.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/eda-lab.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/erp.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/financial-sentiment-analysis.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/image-analysis.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/project-management.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/routing-problem.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/stacking-solution.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/complete-seo-process.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/sem-guide.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/remote-working.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/marketing-automation.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/cloud-computing.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/online-retail-commerce.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/ai-in-business.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blogs/digital-transformation.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/simulation.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/use-case/deployment.html</loc>
+  </url>
+  <url>
+    <loc></loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/blog-single.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../index.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../about.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../design.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../development.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../data-analytics.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../data-science.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../operations-research.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../digital-muneem.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../ed-tech.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../automated-document-reader.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../contact-our-team.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../index.html#our-services-section</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../legal.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../policies.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case/ai-chat-bot.html</loc>
+  </url>
+  <url>
+    <loc>https://stringlab.org/use-case.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case/document-reader.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case/eda-lab.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case/e-commerce.html</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/../use-case/digital-twin.html</loc>
+  </url>
 </urlset>
+<!-- This sitemap was generated on 2023-10-01T12:00:00Z -->
+<!-- Last modified: 2023-10-01T12:00:00Z -->
+<!-- Total URLs: 60 -->

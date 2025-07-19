@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /adminpanel.php
+Disallow: /adminpanel2.php
+Disallow: /login.php
+Disallow: /signin.html
+Disallow: /blogs/.DS_Store
+
+# Allow everything else
+Allow: /
+
+# Sitemap reference
+Sitemap: https://stringlab.org/sitemap.xml
