@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
         if (jQuery("svg").length > 0 || jQuery(".rs-background-video-layer, .tp-videolayer").length > 0 || jQuery("iframe").length > 0) {
             if ("file://" === location.origin) {
                 jQuery('body').append('<div class="localwarning"><div class="localwarningimage"></div><a target="_blank" href="https://codecanyon.net/item/slider-revolution-jquery-visual-editor-addon/13934907" class="localwarningadvert"></a><div class="localwarningclose"><i class="fa-icon-close"></i></div></div>');
-                jQuery('head').append('<link rel="stylesheet" type="text/css" href="../../revolution/fonts/font-awesome/css/font-awesome.css">');
+                jQuery('head').append('');
                 var a = new punchgs.TimelineLite({
                         paused: !0
                     }),
