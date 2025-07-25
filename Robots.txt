@@ -1,7 +1,10 @@
 User-agent: *
 Disallow: /automated-document-reader.html
+Disallow: /automated-document-reader
 Disallow: /digital-muneem.html
+Disallow: /digital-muneem
 Disallow: /ed-tech.html
+Disallow: /ed-tech
 Disallow: /adminpanel.php
 Disallow: /adminpanel2.php
 Disallow: /login.php
