@@ -1,12 +1,23 @@
 RewriteEngine On
 
-# Redirect *.html to clean URL (e.g., /about.html → /about)
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/([^/]+)\.html\s [NC]
-RewriteRule ^([^/]+)\.html$ /$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.stringlab\.org [NC]
+RewriteRule ^(.*)$ https://stringlab.org/$1 [L,R=301]
 
-# Internally rewrite /about → /about.html (serve the file)
+# Redirect index to root
+RewriteCond %{THE_REQUEST} /index(\.html)? [NC]
+RewriteRule ^index(\.html)?$ / [R=301,L]
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.stringlab\.org$ [NC]
+RewriteRule ^(.*)$ https://stringlab.org/$1 [R=301,L]
+
+# Redirect any .html URL to its clean version (works for subdirectories too)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html\s [NC]
+RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+# Internally rewrite /about → /about.html (now works for all folders)
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
+RewriteRule ^(.*)/?$ $1.html [L]
 
 # Force HTTPS
 RewriteCond %{HTTPS} off

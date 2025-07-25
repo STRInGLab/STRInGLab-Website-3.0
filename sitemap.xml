@@ -1,217 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
   <url>
-    <loc>http://stringlab.org/index.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/about.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/contact.html</loc>
-  </url>
-  <url>
     <loc>http://stringlab.org/</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/design.html</loc>
+    <loc>http://stringlab.org/about</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/development.html</loc>
+    <loc>http://stringlab.org/contact</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/data-analytics.html</loc>
+    <loc>http://stringlab.org/design</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/data-science.html</loc>
+    <loc>http://stringlab.org/development</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/operations-research.html</loc>
+    <loc>http://stringlab.org/data-analytics</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/digital-muneem.html</loc>
+    <loc>http://stringlab.org/data-science</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/ed-tech.html</loc>
+    <loc>http://stringlab.org/operations-research</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/automated-document-reader.html</loc>
+    <loc>http://stringlab.org/digital-muneem</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case.html</loc>
+    <loc>http://stringlab.org/ed-tech</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/index.html#our-services-section</loc>
+    <loc>http://stringlab.org/automated-document-reader</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/legal.html</loc>
+    <loc>http://stringlab.org/use-case</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/policies.html</loc>
+    <loc>http://stringlab.org/#our-services-section</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/legal</loc>
+  </url>
+  <url>
+    <loc>http://stringlab.org/policies</loc>
   </url>
   <url>
     <loc>http://stringlab.org/tel:+91-9769628463</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/ui.html</loc>
+    <loc>http://stringlab.org/ui</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/ux.html</loc>
+    <loc>http://stringlab.org/ux</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/dsaas.html</loc>
+    <loc>http://stringlab.org/dsaas</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/machine-learning.html</loc>
+    <loc>http://stringlab.org/machine-learning</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/image-analysis.html</loc>
+    <loc>http://stringlab.org/image-analysis</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/e-commerce.html</loc>
+    <loc>http://stringlab.org/use-case/e-commerce</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/anomaly-detection.html</loc>
+    <loc>http://stringlab.org/use-case/anomaly-detection</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/biomass-supplychain.html</loc>
+    <loc>http://stringlab.org/use-case/biomass-supplychain</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/ai-chat-bot.html</loc>
+    <loc>http://stringlab.org/use-case/ai-chat-bot</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/algo-trading.html</loc>
+    <loc>http://stringlab.org/use-case/algo-trading</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/college-info-portal.html</loc>
+    <loc>http://stringlab.org/use-case/college-info-portal</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/commodity-forecasting.html</loc>
+    <loc>http://stringlab.org/use-case/commodity-forecasting</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/digital-twin.html</loc>
+    <loc>http://stringlab.org/use-case/digital-twin</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/document-reader.html</loc>
+    <loc>http://stringlab.org/use-case/document-reader</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/eda-lab.html</loc>
+    <loc>http://stringlab.org/use-case/eda-lab</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/erp.html</loc>
+    <loc>http://stringlab.org/use-case/erp</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/financial-sentiment-analysis.html</loc>
+    <loc>http://stringlab.org/use-case/financial-sentiment-analysis</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/image-analysis.html</loc>
+    <loc>http://stringlab.org/use-case/image-analysis</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/project-management.html</loc>
+    <loc>http://stringlab.org/use-case/project-management</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/routing-problem.html</loc>
+    <loc>http://stringlab.org/use-case/routing-problem</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/stacking-solution.html</loc>
+    <loc>http://stringlab.org/use-case/stacking-solution</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/complete-seo-process.html</loc>
+    <loc>http://stringlab.org/blogs/complete-seo-process</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/sem-guide.html</loc>
+    <loc>http://stringlab.org/blogs/sem-guide</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/remote-working.html</loc>
+    <loc>http://stringlab.org/blogs/remote-working</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/marketing-automation.html</loc>
+    <loc>http://stringlab.org/blogs/marketing-automation</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/cloud-computing.html</loc>
+    <loc>http://stringlab.org/blogs/cloud-computing</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/online-retail-commerce.html</loc>
+    <loc>http://stringlab.org/blogs/online-retail-commerce</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/ai-in-business.html</loc>
+    <loc>http://stringlab.org/blogs/ai-in-business</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/blogs/digital-transformation.html</loc>
+    <loc>http://stringlab.org/blogs/digital-transformation</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/simulation.html</loc>
+    <loc>http://stringlab.org/use-case/simulation</loc>
   </url>
   <url>
-    <loc>http://stringlab.org/use-case/deployment.html</loc>
-  </url>
-  <url>
-    <loc></loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/blog-single.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../index.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../about.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../design.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../development.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../data-analytics.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../data-science.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../operations-research.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../digital-muneem.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../ed-tech.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../automated-document-reader.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../contact-our-team.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../index.html#our-services-section</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../legal.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../policies.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case/ai-chat-bot.html</loc>
-  </url>
-  <url>
-    <loc>https://stringlab.org/use-case.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case/document-reader.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case/eda-lab.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case/e-commerce.html</loc>
-  </url>
-  <url>
-    <loc>http://stringlab.org/../use-case/digital-twin.html</loc>
+    <loc>http://stringlab.org/use-case/deployment</loc>
   </url>
 </urlset>
 <!-- This sitemap was generated on 2023-10-01T12:00:00Z -->
