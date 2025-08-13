@@ -18,16 +18,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
   
-  @font-face {
-    font-family: 'stringico';
-    src:  url('../../../fonts/icomoon/stringico.eot?pm48m');
-    src:  url('../../../fonts/icomoon/stringico.eot?pm48m#iefix') format('embedded-opentype'),
-      url('../../../fonts/icomoon/stringico.ttf?pm48m') format('truetype'),
-      url('../../../fonts/icomoon/stringico.woff?pm48m') format('woff'),
-      url('../../../fonts/icomoon/stringico.svg?pm48m#stringico') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+@font-face {
+  font-family: 'stringico';
+  src:  url('../../../fonts/icomoon/stringico.eot?pm48m');
+  src:  url('../../../fonts/icomoon/stringico.eot?pm48m#iefix') format('embedded-opentype'),
+    url('../../../fonts/icomoon/stringico.ttf?pm48m') format('truetype'),
+    url('../../../fonts/icomoon/stringico.woff?pm48m') format('woff'),
+    url('../../../fonts/icomoon/stringico.svg?pm48m#stringico') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
   }
   
   [class^="string-"], [class*=" string-"] {
@@ -680,4 +680,7 @@
 }
 .string-supply-chain:before {
   content: "\e909";
+}
+.string-ai:before {
+  content: "\e900";
 }

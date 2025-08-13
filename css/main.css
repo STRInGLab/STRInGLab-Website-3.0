@@ -10917,6 +10917,33 @@ a.full-width-icon:hover .social-text {
 	border-radius: 50%;
 }
 
+@media (min-width: 769px) {
+    .btn-container a {
+        margin: 3.5rem; /* Only for desktop */
+    }
+}
+@media (max-width: 768px) {
+    .blockquote-block-v3 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .btn-container {
+        width: 100%;
+    }
+    .btn-container a {
+        display: block;
+        width: 100%;
+        text-align: center;
+		margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+  .block-top-heading-v2 {
+    font-size: 1rem !important;
+  }
+}
+
 @media only screen and (min-width: 576px) {
 	.pricing-block .col-wrap {
 		padding-bottom: 0;
@@ -14202,4 +14229,9 @@ Arkit Template
 }
 .slick-arrow.slick-hidden {
     display: none;
+}
+.icon img {
+  width: 1em;      /* same as icon font size */
+  height: 1em;     /* keeps it square */
+  vertical-align: middle;
 }
