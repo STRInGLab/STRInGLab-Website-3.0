@@ -181,6 +181,13 @@
                                                         <input type="text" placeholder="LAST NAME *" id="con_lname" name="con_lname" class="form-control">
                                                     </div>
                                                 </div>
+                                                <!-- Multiple honeypots with realistic names -->
+                                                <input type="text" name="website" style="position: absolute; left: -9999px; top: -9999px;" tabindex="-1" autocomplete="off">
+                                                <input type="email" name="backup_email" style="position: absolute; left: -9999px; top: -9999px;" tabindex="-1" autocomplete="off">
+                                                <input type="tel" name="fax_number" style="position: absolute; left: -9999px; top: -9999px;" tabindex="-1" autocomplete="off">
+                                                <!-- Time-based honeypot -->
+                                                <input type="hidden" name="form_loaded_time" id="form_loaded_time">
+                                                <input type="hidden" name="form_token" value="<?php echo hash('sha256', session_id() . time()); ?>">
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -392,6 +399,10 @@
             input.value = input.value.substring(0, 10);
             }
         }
+    </script>
+    <!-- Add this script before closing body tag -->
+    <script>
+        document.getElementById('form_loaded_time').value = Date.now();
     </script>
 </body>
 
