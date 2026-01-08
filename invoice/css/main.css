@@ -5788,47 +5788,47 @@ pre {
 }
 
 .about-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/meeting-room.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/meeting-room.jpg');
 }
 
 .design-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/web-design-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/web-design-bg.jpg');
 }
 
 .ui-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/ui-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/ui-bg.jpg');
 }
 
 .ux-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/ux-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/ux-bg.jpg');
 }
 
 .development-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/development-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/development-bg.jpg');
 }
 
 .data-analytics-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/dataanalytics-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/dataanalytics-bg.jpg');
 }
 
 .data-science-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/data-science.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/data-science.jpg');
 }
 
 .ml-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/ml-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/ml-bg.jpg');
 }
 
 .image-analysis-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/image-analysis-bg.jpeg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/image-analysis-bg.jpeg');
 }
 
 .or-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/or-bg.jpeg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/or-bg.jpeg');
 }
 
 .use-case-banner {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/usecase-bg.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/usecase-bg.jpg');
 }
 
 .portfolio-banner {
@@ -5844,11 +5844,11 @@ pre {
 }
 
 .quotation-block {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/connect-plexus.jpg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/connect-plexus.jpg');
 }
 
 .count-block {
-	background-image: url('https://stringspace.s3.ap-south-1.amazonaws.com/total-projects-bg.jpeg');
+	background-image: url('https://stringspace.blob.core.windows.net/stringspace/total-projects-bg.jpeg');
 }
 
 .quotation-block-v3 {
