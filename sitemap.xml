@@ -30,24 +30,27 @@
   <url>
     <loc>https://stringlab.org/ed-tech</loc>
   </url>
+  <!-- Disallowed on robots.txt
   <url>
     <loc>https://stringlab.org/automated-document-reader</loc>
-  </url>
+  </url> -->
   <url>
     <loc>https://stringlab.org/use-case</loc>
   </url>
+  <!-- does not exists
   <url>
     <loc>https://stringlab.org/#our-services-section</loc>
-  </url>
+  </url> -->
   <url>
     <loc>https://stringlab.org/legal</loc>
   </url>
   <url>
     <loc>https://stringlab.org/policies</loc>
   </url>
+  <!-- does not exists
   <url>
     <loc>https://stringlab.org/tel:+91-9769628463</loc>
-  </url>
+  </url> -->
   <url>
     <loc>https://stringlab.org/ui</loc>
   </url>
