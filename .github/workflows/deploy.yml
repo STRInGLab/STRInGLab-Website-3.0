@@ -28,4 +28,6 @@ jobs:
             **/.git*/**
             **/node_modules/**
             .github/**
+            **/vendor/**
+            **/invoice/**
             README.md
