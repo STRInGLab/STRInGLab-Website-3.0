@@ -4,6 +4,16 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Deployment Action -> Use "catchup" ONCE after manually uploading all your files to Hostinger.'
+        required: true
+        default: 'push'
+        type: choice
+        options:
+        - push
+        - catchup
 
 jobs:
   deploy:
@@ -12,22 +22,26 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }} #vprpca
-          password: ${{ secrets.FTP_PASSWORD }} #i?Yv9fSpdVPJasr0
-          # '.' tells the action to upload everything in your repo root
-          local-dir: ./ 
-          # Hostinger usually uses ./public_html/
-          server-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            **/vendor/**
-            **/invoice/**
-            README.md
+          fetch-depth: 0 # Required for delta deployments
+
+      - name: Install git-ftp
+        run: sudo apt-get install git-ftp -y
+
+      - name: Sync/Deploy via Git-FTP
+        run: |
+          # Write ignore rules to .git-ftp-ignore
+          echo ".git*/" >> .git-ftp-ignore
+          echo "node_modules/" >> .git-ftp-ignore
+          echo ".github/" >> .git-ftp-ignore
+          echo "README.md" >> .git-ftp-ignore
+
+          USER_ACTION="${{ github.event.inputs.action || 'push' }}"
+          
+          if [ "$USER_ACTION" == "catchup" ]; then
+            echo "Running catchup to mark current commit as already deployed on Hostinger..."
+            git ftp catchup --user "${{ secrets.FTP_USERNAME }}" --passwd "${{ secrets.FTP_PASSWORD }}" ftp://${{ secrets.FTP_SERVER }}/
+          else
+            echo "Running differential push to deploy ONLY the files modified in this commit..."
+            git ftp push --user "${{ secrets.FTP_USERNAME }}" --passwd "${{ secrets.FTP_PASSWORD }}" ftp://${{ secrets.FTP_SERVER }}/ --auto-init
+          fi
