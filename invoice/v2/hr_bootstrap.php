@@ -286,14 +286,17 @@ function hrBuildPayslipHtml(array $payslip)
             body { font-family: Arial, sans-serif; background: #eef2f7; margin: 0; padding: 24px; color: #2f2f2f; }
             .sheet { max-width: 940px; margin: 0 auto; background: #ffffff; padding: 0; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
             .inner { padding: 28px 28px 24px; }
-            .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-            .brand { display: flex; gap: 14px; align-items: flex-start; }
-            .brand img { width: 96px; height: auto; object-fit: contain; }
-            .brand h1 { margin: 0; font-size: 26px; line-height: 1.1; font-weight: 800; color: #3a3a3a; }
-            .brand p { margin: 6px 0 0; color: #6f6f6f; font-size: 14px; }
-            .period-box { text-align: right; min-width: 210px; }
+            .top { display: flex; justify-content: space-between; align-items: stretch; gap: 24px; }
+            .brand { display: flex; gap: 18px; align-items: center; flex: 1; padding: 12px 16px 12px 12px; border: 1px solid #e5e7eb; border-radius: 18px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
+            .brand-mark { width: 180px; min-width: 180px; display: flex; align-items: center; justify-content: center; padding-right: 14px; border-right: 1px solid #dbe3ea; }
+            .brand img { width: 160px; height: auto; object-fit: contain; display: block; }
+            .brand-copy { display: flex; flex-direction: column; justify-content: center; }
+            .brand-kicker { margin: 0 0 6px; color: #7c8a99; font-size: 12px; letter-spacing: 0.18em; font-weight: 700; text-transform: uppercase; }
+            .brand h1 { margin: 0; font-size: 31px; line-height: 1.02; font-weight: 800; color: #262626; letter-spacing: -0.03em; }
+            .brand p { margin: 8px 0 0; color: #6f6f6f; font-size: 15px; }
+            .period-box { text-align: right; min-width: 220px; padding: 16px 18px; border-radius: 18px; background: #f8fafc; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: center; }
             .period-box .eyebrow { color: #6b7280; font-size: 14px; margin-bottom: 4px; }
-            .period-box .period { color: #111827; font-size: 18px; font-weight: 800; }
+            .period-box .period { color: #111827; font-size: 24px; font-weight: 800; line-height: 1.15; }
             .divider { border-top: 2px solid #d8dde6; margin: 14px 0 22px; }
             .summary-row { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 22px; align-items: start; }
             .section-title { font-size: 14px; font-weight: 800; color: #5b5b5b; margin-bottom: 10px; }
@@ -337,8 +340,11 @@ function hrBuildPayslipHtml(array $payslip)
             <div class="inner">
                 <div class="top">
                     <div class="brand">
-                        <img src="https://stringspace.blob.core.windows.net/stringspace/string_with_fullform_black.png" alt="StringLab Logo">
-                        <div>
+                        <div class="brand-mark">
+                            <img src="https://stringspace.blob.core.windows.net/stringspace/string_with_fullform_black.png" alt="StringLab Logo">
+                        </div>
+                        <div class="brand-copy">
+                            <div class="brand-kicker">Salary Statement</div>
                             <h1>STRINGLAB TECHNOLOGY SOLUTIONS Pvt. Ltd.</h1>
                             <p>Mumbai, 400091 India</p>
                         </div>
