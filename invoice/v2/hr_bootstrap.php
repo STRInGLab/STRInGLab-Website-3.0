@@ -286,21 +286,21 @@ function hrBuildPayslipHtml(array $payslip)
         <style>
             @font-face {
                 font-family: 'MarkCustom';
-                src: url('assets/fonts/Mark-Thin.ttf') format('truetype');
+                src: url('assets/fonts/Mark-Light.ttf') format('truetype');
                 font-weight: 300;
                 font-style: normal;
             }
 
             @font-face {
                 font-family: 'MarkCustom';
-                src: url('assets/fonts/Mark-Light.ttf') format('truetype');
+                src: url('assets/fonts/Mark-Regular.ttf') format('truetype');
                 font-weight: 400;
                 font-style: normal;
             }
 
             @font-face {
                 font-family: 'MarkCustom';
-                src: url('assets/fonts/Mark-Regular.ttf') format('truetype');
+                src: url('assets/fonts/Mark-Medium.ttf') format('truetype');
                 font-weight: 700;
                 font-style: normal;
             }
