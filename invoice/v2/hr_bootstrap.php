@@ -270,6 +270,9 @@ function hrBuildPayslipHtml(array $payslip)
 {
     $employeeName = trim($payslip['first_name'] . ' ' . $payslip['last_name']);
     $period = hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']);
+    $earnings = $payslip['components']['earning'];
+    $deductions = $payslip['components']['deduction'];
+    $maxRows = max(count($earnings), count($deductions));
 
     ob_start();
     ?>
@@ -280,103 +283,180 @@ function hrBuildPayslipHtml(array $payslip)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Payslip - <?php echo htmlspecialchars($employeeName); ?></title>
         <style>
-            body { font-family: Arial, sans-serif; background: #f4f6fb; margin: 0; padding: 24px; color: #1e293b; }
-            .sheet { max-width: 980px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
-            .top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
-            .brand h1 { margin: 0 0 6px; font-size: 28px; }
-            .muted { color: #64748b; }
-            .badge { display: inline-block; padding: 8px 12px; border-radius: 999px; background: #e0f2fe; color: #0369a1; font-weight: 700; }
-            .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; margin: 24px 0; }
-            .cell { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 16px; }
-            .cell strong { display: block; color: #0f172a; margin-bottom: 4px; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: left; }
-            th { background: #eff6ff; color: #1d4ed8; }
-            .right { text-align: right; }
-            .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
-            .summary .card { background: #0f172a; color: #fff; padding: 18px; border-radius: 14px; }
-            .summary .card small { display: block; color: #cbd5e1; margin-bottom: 8px; }
+            body { font-family: Arial, sans-serif; background: #eef2f7; margin: 0; padding: 24px; color: #2f2f2f; }
+            .sheet { max-width: 940px; margin: 0 auto; background: #ffffff; padding: 0; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
+            .inner { padding: 28px 28px 24px; }
+            .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+            .brand { display: flex; gap: 14px; align-items: flex-start; }
+            .brand img { width: 96px; height: auto; object-fit: contain; }
+            .brand h1 { margin: 0; font-size: 26px; line-height: 1.1; font-weight: 800; color: #3a3a3a; }
+            .brand p { margin: 6px 0 0; color: #6f6f6f; font-size: 14px; }
+            .period-box { text-align: right; min-width: 210px; }
+            .period-box .eyebrow { color: #6b7280; font-size: 14px; margin-bottom: 4px; }
+            .period-box .period { color: #111827; font-size: 18px; font-weight: 800; }
+            .divider { border-top: 2px solid #d8dde6; margin: 14px 0 22px; }
+            .summary-row { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 22px; align-items: start; }
+            .section-title { font-size: 14px; font-weight: 800; color: #5b5b5b; margin-bottom: 10px; }
+            .employee-summary table { width: 100%; border-collapse: collapse; }
+            .employee-summary td { padding: 7px 0; font-size: 16px; }
+            .employee-summary td.label { width: 170px; color: #6b6b6b; }
+            .employee-summary td.sep { width: 18px; color: #8a8a8a; }
+            .employee-summary td.value { font-weight: 700; color: #222; }
+            .netpay-card { background: #edf9ef; border: 1px solid #cbe7d1; border-radius: 14px; padding: 24px; margin-top: 24px; }
+            .netpay-card .line { width: 4px; background: #57c66b; border-radius: 999px; margin-right: 14px; }
+            .netpay-card .wrap { display: flex; align-items: center; }
+            .netpay-card .amount { font-size: 32px; font-weight: 400; color: #111827; margin: 0; }
+            .netpay-card .caption { margin-top: 4px; color: #68a276; font-size: 16px; }
+            .breakup-box { border: 1px solid #d9dee8; border-radius: 16px; overflow: hidden; margin-top: 30px; }
+            .breakup-box table { width: 100%; border-collapse: collapse; }
+            .breakup-box th, .breakup-box td { padding: 12px 16px; font-size: 15px; }
+            .breakup-box th { text-align: left; font-size: 14px; color: #3f3f46; }
+            .breakup-box .header th { border-bottom: 2px dotted #cbd5e1; }
+            .breakup-box .amount { text-align: right; font-weight: 700; white-space: nowrap; }
+            .breakup-box .totals td { background: #f5f7fb; font-weight: 800; color: #3f3f46; }
+            .net-row { border: 1px solid #d9dee8; border-radius: 14px; overflow: hidden; margin-top: 18px; }
+            .net-row table { width: 100%; border-collapse: collapse; }
+            .net-row td { padding: 12px 18px; }
+            .net-row .label strong { display: block; font-size: 16px; color: #111827; }
+            .net-row .label span { color: #6b7280; }
+            .net-row .amount { width: 180px; background: #edf9ef; text-align: center; font-size: 18px; font-weight: 800; }
+            .words { text-align: center; margin: 28px 0 18px; color: #6b7280; font-size: 14px; }
+            .words strong { color: #2f2f2f; }
+            .footer-divider { border-top: 2px solid #d8dde6; margin: 16px 0 0; }
+            .system-note { text-align: center; padding: 38px 20px 18px; color: #7b7b7b; font-size: 13px; }
+            .powered { text-align: center; padding: 14px 20px 24px; color: #4b5563; font-size: 14px; }
+            .powered strong { color: #111827; }
             @media print {
                 body { background: #fff; padding: 0; }
-                .sheet { box-shadow: none; border-radius: 0; max-width: none; }
-                .print-hidden { display: none; }
+                .sheet { box-shadow: none; max-width: none; }
             }
         </style>
     </head>
     <body>
         <div class="sheet">
-            <div class="top">
-                <div class="brand">
-                    <h1>S.T.R.In.G Lab Payslip</h1>
-                    <div class="muted">Salary statement for <?php echo htmlspecialchars($period); ?></div>
+            <div class="inner">
+                <div class="top">
+                    <div class="brand">
+                        <img src="https://stringspace.blob.core.windows.net/stringspace/string_with_fullform_black.png" alt="StringLab Logo">
+                        <div>
+                            <h1>STRINGLAB TECHNOLOGY SOLUTIONS Pvt. Ltd.</h1>
+                            <p>Mumbai, 400091 India</p>
+                        </div>
+                    </div>
+                    <div class="period-box">
+                        <div class="eyebrow">Payslip For the Month</div>
+                        <div class="period"><?php echo htmlspecialchars($period); ?></div>
+                    </div>
                 </div>
-                <div>
-                    <div class="badge"><?php echo htmlspecialchars($period); ?></div>
-                    <div class="muted" style="margin-top:8px;">Pay Date: <?php echo htmlspecialchars($payslip['pay_date'] ?: '-'); ?></div>
+                <div class="divider"></div>
+
+                <div class="summary-row">
+                    <div class="employee-summary">
+                        <div class="section-title">EMPLOYEE SUMMARY</div>
+                        <table>
+                            <tr>
+                                <td class="label">Employee Name</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($employeeName); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Employee ID</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($payslip['employee_code']); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Pay Period</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($period); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Pay Date</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($payslip['pay_date'] ?: '-'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Designation</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($payslip['designation'] ?: '-'); ?></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Department</td>
+                                <td class="sep">:</td>
+                                <td class="value"><?php echo htmlspecialchars($payslip['department'] ?: '-'); ?></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="netpay-card">
+                        <div class="wrap">
+                            <div class="line"></div>
+                            <div>
+                                <div class="amount">Rs.<?php echo hrFormatCurrency($payslip['net_pay']); ?></div>
+                                <div class="caption">Total Net Pay</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="grid">
-                <div class="cell"><strong>Employee</strong><?php echo htmlspecialchars($employeeName); ?></div>
-                <div class="cell"><strong>Employee Code</strong><?php echo htmlspecialchars($payslip['employee_code']); ?></div>
-                <div class="cell"><strong>Designation</strong><?php echo htmlspecialchars($payslip['designation'] ?: '-'); ?></div>
-                <div class="cell"><strong>Department</strong><?php echo htmlspecialchars($payslip['department'] ?: '-'); ?></div>
-                <div class="cell"><strong>Location</strong><?php echo htmlspecialchars($payslip['work_location'] ?: '-'); ?></div>
-                <div class="cell"><strong>Joining Date</strong><?php echo htmlspecialchars($payslip['joining_date'] ?: '-'); ?></div>
-                <div class="cell"><strong>Bank</strong><?php echo htmlspecialchars($payslip['bank_name'] ?: '-'); ?></div>
-                <div class="cell"><strong>Account / IFSC</strong><?php echo htmlspecialchars(trim(($payslip['bank_account_number'] ?: '-') . ' / ' . ($payslip['bank_ifsc'] ?: '-'))); ?></div>
-            </div>
+                <div class="breakup-box">
+                    <table>
+                        <tr class="header">
+                            <th>EARNINGS</th>
+                            <th class="amount">AMOUNT</th>
+                            <th>DEDUCTIONS</th>
+                            <th class="amount">AMOUNT</th>
+                        </tr>
+                        <?php for ($i = 0; $i < $maxRows; $i++):
+                            $earning = $earnings[$i] ?? null;
+                            $deduction = $deductions[$i] ?? null;
+                        ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($earning['component_name'] ?? ''); ?></td>
+                                <td class="amount"><?php echo $earning ? 'Rs.' . hrFormatCurrency($earning['amount']) : ''; ?></td>
+                                <td><?php echo htmlspecialchars($deduction['component_name'] ?? ''); ?></td>
+                                <td class="amount"><?php echo $deduction ? 'Rs.' . hrFormatCurrency($deduction['amount']) : ''; ?></td>
+                            </tr>
+                        <?php endfor; ?>
+                        <tr class="totals">
+                            <td>Gross Earnings</td>
+                            <td class="amount">Rs.<?php echo hrFormatCurrency($payslip['gross_earnings']); ?></td>
+                            <td>Total Deductions</td>
+                            <td class="amount">Rs.<?php echo hrFormatCurrency($payslip['gross_deductions']); ?></td>
+                        </tr>
+                    </table>
+                </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Earnings</th>
-                        <th class="right">Amount (INR)</th>
-                        <th>Deductions</th>
-                        <th class="right">Amount (INR)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $earnings = $payslip['components']['earning'];
-                    $deductions = $payslip['components']['deduction'];
-                    $maxRows = max(count($earnings), count($deductions));
-                    for ($i = 0; $i < $maxRows; $i++):
-                        $earning = $earnings[$i] ?? null;
-                        $deduction = $deductions[$i] ?? null;
-                    ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($earning['component_name'] ?? ''); ?></td>
-                        <td class="right"><?php echo $earning ? hrFormatCurrency($earning['amount']) : ''; ?></td>
-                        <td><?php echo htmlspecialchars($deduction['component_name'] ?? ''); ?></td>
-                        <td class="right"><?php echo $deduction ? hrFormatCurrency($deduction['amount']) : ''; ?></td>
-                    </tr>
-                    <?php endfor; ?>
-                </tbody>
-            </table>
+                <div class="net-row">
+                    <table>
+                        <tr>
+                            <td class="label">
+                                <strong>TOTAL NET PAYABLE</strong>
+                                <span>Gross Earnings - Total Deductions</span>
+                            </td>
+                            <td class="amount">Rs.<?php echo hrFormatCurrency($payslip['net_pay']); ?></td>
+                        </tr>
+                    </table>
+                </div>
 
-            <div class="summary">
-                <div class="card"><small>Gross Earnings</small><strong>INR <?php echo hrFormatCurrency($payslip['gross_earnings']); ?></strong></div>
-                <div class="card"><small>Gross Deductions</small><strong>INR <?php echo hrFormatCurrency($payslip['gross_deductions']); ?></strong></div>
-                <div class="card"><small>Net Pay</small><strong>INR <?php echo hrFormatCurrency($payslip['net_pay']); ?></strong></div>
-            </div>
+                <div class="words">
+                    Amount In Words : <strong><?php echo htmlspecialchars($payslip['net_pay_words'] ?: hrNumberToWords($payslip['net_pay'])); ?></strong>
+                </div>
 
-            <div style="margin-top:24px;" class="cell">
-                <strong>Net Pay In Words</strong>
-                <?php echo htmlspecialchars($payslip['net_pay_words'] ?: hrNumberToWords($payslip['net_pay'])); ?>
-            </div>
-
-            <div style="margin-top:16px;" class="grid">
-                <div class="cell"><strong>Working Days</strong><?php echo htmlspecialchars((string) $payslip['working_days']); ?></div>
-                <div class="cell"><strong>Payable Days</strong><?php echo htmlspecialchars((string) $payslip['payable_days']); ?></div>
-                <div class="cell"><strong>LOP Days</strong><?php echo htmlspecialchars((string) $payslip['lop_days']); ?></div>
-                <div class="cell"><strong>Remarks</strong><?php echo nl2br(htmlspecialchars($payslip['remarks'] ?: '-')); ?></div>
+                <div class="footer-divider"></div>
+                <div class="system-note">-- This is a system-generated document. --</div>
+                <div class="powered">Powered by <strong>StringLab Payroll</strong> | Simplify payroll and compliance with StringLab</div>
             </div>
         </div>
     </body>
     </html>
     <?php
     return (string) ob_get_clean();
+}
+
+function hrPayslipAttachmentName(array $payslip)
+{
+    $employeeCode = preg_replace('/[^A-Za-z0-9_-]/', '-', (string) $payslip['employee_code']);
+    return sprintf('payslip-%s-%04d-%02d.html', $employeeCode, (int) $payslip['pay_period_year'], (int) $payslip['pay_period_month']);
 }
 
 function hrSendPayslipEmail(PDO $pdo, $payslipId, $deliveryMode = 'manual')
@@ -406,9 +486,11 @@ function hrSendPayslipEmail(PDO $pdo, $payslipId, $deliveryMode = 'manual')
         $mail->addAddress($recipient, trim($payslip['first_name'] . ' ' . $payslip['last_name']));
         $mail->isHTML(true);
         $mail->Subject = 'Payslip for ' . hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']);
-        $mail->Body = hrBuildPayslipHtml($payslip);
+        $html = hrBuildPayslipHtml($payslip);
+        $mail->Body = $html;
         $mail->AltBody = 'Your payslip for ' . hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']) .
             ' is ready. Net pay: INR ' . hrFormatCurrency($payslip['net_pay']);
+        $mail->addStringAttachment($html, hrPayslipAttachmentName($payslip), PHPMailer::ENCODING_BASE64, 'text/html; charset=UTF-8');
 
         $mail->send();
 
