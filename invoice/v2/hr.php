@@ -87,8 +87,8 @@ if (document.documentElement) {
                                 </ul>
                             </div>
                             <div class="d-flex gap-3">
-                                <a href="#employee-form" class="btn btn-primary">Add Employee</a>
-                                <a href="#generate-payslip" class="btn btn-light-primary">Generate Payslip</a>
+                                <a href="hr.php#employee-form" class="btn btn-primary">Add Employee</a>
+                                <a href="hr.php#generate-payslip" class="btn btn-light-primary">Generate Payslip</a>
                             </div>
                         </div>
                     </div>
