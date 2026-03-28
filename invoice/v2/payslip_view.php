@@ -2,6 +2,7 @@
 require_once 'hr_bootstrap.php';
 
 $payslipId = (int) ($_GET['id'] ?? 0);
+$renderMode = isset($_GET['print']) ? 'print' : 'screen';
 $payslip = hrGetPayslip($pdo, $payslipId);
 
 if (!$payslip) {
@@ -10,4 +11,4 @@ if (!$payslip) {
     exit;
 }
 
-echo hrBuildPayslipHtml($payslip);
+echo hrBuildPayslipHtml($payslip, $renderMode);

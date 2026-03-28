@@ -268,13 +268,14 @@ function hrGetDefaultComponents(array $employee)
     ];
 }
 
-function hrBuildPayslipHtml(array $payslip)
+function hrBuildPayslipHtml(array $payslip, $renderMode = 'screen')
 {
     $employeeName = trim($payslip['first_name'] . ' ' . $payslip['last_name']);
     $period = hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']);
     $earnings = $payslip['components']['earning'];
     $deductions = $payslip['components']['deduction'];
     $maxRows = max(count($earnings), count($deductions));
+    $isPrintMode = $renderMode === 'print';
 
     ob_start();
     ?>
@@ -309,9 +310,9 @@ function hrBuildPayslipHtml(array $payslip)
 
             body {
                 font-family: 'MarkCustom', Arial, sans-serif;
-                background: #eef2f7;
+                background: <?php echo $isPrintMode ? '#ffffff' : '#eef2f7'; ?>;
                 margin: 0;
-                padding: 24px;
+                padding: <?php echo $isPrintMode ? '0' : '24px'; ?>;
                 color: #2f2f2f;
                 font-weight: 300;
             }
@@ -321,7 +322,7 @@ function hrBuildPayslipHtml(array $payslip)
                 margin: 0 auto;
                 background: #ffffff;
                 padding: 0;
-                box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+                box-shadow: <?php echo $isPrintMode ? 'none' : '0 10px 30px rgba(15, 23, 42, 0.08)'; ?>;
             }
 
             .inner {
@@ -762,7 +763,7 @@ function hrBuildPayslipHtml(array $payslip)
 
 function hrBuildPayslipPdf(array $payslip)
 {
-    $html = hrBuildPayslipHtml($payslip);
+    $html = hrBuildPayslipHtml($payslip, 'print');
     $fontBasePath = __DIR__ . '/assets/fonts/';
 
     $pdfHtml = str_replace(
