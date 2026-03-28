@@ -10,6 +10,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 require_once 'config.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -758,10 +760,42 @@ function hrBuildPayslipHtml(array $payslip)
     return (string) ob_get_clean();
 }
 
+function hrBuildPayslipPdf(array $payslip)
+{
+    $html = hrBuildPayslipHtml($payslip);
+    $fontBasePath = __DIR__ . '/assets/fonts/';
+
+    $pdfHtml = str_replace(
+        [
+            "url('assets/fonts/Mark-Thin.ttf')",
+            "url('assets/fonts/Mark-Light.ttf')",
+            "url('assets/fonts/Mark-Regular.ttf')",
+        ],
+        [
+            "url('file://" . $fontBasePath . "Mark-Thin.ttf')",
+            "url('file://" . $fontBasePath . "Mark-Light.ttf')",
+            "url('file://" . $fontBasePath . "Mark-Regular.ttf')",
+        ],
+        $html
+    );
+
+    $options = new Options();
+    $options->set('isRemoteEnabled', true);
+    $options->set('isHtml5ParserEnabled', true);
+    $options->set('defaultFont', 'DejaVu Sans');
+
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($pdfHtml, 'UTF-8');
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+
+    return $dompdf->output();
+}
+
 function hrPayslipAttachmentName(array $payslip)
 {
     $employeeCode = preg_replace('/[^A-Za-z0-9_-]/', '-', (string) $payslip['employee_code']);
-    return sprintf('payslip-%s-%04d-%02d.html', $employeeCode, (int) $payslip['pay_period_year'], (int) $payslip['pay_period_month']);
+    return sprintf('payslip-%s-%04d-%02d.pdf', $employeeCode, (int) $payslip['pay_period_year'], (int) $payslip['pay_period_month']);
 }
 
 function hrSendPayslipEmail(PDO $pdo, $payslipId, $deliveryMode = 'manual')
@@ -792,10 +826,11 @@ function hrSendPayslipEmail(PDO $pdo, $payslipId, $deliveryMode = 'manual')
         $mail->isHTML(true);
         $mail->Subject = 'Payslip for ' . hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']);
         $html = hrBuildPayslipHtml($payslip);
+        $pdf = hrBuildPayslipPdf($payslip);
         $mail->Body = $html;
         $mail->AltBody = 'Your payslip for ' . hrMonthName($payslip['pay_period_month'], $payslip['pay_period_year']) .
             ' is ready. Net pay: INR ' . hrFormatCurrency($payslip['net_pay']);
-        $mail->addStringAttachment($html, hrPayslipAttachmentName($payslip), PHPMailer::ENCODING_BASE64, 'text/html; charset=UTF-8');
+        $mail->addStringAttachment($pdf, hrPayslipAttachmentName($payslip), PHPMailer::ENCODING_BASE64, 'application/pdf');
 
         $mail->send();
 
