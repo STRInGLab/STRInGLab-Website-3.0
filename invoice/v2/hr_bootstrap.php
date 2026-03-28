@@ -278,70 +278,363 @@ function hrBuildPayslipHtml(array $payslip)
     ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Payslip - <?php echo htmlspecialchars($employeeName); ?></title>
         <style>
-            body { font-family: Arial, sans-serif; background: #eef2f7; margin: 0; padding: 24px; color: #2f2f2f; }
-            .sheet { max-width: 940px; margin: 0 auto; background: #ffffff; padding: 0; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
-            .inner { padding: 28px 28px 24px; }
-            .top { display: flex; justify-content: space-between; align-items: stretch; gap: 24px; }
-            .brand { display: flex; gap: 18px; align-items: center; flex: 1; padding: 12px 16px 12px 12px; border: 1px solid #e5e7eb; border-radius: 18px; background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); }
-            .brand-mark { width: 180px; min-width: 180px; display: flex; align-items: center; justify-content: center; padding-right: 14px; border-right: 1px solid #dbe3ea; }
-            .brand img { width: 160px; height: auto; object-fit: contain; display: block; }
-            .brand-copy { display: flex; flex-direction: column; justify-content: center; }
-            .brand-kicker { margin: 0 0 6px; color: #7c8a99; font-size: 12px; letter-spacing: 0.18em; font-weight: 700; text-transform: uppercase; }
-            .brand h1 { margin: 0; font-size: 31px; line-height: 1.02; font-weight: 800; color: #262626; letter-spacing: -0.03em; }
-            .brand p { margin: 8px 0 0; color: #6f6f6f; font-size: 15px; }
-            .period-box { text-align: right; min-width: 220px; padding: 16px 18px; border-radius: 18px; background: #f8fafc; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: center; }
-            .period-box .eyebrow { color: #6b7280; font-size: 14px; margin-bottom: 4px; }
-            .period-box .period { color: #111827; font-size: 24px; font-weight: 800; line-height: 1.15; }
-            .divider { border-top: 2px solid #d8dde6; margin: 14px 0 22px; }
-            .summary-row { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 22px; align-items: start; }
-            .section-title { font-size: 14px; font-weight: 800; color: #5b5b5b; margin-bottom: 10px; }
-            .employee-summary table { width: 100%; border-collapse: collapse; }
-            .employee-summary td { padding: 7px 0; font-size: 16px; }
-            .employee-summary td.label { width: 170px; color: #6b6b6b; }
-            .employee-summary td.sep { width: 18px; color: #8a8a8a; }
-            .employee-summary td.value { font-weight: 700; color: #222; }
-            .netpay-card { background: #edf9ef; border: 1px solid #cbe7d1; border-radius: 14px; padding: 24px; margin-top: 24px; }
-            .netpay-card .line { width: 4px; background: #57c66b; border-radius: 999px; margin-right: 14px; }
-            .netpay-card .wrap { display: flex; align-items: center; }
-            .netpay-card .amount { font-size: 32px; font-weight: 400; color: #111827; margin: 0; }
-            .netpay-card .caption { margin-top: 4px; color: #68a276; font-size: 16px; }
-            .breakup-box { border: 1px solid #d9dee8; border-radius: 16px; overflow: hidden; margin-top: 30px; }
-            .breakup-box table { width: 100%; border-collapse: collapse; }
-            .breakup-box th, .breakup-box td { padding: 12px 16px; font-size: 15px; }
-            .breakup-box th { text-align: left; font-size: 14px; color: #3f3f46; }
-            .breakup-box .header th { border-bottom: 2px dotted #cbd5e1; }
-            .breakup-box .amount { text-align: right; font-weight: 700; white-space: nowrap; }
-            .breakup-box .totals td { background: #f5f7fb; font-weight: 800; color: #3f3f46; }
-            .net-row { border: 1px solid #d9dee8; border-radius: 14px; overflow: hidden; margin-top: 18px; }
-            .net-row table { width: 100%; border-collapse: collapse; }
-            .net-row td { padding: 12px 18px; }
-            .net-row .label strong { display: block; font-size: 16px; color: #111827; }
-            .net-row .label span { color: #6b7280; }
-            .net-row .amount { width: 180px; background: #edf9ef; text-align: center; font-size: 18px; font-weight: 800; }
-            .words { text-align: center; margin: 28px 0 18px; color: #6b7280; font-size: 14px; }
-            .words strong { color: #2f2f2f; }
-            .footer-divider { border-top: 2px solid #d8dde6; margin: 16px 0 0; }
-            .system-note { text-align: center; padding: 38px 20px 18px; color: #7b7b7b; font-size: 13px; }
-            .powered { text-align: center; padding: 14px 20px 24px; color: #4b5563; font-size: 14px; }
-            .powered strong { color: #111827; }
+            @font-face {
+                font-family: 'MarkCustom';
+                src: url('assets/fonts/Mark-Thin.ttf') format('truetype');
+                font-weight: 300;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'MarkCustom';
+                src: url('assets/fonts/Mark-Light.ttf') format('truetype');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'MarkCustom';
+                src: url('assets/fonts/Mark-Regular.ttf') format('truetype');
+                font-weight: 700;
+                font-style: normal;
+            }
+
+            body {
+                font-family: 'MarkCustom', Arial, sans-serif;
+                background: #eef2f7;
+                margin: 0;
+                padding: 24px;
+                color: #2f2f2f;
+                font-weight: 300;
+            }
+
+            .sheet {
+                max-width: 940px;
+                margin: 0 auto;
+                background: #ffffff;
+                padding: 0;
+                box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            }
+
+            .inner {
+                padding: 28px 28px 24px;
+            }
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: stretch;
+                gap: 24px;
+            }
+
+            .brand {
+                display: flex;
+                gap: 18px;
+                align-items: center;
+                flex: 1;
+                padding: 12px 16px 12px 12px;
+                border: 1px solid #e5e7eb;
+                border-radius: 18px;
+                background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            }
+
+            .brand-mark {
+                width: 180px;
+                min-width: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-right: 14px;
+                border-right: 1px solid #dbe3ea;
+            }
+
+            .brand img {
+                width: 160px;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+
+            .brand-copy {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .brand-kicker {
+                margin: 0 0 6px;
+                color: #7c8a99;
+                font-size: 12px;
+                letter-spacing: 0.18em;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            .brand h1 {
+                margin: 0;
+                font-size: 22px;
+                line-height: 1.02;
+                font-weight: 800;
+                color: #262626;
+                letter-spacing: -0.03em;
+            }
+
+            .brand p {
+                margin: 8px 0 0;
+                color: #6f6f6f;
+                font-size: 15px;
+                font-weight: 300;
+            }
+
+            .period-box {
+                text-align: center;
+                min-width: 220px;
+                padding: 16px 18px;
+                border-radius: 18px;
+                background: #f8fafc;
+                border: 1px solid #e5e7eb;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .period-box .eyebrow {
+                color: #6b7280;
+                font-size: 14px;
+                margin-bottom: 4px;
+                font-weight: 300;
+            }
+
+            .period-box .period {
+                color: #111827;
+                font-size: 22px;
+                font-weight: 800;
+                line-height: 1.15;
+            }
+
+            .divider {
+                border-top: 2px solid #d8dde6;
+                margin: 14px 0 22px;
+            }
+
+            .summary-row {
+                display: grid;
+                grid-template-columns: 1.4fr 0.9fr;
+                gap: 22px;
+                align-items: start;
+            }
+
+            .section-title {
+                font-size: 14px;
+                font-weight: 700;
+                color: #5b5b5b;
+                margin-bottom: 10px;
+            }
+
+            .employee-summary table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .employee-summary td {
+                padding: 7px 0;
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .employee-summary td.label {
+                width: 170px;
+                color: #6b6b6b;
+            }
+
+            .employee-summary td.sep {
+                width: 18px;
+                color: #8a8a8a;
+            }
+
+            .employee-summary td.value {
+                font-weight: 400;
+                color: #222;
+            }
+
+            .netpay-card {
+                background: #edf9ef;
+                border: 1px solid #cbe7d1;
+                border-radius: 14px;
+                padding: 24px;
+                margin-top: 24px;
+            }
+
+            .netpay-card .line {
+                width: 4px;
+                background: #57c66b;
+                border-radius: 999px;
+                margin-right: 14px;
+            }
+
+            .netpay-card .wrap {
+                display: flex;
+                align-items: center;
+            }
+
+            .netpay-card .amount {
+                font-size: 32px;
+                font-weight: 700;
+                color: #111827;
+                margin: 0;
+            }
+
+            .netpay-card .caption {
+                margin-top: 4px;
+                color: #68a276;
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .breakup-box {
+                border: 1px solid #d9dee8;
+                border-radius: 16px;
+                overflow: hidden;
+                margin-top: 30px;
+            }
+
+            .breakup-box table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .breakup-box th,
+            .breakup-box td {
+                padding: 12px 16px;
+                font-size: 15px;
+            }
+
+            .breakup-box th {
+                text-align: left;
+                font-size: 14px;
+                color: #3f3f46;
+                font-weight: 700;
+            }
+
+            .breakup-box .header th {
+                border-bottom: 2px dotted #cbd5e1;
+            }
+
+            .breakup-box .amount {
+                text-align: right;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+
+            .breakup-box .totals td {
+                background: #f5f7fb;
+                font-weight: 700;
+                color: #3f3f46;
+            }
+
+            .net-row {
+                border: 1px solid #d9dee8;
+                border-radius: 14px;
+                overflow: hidden;
+                margin-top: 18px;
+            }
+
+            .net-row table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .net-row td {
+                padding: 12px 18px;
+            }
+
+            .net-row .label strong {
+                display: block;
+                font-size: 16px;
+                color: #111827;
+                font-weight: 700;
+            }
+
+            .net-row .label span {
+                color: #6b7280;
+                font-weight: 300;
+            }
+
+            .net-row .amount {
+                width: 180px;
+                background: #edf9ef;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .words {
+                text-align: center;
+                margin: 28px 0 18px;
+                color: #6b7280;
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            .words strong {
+                color: #2f2f2f;
+                font-weight: 400;
+            }
+
+            .footer-divider {
+                border-top: 2px solid #d8dde6;
+                margin: 16px 0 0;
+            }
+
+            .system-note {
+                text-align: center;
+                padding: 38px 20px 18px;
+                color: #7b7b7b;
+                font-size: 13px;
+                font-weight: 300;
+            }
+
+            .powered {
+                text-align: center;
+                padding: 14px 20px 24px;
+                color: #4b5563;
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            .powered strong {
+                color: #111827;
+                font-weight: 400;
+            }
+
             @media print {
-                body { background: #fff; padding: 0; }
-                .sheet { box-shadow: none; max-width: none; }
+                body {
+                    background: #fff;
+                    padding: 0;
+                }
+
+                .sheet {
+                    box-shadow: none;
+                    max-width: none;
+                }
             }
         </style>
     </head>
+
     <body>
         <div class="sheet">
             <div class="inner">
                 <div class="top">
                     <div class="brand">
                         <div class="brand-mark">
-                            <img src="https://stringspace.blob.core.windows.net/stringspace/string_with_fullform_black.png" alt="StringLab Logo">
+                            <img src="https://stringspace.blob.core.windows.net/stringspace/string_with_fullform_black.png"
+                                alt="StringLab Logo">
                         </div>
                         <div class="brand-copy">
                             <div class="brand-kicker">Salary Statement</div>
@@ -415,12 +708,15 @@ function hrBuildPayslipHtml(array $payslip)
                         <?php for ($i = 0; $i < $maxRows; $i++):
                             $earning = $earnings[$i] ?? null;
                             $deduction = $deductions[$i] ?? null;
-                        ?>
+                            ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($earning['component_name'] ?? ''); ?></td>
-                                <td class="amount"><?php echo $earning ? 'Rs.' . hrFormatCurrency($earning['amount']) : ''; ?></td>
+                                <td class="amount"><?php echo $earning ? 'Rs.' . hrFormatCurrency($earning['amount']) : ''; ?>
+                                </td>
                                 <td><?php echo htmlspecialchars($deduction['component_name'] ?? ''); ?></td>
-                                <td class="amount"><?php echo $deduction ? 'Rs.' . hrFormatCurrency($deduction['amount']) : ''; ?></td>
+                                <td class="amount">
+                                    <?php echo $deduction ? 'Rs.' . hrFormatCurrency($deduction['amount']) : ''; ?>
+                                </td>
                             </tr>
                         <?php endfor; ?>
                         <tr class="totals">
@@ -445,15 +741,18 @@ function hrBuildPayslipHtml(array $payslip)
                 </div>
 
                 <div class="words">
-                    Amount In Words : <strong><?php echo htmlspecialchars($payslip['net_pay_words'] ?: hrNumberToWords($payslip['net_pay'])); ?></strong>
+                    Amount In Words :
+                    <strong><?php echo htmlspecialchars($payslip['net_pay_words'] ?: hrNumberToWords($payslip['net_pay'])); ?></strong>
                 </div>
 
                 <div class="footer-divider"></div>
                 <div class="system-note">-- This is a system-generated document. --</div>
-                <div class="powered">Powered by <strong>StringLab Payroll</strong> | Simplify payroll and compliance with StringLab</div>
+                <div class="powered">Powered by <strong>StringLab Payroll</strong> | Simplify payroll and compliance with
+                    StringLab</div>
             </div>
         </div>
     </body>
+
     </html>
     <?php
     return (string) ob_get_clean();
