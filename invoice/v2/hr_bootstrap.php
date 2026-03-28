@@ -576,7 +576,7 @@ function hrBuildPayslipHtml(array $payslip)
 
             .words {
                 text-align: center;
-                margin: 28px 0 18px;
+                margin: 15px 0 1px;
                 color: #6b7280;
                 font-size: 14px;
                 font-weight: 300;
@@ -594,7 +594,7 @@ function hrBuildPayslipHtml(array $payslip)
 
             .system-note {
                 text-align: center;
-                padding: 25px 20px 18px;
+                padding: 18px 20px 12px;
                 color: #7b7b7b;
                 font-size: 13px;
                 font-weight: 300;
