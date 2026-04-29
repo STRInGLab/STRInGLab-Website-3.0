@@ -1,27 +1,17 @@
-name: Deploy Static HTML to Hostinger
+name: Deploy to Hostinger
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      action:
-        description: 'Use catchup once after manually uploading files, or init for first full upload.'
-        required: true
-        default: 'push'
-        type: choice
-        options:
-          - push
-          - catchup
-          - init
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -40,89 +30,11 @@ jobs:
           README.md
           EOF
 
-      - name: Check changed files for FTP-unsafe names
+      - name: Deploy changed files to Hostinger
         run: |
-          echo "Last deployed commit:"
-          git ftp log \
+          git ftp push \
             --user "${{ secrets.FTP_USERNAME }}" \
             --passwd "${{ secrets.FTP_PASSWORD }}" \
             "ftp://${{ secrets.FTP_SERVER }}/" \
-            --disable-epsv || true
-
-          echo ""
-          echo "Files changed since last deployed commit:"
-          REMOTE_SHA=$(git ftp log \
-            --user "${{ secrets.FTP_USERNAME }}" \
-            --passwd "${{ secrets.FTP_PASSWORD }}" \
-            "ftp://${{ secrets.FTP_SERVER }}/" \
-            --disable-epsv 2>/dev/null | tail -n 1)
-
-          echo "REMOTE_SHA=$REMOTE_SHA"
-
-          git diff --name-only "$REMOTE_SHA"..HEAD | tee changed-files.txt || true
-
-          echo ""
-          echo "Potentially unsafe filenames:"
-          python3 - << 'PY'
-          import pathlib
-          import re
-
-          bad_chars = re.compile(r'''[#%?&[\]{}<>|`"'\\]''')
-
-          path = pathlib.Path("changed-files.txt")
-          if not path.exists():
-              print("No changed-files.txt found")
-              raise SystemExit(0)
-
-          found = False
-          for line in path.read_text().splitlines():
-              parts = line.split("/")
-              if (
-                  bad_chars.search(line)
-                  or any(part.startswith("-") for part in parts)
-                  or any(part.endswith(" ") for part in parts)
-                  or " " in line
-              ):
-                  found = True
-                  print(line)
-
-          if not found:
-              print("No obvious unsafe filenames found.")
-          PY
-
-      - name: Sync/Deploy via Git-FTP
-        run: |
-          USER_ACTION="${{ github.event.inputs.action || 'push' }}"
-
-          FTP_URL="ftp://${{ secrets.FTP_SERVER }}/"
-
-          echo "Selected action: $USER_ACTION"
-          echo "Deploying to FTP account root"
-
-          if [ "$USER_ACTION" = "catchup" ]; then
-            echo "Running catchup..."
-            git ftp catchup \
-              --user "${{ secrets.FTP_USERNAME }}" \
-              --passwd "${{ secrets.FTP_PASSWORD }}" \
-              "$FTP_URL" \
-              --disable-epsv \
-              --verbose
-
-          elif [ "$USER_ACTION" = "init" ]; then
-            echo "Running initial full upload..."
-            git ftp init \
-              --user "${{ secrets.FTP_USERNAME }}" \
-              --passwd "${{ secrets.FTP_PASSWORD }}" \
-              "$FTP_URL" \
-              --disable-epsv \
-              --verbose
-
-          else
-            echo "Running differential push..."
-            git ftp push \
-              --user "${{ secrets.FTP_USERNAME }}" \
-              --passwd "${{ secrets.FTP_PASSWORD }}" \
-              "$FTP_URL" \
-              --disable-epsv \
-              --verbose
-          fi
+            --disable-epsv \
+            --verbose
