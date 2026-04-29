@@ -13,28 +13,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Upload files to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          fetch-depth: 0
-
-      - name: Install git-ftp
-        run: |
-          sudo apt-get update
-          sudo apt-get install git-ftp -y
-
-      - name: Create git-ftp ignore file
-        run: |
-          cat > .git-ftp-ignore << 'EOF'
-          .git*/
-          .github/
-          node_modules/
-          README.md
-          EOF
-
-      - name: Deploy changed files to Hostinger
-        run: |
-          git ftp push \
-            --user "${{ secrets.FTP_USERNAME }}" \
-            --passwd "${{ secrets.FTP_PASSWORD }}" \
-            "ftp://${{ secrets.FTP_SERVER }}/" \
-            --disable-epsv \
-            --verbose
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ./
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            README.md
