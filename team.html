@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Team & Leadership — S.T.R.In.G</title>
+<meta name="description" content="Meet the S.T.R.In.G leadership team. Scientists, engineers and operators with deep domain expertise across AI, data, operations research and product." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Team & Leadership — S.T.R.In.G" />
+<meta property="og:description" content="The scientists, engineers and operators who run S.T.R.In.G — a team built around deep domain expertise and a weekly ship cadence." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://stringlab.org/team.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.member-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; transition: border-color .25s ease, transform .25s ease;
+}
+.member-card:hover { border-color: rgba(198,255,74,0.3); transform: translateY(-2px); }
+.member-avatar {
+  aspect-ratio: 1; background: linear-gradient(135deg, #1a1a1e, #28282f);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 56px; color: rgba(242,238,230,0.3);
+  font-weight: 400; letter-spacing: -0.02em;
+}
+.member-body { padding: 24px; }
+.member-name { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 4px; }
+.member-title { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+.member-bio { font-size: 13px; line-height: 1.55; color: #a8a59c; }
+.member-links { display: flex; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.member-links a { font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: 0.1em; text-transform: uppercase; }
+.member-links a:hover { color: var(--accent); }
+</style>
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="about">
+<div id="nav-slot"></div>
+
+<section class="pg-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="about.html">About</a><span class="sep">/</span> Team</div>
+    <h1 class="display">Scientists who ship.<br/>Engineers who <em>think</em>.</h1>
+    <p class="sub">A studio built around deep domain expertise in AI, operations research, data engineering and product. Small enough that the people who scope your work are the ones who build it.</p>
+    <div class="meta-row">
+      <div><span class="k">Team size</span><span class="v">28 FTE + associates</span></div>
+      <div><span class="k">Offices</span><span class="v">Delhi · London</span></div>
+      <div><span class="k">PhDs on staff</span><span class="v">4</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="label">Leadership</span>
+    <h2 class="display" style="font-size: clamp(32px,3.5vw,56px); margin-top: 20px; margin-bottom: 48px;">The people who run it.</h2>
+    <div class="team-grid">
+
+      <div class="member-card">
+        <div class="member-avatar">A</div>
+        <div class="member-body">
+          <div class="member-name">Aarav Mehta</div>
+          <div class="member-title">Founder & CEO</div>
+          <div class="member-bio">ML researcher turned builder. PhD in Operations Research from IIT Delhi. Built and scaled data teams at two unicorns before founding S.T.R.In.G in 2019. Leads client strategy and the OR practice.</div>
+          <div class="member-links"><a href="#">LinkedIn</a><a href="#">Twitter</a></div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">P</div>
+        <div class="member-body">
+          <div class="member-name">Priya Nair</div>
+          <div class="member-title">CTO</div>
+          <div class="member-bio">Full-stack engineer with deep cloud and distributed systems expertise. Previously principal engineer at Flipkart and lead architect at a London-based FinTech. Oversees all product engineering.</div>
+          <div class="member-links"><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">R</div>
+        <div class="member-body">
+          <div class="member-name">Rohan Das</div>
+          <div class="member-title">Head of AI & ML</div>
+          <div class="member-bio">Applied ML lead with research background in NLP and computer vision. Published at NeurIPS and ACL. Shipped LLM systems for Fortune 500 clients in finance, CPG and logistics before joining the studio.</div>
+          <div class="member-links"><a href="#">LinkedIn</a><a href="#">Scholar</a></div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">S</div>
+        <div class="member-body">
+          <div class="member-name">Shreya Kapoor</div>
+          <div class="member-title">Head of Data</div>
+          <div class="member-bio">Data architect specialising in Snowflake, dbt and real-time pipeline design. Previously built the data platform at two high-growth startups. Leads all data engineering and analytics engagements.</div>
+          <div class="member-links"><a href="#">LinkedIn</a></div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">K</div>
+        <div class="member-body">
+          <div class="member-name">Karan Singh</div>
+          <div class="member-title">Head of Automation</div>
+          <div class="member-bio">Automation architect with 8 years building RPA and API orchestration systems for enterprise clients. Certified in UiPath and Temporal. Leads the workflow automation practice across APAC and Europe.</div>
+          <div class="member-links"><a href="#">LinkedIn</a></div>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-avatar">N</div>
+        <div class="member-body">
+          <div class="member-name">Nadia Osei</div>
+          <div class="member-title">Head of Design & UX</div>
+          <div class="member-bio">Product designer and UX researcher. Former design lead at a Nairobi-based EdTech and a London product studio. Leads UX research, product design and brand systems across all S.T.R.In.G products.</div>
+          <div class="member-links"><a href="#">LinkedIn</a><a href="#">Portfolio</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">The wider team</span>
+    <div class="two-col" style="margin-top: 32px;">
+      <div>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); color: var(--ink);">28 FTE. Plus a trusted associate network when the work needs it.</h2>
+      </div>
+      <div>
+        <p style="font-size: 17px; line-height: 1.6; color: #4a4a48; margin-bottom: 20px;">Beyond leadership, the studio includes ML engineers, data engineers, full-stack developers, mobile specialists, UX researchers, domain experts and project managers across our Delhi and London offices.</p>
+        <p style="font-size: 17px; line-height: 1.6; color: #4a4a48; margin-bottom: 24px;">For larger or specialised engagements, we draw on a vetted associate network of domain experts — clinical informaticists, quantitative researchers, blockchain auditors and others who embed with our teams as needed.</p>
+        <a href="careers.html" class="btn ghost" style="border-color: var(--line-d); color: var(--ink);">Join the team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="inline-cta">
+      <h3>Want to talk to the people who'd work on your project?</h3>
+      <a href="book.html" class="btn primary">Book a discovery call →</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

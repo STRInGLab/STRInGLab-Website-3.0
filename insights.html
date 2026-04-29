@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Insights — AI, Data & Operations Research · S.T.R.In.G</title>
+<meta name="description" content="Field notes on AI, automation, data engineering and operations research from the S.T.R.In.G team. Practical writing from people who ship weekly." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Insights — S.T.R.In.G" />
+<meta property="og:description" content="Practical writing on AI, automation, data and OR from a team that ships weekly. No thought leadership theatre — just what we're seeing in the field." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://stringlab.org/insights.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+.article-card {
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 0;
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  text-decoration: none; color: inherit;
+  transition: border-color .25s ease;
+}
+.article-card:hover { border-color: rgba(198,255,74,0.4); }
+.article-card .ac-image {
+  aspect-ratio: 4/3; background: var(--card-2);
+  display: flex; align-items: center; justify-content: center;
+  border-right: 1px solid var(--line);
+  font-family: var(--serif); font-size: 64px; color: rgba(198,255,74,0.15);
+}
+.article-card .ac-body { padding: 32px; display: flex; flex-direction: column; gap: 12px; background: var(--card); }
+.ac-category { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; }
+.ac-title { font-family: var(--serif); font-weight: 400; font-size: clamp(22px,2vw,32px); line-height: 1.1; letter-spacing: -0.015em; }
+.ac-excerpt { font-size: 14px; line-height: 1.6; color: #a8a59c; flex: 1; }
+.ac-meta { font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: 0.1em; padding-top: 12px; border-top: 1px solid var(--line); }
+.mini-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; transition: border-color .25s ease; }
+.mini-card:hover { border-color: rgba(198,255,74,0.4); }
+@media (max-width: 640px) { .article-card { grid-template-columns: 1fr; } }
+</style>
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="insights">
+<div id="nav-slot"></div>
+
+<section class="pg-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span> Insights</div>
+    <h1 class="display">Field notes from<br/><em>the build</em>.</h1>
+    <p class="sub">Practical writing on AI, automation, data engineering and operations research from the S.T.R.In.G team. What we're seeing in production, what's working, what isn't, and why. Monthly-ish.</p>
+    <div class="meta-row">
+      <div><span class="k">Cadence</span><span class="v">Monthly-ish</span></div>
+      <div><span class="k">Format</span><span class="v">Technical essays · Case breakdowns</span></div>
+      <div><span class="k">Newsletter</span><span class="v">Subscribe below</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="label">Latest</span>
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 32px;">
+
+      <a href="#ai-in-business" id="ai-in-business" class="article-card">
+        <div class="ac-image">∿</div>
+        <div class="ac-body">
+          <span class="ac-category">AI in Business</span>
+          <h2 class="ac-title">Artificial intelligence in business: where automation actually changes the model</h2>
+          <p class="ac-excerpt">A polished rewrite of the old AI-in-business article, focused on practical adoption: automating routine work, improving decisions, personalizing customer experience and building measurable AI workflows.</p>
+          <div class="ac-meta">Updated 2026 · 10 min read · S.T.R.In.G Team</div>
+        </div>
+      </a>
+
+      <a href="#digital-transformation" id="digital-transformation" class="article-card">
+        <div class="ac-image">⌗</div>
+        <div class="ac-body">
+          <span class="ac-category">Digital Transformation</span>
+          <h2 class="ac-title">Digital transformation strategy: operations, customers and infrastructure</h2>
+          <p class="ac-excerpt">The useful parts of the legacy digital transformation guide, updated for teams modernizing business processes, customer experience, data infrastructure and remote operations.</p>
+          <div class="ac-meta">Updated 2026 · 9 min read · S.T.R.In.G Team</div>
+        </div>
+      </a>
+
+      <a href="#seo-process" id="seo-process" class="article-card">
+        <div class="ac-image">⬡</div>
+        <div class="ac-body">
+          <span class="ac-category">SEO & Growth</span>
+          <h2 class="ac-title">The complete SEO process: content, technical health and measurable visibility</h2>
+          <p class="ac-excerpt">A condensed version of the old SEO roadmap, rewritten for current website projects: keyword intent, page structure, metadata, performance, schema and continuous optimization.</p>
+          <div class="ac-meta">Updated 2026 · 8 min read · S.T.R.In.G Team</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section tight" style="padding-top: 0;">
+  <div class="container">
+    <span class="label">More reading</span>
+    <div class="card-grid" style="margin-top: 32px;">
+
+      <a href="#marketing-automation" id="marketing-automation" class="mini-card">
+        <span class="ac-category">Marketing Automation</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">AI-driven marketing automation for lead nurturing, campaign workflows and ROI</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Updated 2026 · 7 min</div>
+      </a>
+
+      <a href="#cloud-computing" id="cloud-computing" class="mini-card">
+        <span class="ac-category">Cloud Computing</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">Cloud computing for scalable, secure and flexible business operations</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Updated 2026 · 8 min</div>
+      </a>
+
+      <a href="#ecommerce-retail" id="ecommerce-retail" class="mini-card">
+        <span class="ac-category">E-commerce</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">E-commerce and online retail: platforms, personalization and conversion</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Updated 2026 · 6 min</div>
+      </a>
+
+      <a href="#remote-work" id="remote-work" class="mini-card">
+        <span class="ac-category">Remote Work</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">Remote work technology for secure collaboration and hybrid teams</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Updated 2026 · 7 min</div>
+      </a>
+
+      <a href="#search-engine-marketing" id="search-engine-marketing" class="mini-card">
+        <span class="ac-category">SEM</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">Search engine marketing basics: paid search, landing pages and measurement</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Updated 2026 · 9 min</div>
+      </a>
+
+      <a href="#simulation-optimization" id="simulation-optimization" class="mini-card">
+        <span class="ac-category">Operations Research</span>
+        <div style="font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.15;">Discrete-event simulation: the underused tool for validating your optimisation model</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute);">Dec 2025 · 9 min</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container" style="max-width: 680px; text-align: center;">
+    <span class="label plain">Newsletter</span>
+    <h2 class="display" style="font-size: clamp(32px,3.5vw,56px); margin-top: 20px; margin-bottom: 16px; color: var(--ink);">Monthly-ish. Field notes on AI, data and OR.</h2>
+    <p style="font-size: 16px; color: #4a4a48; margin-bottom: 32px; max-width: 44ch; margin-left: auto; margin-right: auto;">No spam. No vendor content. Just what we're seeing in production, shared in plain language. Unsubscribe in one click.</p>
+    <form class="newsletter-inline" data-form-handler data-form-type="newsletter" data-section="Insights Newsletter" data-default-first-name="Insights" data-default-last-name="Subscriber" data-default-message="Insights newsletter signup" data-loading-label="Subscribing..." data-success-message="Subscribed. Welcome.">
+      <input type="email" name="email" placeholder="you@company.com" required style="flex: 1; padding: 14px 18px; border: 1px solid var(--line-d); border-radius: 99px; font: inherit; font-size: 14px; background: #fff; color: var(--ink);" />
+      <button type="submit" class="btn primary form-submit" style="color: var(--accent-ink); white-space: nowrap;">Subscribe →</button>
+    </form>
+    <p class="form-status" data-form-status aria-live="polite" style="color: var(--ink);"></p>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/site.js" defer></script>
+<script src="assets/partials.js"></script>
+</body>
+</html>

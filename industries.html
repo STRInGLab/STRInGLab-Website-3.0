@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Industries We Serve — S.T.R.In.G</title>
+<meta name="description" content="S.T.R.In.G serves Healthcare, Logistics, Finance, Education, Retail, Manufacturing and Marketing verticals with AI, automation and data solutions." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Industries We Serve — S.T.R.In.G" />
+<meta property="og:description" content="AI, automation and data solutions across Healthcare, Logistics, Finance, Education, Retail, Manufacturing and Marketing." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://stringlab.org/industries.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+.ind-card {
+  display: grid; grid-template-columns: 1fr 1.6fr; gap: 0;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; transition: border-color .25s ease;
+}
+.ind-card:hover { border-color: rgba(198,255,74,0.4); }
+.ind-card .ic-left {
+  padding: 48px 40px; background: var(--card);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.ind-card .ic-right {
+  padding: 48px 40px; background: var(--card-2);
+  border-left: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ic-num { font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: 0.14em; }
+.ic-title { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.5vw, 40px); line-height: 1.08; letter-spacing: -0.015em; }
+.ic-body { font-size: 14px; line-height: 1.6; color: #a8a59c; }
+.ic-use { font-family: var(--mono); font-size: 11px; color: var(--mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.ic-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #c9c6bd; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.ic-item:last-child { border-bottom: 0; }
+.ic-item::before { content: "→"; color: var(--accent); font-family: var(--mono); font-size: 12px; }
+</style>
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="industries">
+<div id="nav-slot"></div>
+
+<section class="pg-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span> Industries</div>
+    <h1 class="display">Same science.<br/>Different <em>verticals</em>.</h1>
+    <p class="sub">AI, automation, data infrastructure and operations research translate across sectors — but the domain context matters. We've built production systems in seven verticals and understand the specific constraints, regulators and data landscapes each one presents.</p>
+    <div class="meta-row">
+      <div><span class="k">Verticals active</span><span class="v">7</span></div>
+      <div><span class="k">Continents</span><span class="v">4</span></div>
+      <div><span class="k">Regulated industries</span><span class="v">Healthcare · Finance · Energy</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="display: flex; flex-direction: column; gap: 24px;">
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">01 · Healthcare</span>
+        <h2 class="ic-title">Healthcare & Life Sciences</h2>
+        <p class="ic-body">Clinical workflow automation, diagnostic AI, patient data analytics and regulatory-compliant ML. We understand HIPAA, NHS governance frameworks and the clinical validation requirements that most tech teams skip.</p>
+        <a href="book.html" class="btn primary" style="width: fit-content; margin-top: auto;">Discuss your project →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Clinical NLP — structuring unstructured patient notes</div>
+        <div class="ic-item">Diagnostic imaging with computer vision (radiology support)</div>
+        <div class="ic-item">Patient flow optimisation and bed management</div>
+        <div class="ic-item">Drug interaction and adverse event prediction</div>
+        <div class="ic-item">Revenue cycle automation and claims processing</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">02 · Logistics & Supply Chain</span>
+        <h2 class="ic-title">Logistics & Supply Chain</h2>
+        <p class="ic-body">Route optimisation, last-mile analytics, demand forecasting, warehouse automation and supplier risk monitoring. We've built systems that run across 200+ nodes in production — the OR and the engineering together.</p>
+        <a href="book.html" class="btn primary" style="width: fit-content; margin-top: auto;">Discuss your project →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Vehicle routing and fleet optimisation (VRP)</div>
+        <div class="ic-item">Demand forecasting and inventory positioning</div>
+        <div class="ic-item">Supplier risk scoring and multi-source procurement</div>
+        <div class="ic-item">Real-time tracking and exception management</div>
+        <div class="ic-item">Warehouse slotting optimisation</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">03 · Financial Services</span>
+        <h2 class="ic-title">Finance & FinTech</h2>
+        <p class="ic-body">Blockchain infrastructure, credit risk modelling, fraud detection, regulatory reporting automation and wealth management analytics. Built with FCA, SEC and FINTRAC constraints in scope from day one.</p>
+        <a href="book.html" class="btn primary" style="width: fit-content; margin-top: auto;">Discuss your project →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">On-chain remittance and settlement infrastructure</div>
+        <div class="ic-item">Credit scoring and alternative data models</div>
+        <div class="ic-item">Real-time fraud detection and anomaly flagging</div>
+        <div class="ic-item">Regulatory reporting automation (MIFID II, Basel III)</div>
+        <div class="ic-item">Algorithmic trading strategy backtesting</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">04 · Education & EdTech</span>
+        <h2 class="ic-title">Education & EdTech</h2>
+        <p class="ic-body">Adaptive learning platforms, AI tutors, proctoring, LMS infrastructure and learning analytics. Our Learning Engine product is already live at 12 institutions — available to license or use as a foundation for bespoke builds.</p>
+        <a href="solution-edtech.html" class="btn primary" style="width: fit-content; margin-top: auto;">See Learning Engine →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Adaptive curricula with Bayesian knowledge tracing</div>
+        <div class="ic-item">AI-powered assessment and instant feedback</div>
+        <div class="ic-item">Computer-vision proctoring for online exams</div>
+        <div class="ic-item">Learning analytics and at-risk student identification</div>
+        <div class="ic-item">Corporate L&D platforms with skills tracking</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">05 · Retail & e-Commerce</span>
+        <h2 class="ic-title">Retail & e-Commerce</h2>
+        <p class="ic-body">Inventory optimisation, demand forecasting, personalisation engines, pricing intelligence and omnichannel analytics. We've cut dead stock 44% and increased throughput 22% for multi-warehouse retailers.</p>
+        <a href="case-retail.html" class="btn primary" style="width: fit-content; margin-top: auto;">See the retail case →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Real-time inventory across warehouses and channels</div>
+        <div class="ic-item">Demand forecasting and reorder automation</div>
+        <div class="ic-item">Personalisation and recommendation engines</div>
+        <div class="ic-item">Dynamic pricing and competitor intelligence</div>
+        <div class="ic-item">Returns prediction and fraud detection</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">06 · Manufacturing</span>
+        <h2 class="ic-title">Manufacturing & Industry 4.0</h2>
+        <p class="ic-body">Predictive maintenance, quality inspection vision systems, production scheduling, OEE analytics and supply chain optimisation. We bridge the IT/OT divide — connecting shop floor data to enterprise decision-making.</p>
+        <a href="book.html" class="btn primary" style="width: fit-content; margin-top: auto;">Discuss your project →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Predictive maintenance using sensor time-series</div>
+        <div class="ic-item">Visual defect inspection with computer vision</div>
+        <div class="ic-item">Production scheduling and capacity optimisation</div>
+        <div class="ic-item">OEE dashboards and downtime root-cause analysis</div>
+        <div class="ic-item">Digital twin modelling for process simulation</div>
+      </div>
+    </div>
+
+    <div class="ind-card">
+      <div class="ic-left">
+        <span class="ic-num">07 · Marketing & Growth</span>
+        <h2 class="ic-title">Marketing & Growth</h2>
+        <p class="ic-body">Marketing mix modelling, attribution, A/B experimentation infrastructure, customer segmentation, CLV prediction and content intelligence. The data layer that makes your growth team's decisions defensible.</p>
+        <a href="book.html" class="btn primary" style="width: fit-content; margin-top: auto;">Discuss your project →</a>
+      </div>
+      <div class="ic-right">
+        <span class="ic-use">Use cases</span>
+        <div class="ic-item">Multi-touch attribution and MMM modelling</div>
+        <div class="ic-item">Customer segmentation and lookalike modelling</div>
+        <div class="ic-item">CLV prediction and churn intervention</div>
+        <div class="ic-item">A/B experimentation infrastructure and causal inference</div>
+        <div class="ic-item">Content performance analytics and topic intelligence</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="inline-cta">
+      <h3>Don't see your vertical? We've probably already solved a problem adjacent to yours.</h3>
+      <a href="book.html" class="btn primary">Tell us what you're working on →</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

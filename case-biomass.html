@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Biomass Sourcing Optimisation — Case Study · S.T.R.In.G</title>
+<meta name="description" content="How S.T.R.In.G optimised biomass sourcing across 200+ nodes with a mixed-integer program and live simulator — −31% logistics cost, 6-month payback." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Biomass Sourcing Optimisation — S.T.R.In.G Case Study" />
+<meta property="og:description" content="MIP + simulation across 200+ nodes. −31% logistics cost, 6-month payback, 99.9% uptime. Energy sector, Netherlands." />
+<meta property="og:type" content="article" />
+<link rel="canonical" href="https://stringlab.org/case-biomass.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="work">
+<div id="nav-slot"></div>
+
+<section class="pg-hero paper-bg">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="work.html">Work</a><span class="sep">/</span> Biomass Sourcing</div>
+    <span class="label" style="margin-bottom: 20px;">Energy · Netherlands · Operations Research</span>
+    <h1 class="display" style="color: var(--ink);">Optimised biomass<br/>sourcing across <em style="color: var(--ink);">200+</em> nodes.</h1>
+    <p class="sub">Mixed-integer program combined with a live simulator for routing, storage and supplier mix. Delivered −31% logistics cost with a 6-month payback and 99.9% system uptime since go-live.</p>
+    <div class="meta-row" style="border-top-color: var(--line-d);">
+      <div><span class="k">Client</span><span class="v" style="color: var(--ink);">Energy operator, NL (NDA)</span></div>
+      <div><span class="k">Sector</span><span class="v" style="color: var(--ink);">Energy · Netherlands</span></div>
+      <div><span class="k">Duration</span><span class="v" style="color: var(--ink);">14 weeks</span></div>
+      <div><span class="k">Practice</span><span class="v" style="color: var(--ink);">Operations Research</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg" style="padding-top: 0;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d);">
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">−31<span style="font-size: 48px;">%</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Logistics cost</div>
+      </div>
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">6<span style="font-size: 48px;">mo</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Investment payback</div>
+      </div>
+      <div style="padding: 48px 32px;">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">99.9<span style="font-size: 48px;">%</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">System uptime since go-live</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="label">The challenge</span>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px;">200+ suppliers. Volatile moisture content. Fluctuating transport costs.</h2>
+      </div>
+      <div class="prose" style="max-width: none; padding-top: 8px;">
+        <p>A Dutch energy operator runs multiple biomass-fired power stations. Sourcing biomass (wood pellets, agricultural residue) from 200+ suppliers across Northern Europe involves a daily optimisation problem: which suppliers to purchase from, how much to hold in which storage facility, and how to route deliveries to minimise cost while maintaining feedstock continuity.</p>
+        <p>The existing approach was a spreadsheet run weekly by a small procurement team — manually balancing price, moisture content (which affects energy yield), transport distance and supplier reliability. The cost of sub-optimal decisions was running to millions of euros annually.</p>
+        <p>The challenge: the problem is genuinely hard combinatorially. 200+ supply nodes, 5 storage depots, 3 power stations, daily price changes and minimum stock requirements at each plant. No off-the-shelf tool could handle the full constraint set.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Our approach</span>
+    <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px; margin-bottom: 60px; color: var(--ink);">MIP formulation + discrete-event simulation.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="num">Phase 01 · Weeks 1–3</span>
+        <h3>Problem Formulation</h3>
+        <p>Worked with procurement and engineering to enumerate all constraints: minimum plant stock, maximum supplier allocations, transport capacity, moisture thresholds. Formulated as a multi-period MIP.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 02 · Weeks 4–8</span>
+        <h3>MIP Solver Development</h3>
+        <p>Built and tuned a Gurobi-based MIP solver that runs a 7-day rolling optimisation daily. Warm-starts from prior solution to keep solve times under 3 minutes on standard hardware.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 03 · Weeks 8–11</span>
+        <h3>Simulation Layer</h3>
+        <p>Discrete-event simulator that stress-tests optimised plans against realistic uncertainty — supplier delays, price spikes, weather events. Gives procurement team a risk distribution, not just a single plan.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 04 · Weeks 11–14</span>
+        <h3>Ops Dashboard & Deployment</h3>
+        <p>Daily optimisation runs automatically at 06:00. Results surfaced in a procurement dashboard with one-click PO generation. Deployed on-premise at client's data centre per their security requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="inline-cta">
+      <h3>Complex sourcing or logistics problem? This is what we do.</h3>
+      <a href="book.html" class="btn primary">Talk to our OR team →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Tech used</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;">
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Python</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Gurobi</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">SimPy</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">pandas / NumPy</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">FastAPI</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">React</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">PostgreSQL</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Apache Airflow</span>
+    </div>
+    <div style="margin-top: 40px; display: flex; gap: 16px;">
+      <a href="work.html" class="btn ghost" style="border-color: var(--line-d); color: var(--ink);">← All case studies</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

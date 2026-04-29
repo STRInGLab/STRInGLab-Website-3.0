@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Retail Inventory — Stock Control Case Study · S.T.R.In.G</title>
+<meta name="description" content="How S.T.R.In.G built a real-time inventory system across 9 warehouses with a heuristic reorder engine — cutting dead stock 44% in 14 days." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Retail Inventory & Reorder Engine — S.T.R.In.G Case Study" />
+<meta property="og:description" content="Real-time inventory across 9 warehouses. −44% dead stock, +22% throughput. Heuristic reorder engine live in 14 days." />
+<meta property="og:type" content="article" />
+<link rel="canonical" href="https://stringlab.org/case-retail.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="work">
+<div id="nav-slot"></div>
+
+<section class="pg-hero paper-bg">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="work.html">Work</a><span class="sep">/</span> Retail Inventory</div>
+    <span class="label" style="margin-bottom: 20px;">Retail · India · Operations Research</span>
+    <h1 class="display" style="color: var(--ink);">Stock control that<br/><em style="color: var(--ink);">matches</em> the floor.</h1>
+    <p class="sub">Real-time inventory across 9 warehouses with a heuristic reorder engine. Cut dead stock by nearly half, increased throughput by 22% and went live in 14 days.</p>
+    <div class="meta-row" style="border-top-color: var(--line-d);">
+      <div><span class="k">Client</span><span class="v" style="color: var(--ink);">Retail chain, India (NDA)</span></div>
+      <div><span class="k">Sector</span><span class="v" style="color: var(--ink);">Retail · India</span></div>
+      <div><span class="k">Duration</span><span class="v" style="color: var(--ink);">14 days to production</span></div>
+      <div><span class="k">Practice</span><span class="v" style="color: var(--ink);">OR & Product Engineering</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg" style="padding-top: 0;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d);">
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">−44<span style="font-size: 48px;">%</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Dead stock</div>
+      </div>
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">+22<span style="font-size: 48px;">%</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Throughput</div>
+      </div>
+      <div style="padding: 48px 32px;">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">14<span style="font-size: 48px;">d</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Time to production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="label">The challenge</span>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px;">Nine warehouses. No single source of truth.</h2>
+      </div>
+      <div class="prose" style="max-width: none; padding-top: 8px;">
+        <p>A retail chain operating across 9 warehouses and 40+ stores in India had been running inventory on a legacy ERP system that updated stock levels nightly. By morning, the numbers were already wrong.</p>
+        <p>Stock-outs on fast-moving SKUs coexisted with dead stock on slow movers filling valuable floor space. The reorder process was manual — purchasing managers received weekly Excel reports and placed orders based on gut feel and supplier relationships rather than data.</p>
+        <p>The client needed real-time inventory visibility across all locations and an automated reorder system that would eliminate both stock-outs and the accumulation of dead stock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Our approach</span>
+    <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px; margin-bottom: 60px; color: var(--ink);">Real-time event stream + heuristic reorder logic.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="num">Phase 01 · Days 1–4</span>
+        <h3>Event Stream Integration</h3>
+        <p>Connected barcode scanners at all 9 warehouse gates via MQTT to a Kafka event stream. Every goods-in, goods-out and transfer event updates stock in under 500ms — replacing the nightly batch job.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 02 · Days 3–8</span>
+        <h3>Reorder Heuristic Engine</h3>
+        <p>Demand-weighted safety-stock calculation per SKU per location. Dynamic reorder points that account for lead time variability and seasonal velocity. Auto-generates draft POs for purchasing manager approval.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 03 · Days 7–12</span>
+        <h3>Dashboards & Alerts</h3>
+        <p>Operations dashboard showing real-time stock, velocity ABC classification, stock-out risk signals and dead-stock ageing. Mobile app for warehouse staff receiving and transfer confirmation.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 04 · Days 12–14</span>
+        <h3>Go-Live & Handoff</h3>
+        <p>Parallel run for 2 days alongside legacy system. Cutover on day 14. Training for purchasing team on interpreting reorder recommendations and overriding system decisions with reason codes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div style="margin-top: 0;" class="inline-cta">
+      <h3>Similar inventory problem? Let's talk.</h3>
+      <a href="book.html" class="btn primary">Book a call →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Tech used</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;">
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Python</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Apache Kafka</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">MQTT</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">FastAPI</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">React Native</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">PostgreSQL</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Redis</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Metabase</span>
+    </div>
+    <div style="margin-top: 40px; display: flex; gap: 16px;">
+      <a href="work.html" class="btn ghost" style="border-color: var(--line-d); color: var(--ink);">← All case studies</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

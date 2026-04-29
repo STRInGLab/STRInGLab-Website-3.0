@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Patanjali — Commodity Forecasting Case Study · S.T.R.In.G</title>
+<meta name="description" content="How S.T.R.In.G built an ensemble forecasting system for Patanjali Ayurved — reducing hedging costs by 18% and accelerating planning cycles 3×." />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Patanjali Commodity Forecasting — S.T.R.In.G Case Study" />
+<meta property="og:description" content="Ensemble ARIMA + gradient-boosted forecasting for Patanjali. −18% hedging cost, 3× faster cycle, 4-week MAPE window. Shipped 3 weeks early." />
+<meta property="og:type" content="article" />
+<link rel="canonical" href="https://stringlab.org/case-patanjali.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body data-route="work">
+<div id="nav-slot"></div>
+
+<section class="pg-hero paper-bg">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Home</a><span class="sep">/</span><a href="work.html">Work</a><span class="sep">/</span> Patanjali</div>
+    <span class="label" style="margin-bottom: 20px;">CPG · India · AI & Forecasting</span>
+    <h1 class="display" style="color: var(--ink);">Forecasting that<br/>survives <em style="color: var(--ink);">volatile</em> markets.</h1>
+    <p class="sub">Ensemble ARIMA + gradient-boosted model with a model-monitoring layer. Built for Patanjali Ayurved to reduce commodity hedging cost and accelerate procurement planning cycles across 12 raw-material SKUs.</p>
+    <div class="meta-row" style="border-top-color: var(--line-d);">
+      <div><span class="k">Client</span><span class="v" style="color: var(--ink);">Patanjali Ayurved</span></div>
+      <div><span class="k">Sector</span><span class="v" style="color: var(--ink);">CPG · India</span></div>
+      <div><span class="k">Duration</span><span class="v" style="color: var(--ink);">10 weeks (shipped 3 weeks early)</span></div>
+      <div><span class="k">Practice</span><span class="v" style="color: var(--ink);">AI & Machine Learning</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg" style="padding-top: 0;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--line-d); border-bottom: 1px solid var(--line-d);">
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">−18<span style="color: var(--accent-ink); font-size: 48px;">%</span></div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Hedging cost reduction</div>
+      </div>
+      <div style="padding: 48px 32px; border-right: 1px solid var(--line-d);">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">3×</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Faster planning cycle</div>
+      </div>
+      <div style="padding: 48px 32px;">
+        <div style="font-family: var(--serif); font-weight: 300; font-size: 80px; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);">4wk</div>
+        <div style="font-family: var(--mono); font-size: 11px; color: var(--mute-d); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 8px;">Reliable MAPE forecast window</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="label">The challenge</span>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px;">Volatile markets. Manual planning. Expensive hedging.</h2>
+      </div>
+      <div class="prose" style="max-width: none; padding-top: 8px;">
+        <p>Patanjali Ayurved sources 200+ raw materials — herbs, carrier oils, packaging materials — many of which are priced on commodities markets that can swing 20–30% seasonally. Their procurement team was hedging conservatively (expensively) because their planning horizon was too uncertain.</p>
+        <p>The existing process relied on spreadsheet-based 2-week rolling averages, with manual adjustments for festivals and monsoon cycles that required senior analysts to spend most of their week on forward-looking planning rather than strategic work.</p>
+        <p>S.T.R.In.G was engaged to build a forecasting system that could reliably predict demand and price movements 4 weeks out — enough lead time to hedge more precisely and negotiate better supplier contracts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Our approach</span>
+    <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px; margin-bottom: 60px; color: var(--ink);">Ensemble modelling with model health monitoring.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="num">Phase 01 · Weeks 1–2</span>
+        <h3>Data Audit & Feature Engineering</h3>
+        <p>We audited 3 years of transaction data, identified data quality issues in ~12% of records, and engineered 40+ features including local festival calendars, monsoon indices and commodity futures as external regressors.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 02 · Weeks 3–5</span>
+        <h3>Model Development</h3>
+        <p>Trained ARIMA, Prophet and LightGBM models independently. Evaluated against a held-out 8-week test window. Blended predictions using a meta-learner that weighted models by their recent accuracy on each SKU.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 03 · Weeks 6–7</span>
+        <h3>Model Monitoring Layer</h3>
+        <p>Built drift detection on both input features and predictions. Automated weekly retraining pipeline. Alerting when a SKU's rolling MAPE exceeds threshold — surfaced to analysts before hedging decisions are made.</p>
+      </div>
+      <div class="card">
+        <span class="num">Phase 04 · Weeks 7–8 (3 weeks early)</span>
+        <h3>Integration & Handoff</h3>
+        <p>Forecasts pushed directly into Patanjali's procurement planning tool via API. Analyst dashboard showing forecasts, confidence bands and explainability drivers. Runbook and 2-day handoff training for internal team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="label">The outcome</span>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 20px;">Shipped early. Adopted immediately.</h2>
+      </div>
+      <div class="prose" style="max-width: none; padding-top: 8px;">
+        <p>The ensemble model delivered 4-week forecasts with a MAPE consistently below 8% across all 12 production SKUs — significantly better than the 18–22% error of the previous spreadsheet approach. The procurement team began using the output in week 9, before the project officially closed.</p>
+        <p>Hedging cost fell by 18% in the first full quarter of operation as narrower confidence intervals allowed the team to take smaller, more precise hedging positions. Planning cycles that previously required a fortnight of analyst time were cut to 4 working days.</p>
+        <blockquote>"We expected to spend six months validating this. We were using it in two." — Procurement Head, Patanjali Ayurved</blockquote>
+        <p>The model-monitoring layer has now flagged three significant market-structure shifts, triggering targeted retraining before forecast accuracy degraded — exactly as designed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-bg">
+  <div class="container">
+    <span class="label">Tech used</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;">
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Python</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">ARIMA / statsmodels</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Prophet</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">LightGBM</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">MLflow</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">Apache Airflow</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">FastAPI</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">PostgreSQL</span>
+      <span style="font-family:var(--mono);font-size:12px;padding:10px 16px;border:1px solid var(--line-d);border-radius:99px;color:var(--ink);">AWS EC2 / S3</span>
+    </div>
+    <div style="margin-top: 60px; display: flex; gap: 16px;">
+      <a href="work.html" class="btn ghost" style="border-color: var(--line-d); color: var(--ink);">← All case studies</a>
+      <a href="book.html" class="btn primary">Work with us on something similar</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

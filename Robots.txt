@@ -1,18 +1,22 @@
 User-agent: *
-Disallow: /automated-document-reader.html
-Disallow: /automated-document-reader
-Disallow: /digital-muneem.html
-Disallow: /digital-muneem
-Disallow: /ed-tech.html
-Disallow: /ed-tech
-Disallow: /adminpanel.php
-Disallow: /adminpanel2.php
-Disallow: /login.php
-Disallow: /signin.html
-Disallow: /blogs/.DS_Store
-
-# Allow everything else
 Allow: /
 
-# Sitemap reference
+# Private, legacy, and local-only paths
+Disallow: /404.html
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /old%20website/
+Disallow: /php/
+Disallow: /storage/
+Disallow: /.git/
+Disallow: /.local/
+Disallow: /.DS_Store
+Disallow: /stringlab.html
+
+# Crawl budget: keep bots focused on canonical pages and public assets
+Disallow: /*?*
+Allow: /assets/
+Allow: /sitemap.xml
+Allow: /robots.txt
+
 Sitemap: https://stringlab.org/sitemap.xml

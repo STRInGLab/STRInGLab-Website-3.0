@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — Page Not Found · S.T.R.In.G</title>
+<meta name="description" content="The page you were looking for doesn't exist. Return to the S.T.R.In.G homepage." />
+<meta name="robots" content="noindex, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/shared.css" />
+<style>
+.not-found {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.nf-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(800px 500px at 60% 30%, rgba(198,255,74,0.06), transparent 60%),
+    radial-gradient(600px 400px at 20% 70%, rgba(198,255,74,0.04), transparent 60%);
+  pointer-events: none;
+}
+.nf-inner { position: relative; z-index: 2; text-align: center; padding: 40px; }
+.nf-code {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(120px, 20vw, 280px); line-height: 0.9;
+  letter-spacing: -0.05em; color: transparent;
+  background: linear-gradient(180deg, rgba(242,238,230,0.9) 0%, rgba(242,238,230,0.2) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  margin-bottom: 32px;
+}
+.nf-title { font-family: var(--serif); font-weight: 300; font-size: clamp(28px,4vw,56px); letter-spacing: -0.02em; margin-bottom: 16px; }
+.nf-title em { color: var(--accent); font-style: italic; }
+.nf-sub { font-size: 17px; color: #a8a59c; margin-bottom: 40px; max-width: 44ch; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.nf-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+</style>
+<link rel="stylesheet" href="assets/site.css" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
+</head>
+<body>
+<div id="nav-slot"></div>
+
+<div class="not-found">
+  <div class="nf-bg"></div>
+  <div class="nf-inner">
+    <div class="nf-code">404</div>
+    <h1 class="nf-title">Page not <em>found</em>.</h1>
+    <p class="nf-sub">The page you were looking for doesn't exist, was moved or the URL has a typo. These things happen.</p>
+    <div class="nf-links">
+      <a href="index.html" class="btn primary">Back to homepage →</a>
+      <a href="services.html" class="btn ghost">Services</a>
+      <a href="solutions.html" class="btn ghost">Solutions</a>
+      <a href="work.html" class="btn ghost">Work</a>
+      <a href="contact.html" class="btn ghost">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div id="footer-slot"></div>
+<script src="assets/partials.js"></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
