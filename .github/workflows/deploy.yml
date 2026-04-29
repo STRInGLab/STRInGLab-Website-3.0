@@ -44,16 +44,10 @@ jobs:
         run: |
           USER_ACTION="${{ github.event.inputs.action || 'push' }}"
 
-          FTP_REMOTE_DIR="${{ secrets.FTP_REMOTE_DIR }}"
-          FTP_URL="ftp://${{ secrets.FTP_SERVER }}/${FTP_REMOTE_DIR}"
+          FTP_URL="ftp://${{ secrets.FTP_SERVER }}/"
 
           echo "Selected action: $USER_ACTION"
-          echo "Remote directory: ${FTP_REMOTE_DIR}"
-
-          if [ -z "$FTP_REMOTE_DIR" ]; then
-            echo "ERROR: FTP_REMOTE_DIR secret is empty. Set it to public_html/ or domains/example.com/public_html/"
-            exit 1
-          fi
+          echo "Deploying to FTP account root"
 
           if [ "$USER_ACTION" = "catchup" ]; then
             echo "Running catchup..."
@@ -82,4 +76,3 @@ jobs:
               --disable-epsv \
               --verbose
           fi
-          
