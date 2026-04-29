@@ -7,13 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Use "catchup" once after manually uploading all files to Hostinger.'
+        description: 'Use catchup once after manually uploading files, or init for first full upload.'
         required: true
         default: 'push'
         type: choice
         options:
           - push
           - catchup
+          - init
 
 jobs:
   deploy:
@@ -43,18 +44,37 @@ jobs:
         run: |
           USER_ACTION="${{ github.event.inputs.action || 'push' }}"
 
-          FTP_URL="ftp://${{ secrets.FTP_SERVER }}/${{ secrets.FTP_REMOTE_DIR }}"
+          FTP_REMOTE_DIR="${{ secrets.FTP_REMOTE_DIR }}"
+          FTP_URL="ftp://${{ secrets.FTP_SERVER }}/${FTP_REMOTE_DIR}"
+
+          echo "Selected action: $USER_ACTION"
+          echo "Remote directory: ${FTP_REMOTE_DIR}"
+
+          if [ -z "$FTP_REMOTE_DIR" ]; then
+            echo "ERROR: FTP_REMOTE_DIR secret is empty. Set it to public_html/ or domains/example.com/public_html/"
+            exit 1
+          fi
 
           if [ "$USER_ACTION" = "catchup" ]; then
-            echo "Marking current commit as already deployed..."
+            echo "Running catchup..."
             git ftp catchup \
               --user "${{ secrets.FTP_USERNAME }}" \
               --passwd "${{ secrets.FTP_PASSWORD }}" \
               "$FTP_URL" \
               --disable-epsv \
               --verbose
+
+          elif [ "$USER_ACTION" = "init" ]; then
+            echo "Running initial full upload..."
+            git ftp init \
+              --user "${{ secrets.FTP_USERNAME }}" \
+              --passwd "${{ secrets.FTP_PASSWORD }}" \
+              "$FTP_URL" \
+              --disable-epsv \
+              --verbose
+
           else
-            echo "Deploying changed files only..."
+            echo "Running differential push..."
             git ftp push \
               --user "${{ secrets.FTP_USERNAME }}" \
               --passwd "${{ secrets.FTP_PASSWORD }}" \
