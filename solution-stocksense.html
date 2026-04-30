@@ -20,30 +20,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/shared.css" />
+<link rel="stylesheet" href="assets/shared.min.css" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebPage",
+  "@id": "https://stringlab.org/solution-stocksense#webpage",
+  "url": "https://stringlab.org/solution-stocksense",
   "name": "Stock Sense",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web, iOS, Android",
   "description": "Real-time inventory management software with barcode/RFID tracking, multi-warehouse visibility, reorder automation and demand forecasting.",
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "price": "0",
-    "priceCurrency": "USD",
-    "url": "https://stringlab.org/solution-stocksense"
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Stock Sense",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android"
   },
-  "publisher": {
+  "isPartOf": {
     "@type": "Organization",
     "name": "S.T.R.In.G Technology Solutions",
     "url": "https://stringlab.org/"
   }
 }
 </script>
-<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="assets/site.min.css" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/favicon.png" />
 </head>
@@ -126,6 +125,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="section">
   <div class="container">
+    <div class="two-col" style="margin-bottom: 56px;">
+      <div>
+        <span class="label">Operational fit</span>
+        <h2 class="display" style="font-size: clamp(28px,3vw,48px); margin-top: 18px;">Inventory data that operators can trust.</h2>
+      </div>
+      <p style="font-size: 16px; line-height: 1.7; color: #c9c6bd;">Stock Sense is built for teams juggling warehouses, stores, marketplaces and supplier lead times. The platform records each stock movement, reconciles exceptions, exposes channel-level availability and gives planners reorder signals based on demand, lead time and safety stock. It is most useful where spreadsheets, ERP exports and warehouse reality no longer agree.</p>
+    </div>
+  </div>
+  <div class="container">
     <div class="inline-cta">
       <h3>Ready for inventory that matches reality?</h3>
       <a href="/contact" class="btn primary">Request a demo →</a>
@@ -134,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <div id="footer-slot"></div>
-<script src="assets/partials.js"></script>
-<script src="assets/site.js" defer></script>
+<script src="assets/partials.min.js"></script>
+<script src="assets/site.min.js" defer></script>
 </body>
 </html>

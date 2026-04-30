@@ -1,26 +1,33 @@
-# LLM policy for stringlab.org
+# S.T.R.In.G Technology Solutions
 
-User-agent: *
-Allow: /
+> S.T.R.In.G builds AI systems, data science models, workflow automation, product engineering, operations research tools and digital products for businesses.
 
-# Block sensitive/admin areas
-Disallow: /adminpanel.php
-Disallow: /adminpanel2.php
-Disallow: /login.php
-Disallow: /signin
+## Core Pages
 
-# Respect robots.txt restrictions
-Disallow: /php/
-Disallow: /storage/
-Disallow: /.git/
+- [Home](https://stringlab.org/): Overview of S.T.R.In.G services, solutions and case studies.
+- [Services](https://stringlab.org/services): AI, automation, data, product engineering, operations research and design services.
+- [Solutions](https://stringlab.org/solutions): S.T.R.In.G-owned products and licensable platforms.
+- [Work](https://stringlab.org/work): Case studies and production outcomes.
+- [Industries](https://stringlab.org/industries): Industries served by S.T.R.In.G.
+- [About](https://stringlab.org/about): Company profile, delivery model and contact context.
+- [Contact](https://stringlab.org/contact): Contact details and enquiry form.
 
-# Allow AI usage for public business content
-Usage: training=allowed
-Usage: summarization=allowed
-Usage: embedding=allowed
+## Solutions
 
-# Attribution preference
-Attribution: required
+- [Digital Muneem](https://stringlab.org/solution-muneem): Accounting and bookkeeping platform for SMBs.
+- [Learning Engine](https://stringlab.org/solution-edtech): Adaptive EdTech and LMS platform.
+- [Remit](https://stringlab.org/solution-remit): Blockchain remittance infrastructure.
+- [Forecast Kit](https://stringlab.org/solution-forecast): Commodity and demand forecasting toolkit.
+- [Stock Sense](https://stringlab.org/solution-stocksense): Real-time inventory management platform.
+- [Automated Document Reader](https://stringlab.org/solution-docreader): OCR and LLM document extraction.
 
-# Contact for AI/data usage
-Contact: mailto:info@stringlab.org
+## Policies
+
+- [Robots policy](https://stringlab.org/robots.txt)
+- [Sitemap](https://stringlab.org/sitemap.xml)
+- [Privacy Policy](https://stringlab.org/privacy)
+- [Terms of Service](https://stringlab.org/terms)
+
+## Contact
+
+For AI/data usage questions, contact [info@stringlab.org](mailto:info@stringlab.org).
