@@ -3,7 +3,7 @@ name: Deploy to Hostinger
 on:
   push:
     branches:
-      - mains
+      - main
   workflow_dispatch:
 
 jobs:
@@ -13,18 +13,54 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Upload files to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            README.md
+          fetch-depth: 0
+
+      - name: Install git-ftp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-ftp
+
+      - name: Configure deploy ignores
+        run: |
+          {
+            echo ".git*"
+            echo ".git*/**"
+            echo "node_modules/"
+            echo ".github/"
+            echo "README.md"
+            echo ".git-ftp-ignore"
+          } > .git-ftp-ignore
+
+      - name: Deploy changed files to Hostinger
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+
+          case "${FTP_SERVER}" in
+            ftp://*|ftps://*)
+              FTP_URL="${FTP_SERVER}"
+              ;;
+            *)
+              FTP_URL="ftp://${FTP_SERVER}/"
+              ;;
+          esac
+
+          COMMON_ARGS=(--user "${FTP_USERNAME}" --passwd "${FTP_PASSWORD}" --syncroot "." "${FTP_URL}")
+          REMOTE_SHA="$(git ftp show "${COMMON_ARGS[@]}" 2>/dev/null | tail -n 1 | tr -d '[:space:]' || true)"
+
+          if [ -z "${REMOTE_SHA}" ]; then
+            echo "No git-ftp deployment marker found on the server."
+            echo "Assuming the site is already uploaded. Recording ${GITHUB_SHA} as deployed without uploading files."
+            git ftp catchup "${COMMON_ARGS[@]}"
+            echo "Catchup completed. This run created the deployment log only."
+            exit 0
+          fi
+
+          echo "Found remote deployment marker at commit ${REMOTE_SHA}."
+          echo "Uploading only files changed since the recorded deployment."
+          git ftp push "${COMMON_ARGS[@]}"
+          echo "Incremental deployment completed."
