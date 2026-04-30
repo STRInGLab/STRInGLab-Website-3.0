@@ -2,211 +2,211 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://stringlab.org/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/about.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/about</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/book.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/book</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/careers.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/careers</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-biomass.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-biomass</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-marex.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-marex</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-nirmala.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-nirmala</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-patanjali.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-patanjali</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-retail.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-retail</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/case-statista.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/case-statista</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/contact.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/contact</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/cookies.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/cookies</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/faq.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/faq</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/industries.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/industries</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/insights.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/insights</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/press.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/press</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/privacy.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/privacy</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/process.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/process</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/service-ai.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/service-ai</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/service-automation.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/service-automation</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/service-data.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/service-data</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/service-or.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/service-or</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/service-product.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/service-product</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/services.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/services</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-docreader.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-docreader</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-edtech.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-edtech</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-forecast.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-forecast</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-muneem.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-muneem</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-remit.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-remit</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solution-stocksense.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solution-stocksense</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/solutions.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/solutions</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/team.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/team</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/terms.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/terms</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/trust.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/trust</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://stringlab.org/work.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://stringlab.org/work</loc>
+    <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

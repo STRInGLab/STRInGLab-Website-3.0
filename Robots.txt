@@ -18,5 +18,6 @@ Disallow: /*?*
 Allow: /assets/
 Allow: /sitemap.xml
 Allow: /robots.txt
+Allow: /llms.txt
 
 Sitemap: https://stringlab.org/sitemap.xml

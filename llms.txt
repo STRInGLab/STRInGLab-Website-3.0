@@ -1,0 +1,26 @@
+# LLM policy for stringlab.org
+
+User-agent: *
+Allow: /
+
+# Block sensitive/admin areas
+Disallow: /adminpanel.php
+Disallow: /adminpanel2.php
+Disallow: /login.php
+Disallow: /signin
+
+# Respect robots.txt restrictions
+Disallow: /php/
+Disallow: /storage/
+Disallow: /.git/
+
+# Allow AI usage for public business content
+Usage: training=allowed
+Usage: summarization=allowed
+Usage: embedding=allowed
+
+# Attribution preference
+Attribution: required
+
+# Contact for AI/data usage
+Contact: mailto:info@stringlab.org

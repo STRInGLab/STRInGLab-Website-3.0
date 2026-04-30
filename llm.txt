@@ -1,26 +1,2 @@
-# LLM policy for stringlab.org
-
-User-agent: *
-Allow: /
-
-# Block sensitive/admin areas
-Disallow: /adminpanel.php
-Disallow: /adminpanel2.php
-Disallow: /login.php
-Disallow: /signin.html
-
-# Respect robots.txt restrictions
-Disallow: /automated-document-reader
-Disallow: /digital-muneem
-Disallow: /ed-tech
-
-# Allow AI usage (business-friendly)
-Usage: training=allowed
-Usage: summarization=allowed
-Usage: embedding=allowed
-
-# Attribution preference
-Attribution: required
-
-# Contact for AI/data usage
-Contact: mailto:info@stringlab.org
+# Legacy alias for LLM crawlers.
+# The canonical policy file is /llms.txt.

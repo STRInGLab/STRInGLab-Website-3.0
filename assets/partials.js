@@ -4,7 +4,7 @@
 
   const navHTML = `
   <nav class="topnav" id="topnav">
-    <a href="index.html" class="logo-mark" aria-label="S.T.R.In.G">
+    <a href="/" class="logo-mark" aria-label="S.T.R.In.G">
       <img src="assets/string-logo.png" alt="S.T.R.In.G"/>
       <span class="acc-dot"></span>
     </a>
@@ -12,16 +12,16 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links" id="primaryNav">
-      <a href="services.html" class="nav-link" data-r="services">Services</a>
-      <a href="solutions.html" class="nav-link" data-r="solutions">Solutions</a>
-      <a href="work.html" class="nav-link" data-r="work">Work</a>
-      <a href="industries.html" class="nav-link" data-r="industries">Industries</a>
-      <a href="about.html" class="nav-link" data-r="about">About</a>
-      <a href="insights.html" class="nav-link" data-r="insights">Insights</a>
-      <a href="book.html" class="nav-link nav-mobile-cta">Book a call</a>
+      <a href="/services" class="nav-link" data-r="services">Services</a>
+      <a href="/solutions" class="nav-link" data-r="solutions">Solutions</a>
+      <a href="/work" class="nav-link" data-r="work">Work</a>
+      <a href="/industries" class="nav-link" data-r="industries">Industries</a>
+      <a href="/about" class="nav-link" data-r="about">About</a>
+      <a href="/insights" class="nav-link" data-r="insights">Insights</a>
+      <a href="/book" class="nav-link nav-mobile-cta">Book a call</a>
     </div>
     <div class="nav-right">
-      <a href="book.html" class="btn primary">Book a call
+      <a href="/book" class="btn primary">Book a call
         <svg class="arrow" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </a>
     </div>
@@ -32,40 +32,40 @@
     <div class="container">
       <div class="foot-grid">
         <div class="foot-brand">
-          <a href="index.html" class="logo-mark" aria-label="S.T.R.In.G"><img src="assets/string-logo.png" alt="S.T.R.In.G"/></a>
+          <a href="/" class="logo-mark" aria-label="S.T.R.In.G"><img src="assets/string-logo.png" alt="S.T.R.In.G"/></a>
           <p>Your trusted partner in innovation and technology — AI, data science, automation and engineering, shipped weekly from Mumbai to global teams.</p>
         </div>
         <div>
           <h5>Services</h5>
           <ul>
-            <li><a href="service-ai.html">AI & Machine Learning</a></li>
-            <li><a href="service-automation.html">Workflow Automation</a></li>
-            <li><a href="service-data.html">Data & Analytics</a></li>
-            <li><a href="service-product.html">Product Engineering</a></li>
-            <li><a href="service-or.html">Operations Research</a></li>
-            <li><a href="service-or.html">UI/UX & Design</a></li>
+            <li><a href="/service-ai">AI & Machine Learning</a></li>
+            <li><a href="/service-automation">Workflow Automation</a></li>
+            <li><a href="/service-data">Data & Analytics</a></li>
+            <li><a href="/service-product">Product Engineering</a></li>
+            <li><a href="/service-or">Operations Research</a></li>
+            <li><a href="/service-or">UI/UX & Design</a></li>
           </ul>
         </div>
         <div>
           <h5>Solutions</h5>
           <ul>
-            <li><a href="solution-muneem.html">Digital Muneem</a></li>
-            <li><a href="solution-edtech.html">Learning Engine</a></li>
-            <li><a href="solution-remit.html">Remit</a></li>
-            <li><a href="solution-forecast.html">Forecast Kit</a></li>
-            <li><a href="solution-stocksense.html">Stock Sense</a></li>
-            <li><a href="solution-docreader.html">Document Reader</a></li>
+            <li><a href="/solution-muneem">Digital Muneem</a></li>
+            <li><a href="/solution-edtech">Learning Engine</a></li>
+            <li><a href="/solution-remit">Remit</a></li>
+            <li><a href="/solution-forecast">Forecast Kit</a></li>
+            <li><a href="/solution-stocksense">Stock Sense</a></li>
+            <li><a href="/solution-docreader">Document Reader</a></li>
           </ul>
         </div>
         <div>
           <h5>Company</h5>
           <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="insights.html">Insights</a></li>
-            <li><a href="press.html">Press</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/insights">Insights</a></li>
+            <li><a href="/press">Press</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="foot-news">
@@ -85,11 +85,11 @@
       <div class="foot-bot">
         <span>© 2026 S.T.R.In.G Technology Solutions</span>
         <span style="display:flex; gap:20px;">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="cookies.html">Cookies</a>
-          <a href="trust.html">Trust</a>
-          <a href="faq.html">FAQ</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/cookies">Cookies</a>
+          <a href="/trust">Trust</a>
+          <a href="/faq">FAQ</a>
         </span>
         <span>v.2026.04</span>
       </div>
