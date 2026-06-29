@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Private, legacy, and local-only paths
+Disallow: /404.html
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /old%20website/
+Disallow: /php/
+Disallow: /storage/
+Disallow: /.git/
+Disallow: /.local/
+Disallow: /.DS_Store
+Disallow: /stringlab.html
+
+# Crawl budget: keep bots focused on canonical pages and public assets
+Disallow: /*?*
+Allow: /assets/
+Allow: /sitemap.xml
+Allow: /robots.txt
+Allow: /llms.txt
+
+Sitemap: https://stringlab.org/sitemap.xml

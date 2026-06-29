@@ -276,11 +276,19 @@
       });
       resetRecaptcha(form);
 
+      const leadEvent = {
+        form_type: form.dataset.formType || "contact",
+        section: form.dataset.section || "Website Form"
+      };
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "generate_lead",
+        ...leadEvent
+      });
+
       if (window.gtag) {
-        window.gtag("event", "generate_lead", {
-          form_type: form.dataset.formType || "contact",
-          section: form.dataset.section || "Website Form"
-        });
+        window.gtag("event", "generate_lead", leadEvent);
       }
     } catch (error) {
       setStatus(form, "error", error.message || "Something went wrong. Please try again.");
