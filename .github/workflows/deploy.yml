@@ -56,7 +56,7 @@ jobs:
               ;;
           esac
 
-          COMMON_ARGS=(--user "${FTP_USERNAME}" --passwd "${FTP_PASSWORD}" --syncroot "." "${FTP_URL}")
+          COMMON_ARGS=(--user "${FTP_USERNAME}" --passwd "${FTP_PASSWORD}" --syncroot "." --disable-epsv "${FTP_URL}")
           REMOTE_SHA="$(git ftp show "${COMMON_ARGS[@]}" 2>/dev/null | tail -n 1 | tr -d '[:space:]' || true)"
 
           if [ "${FORCE_FULL_UPLOAD}" = "true" ]; then
