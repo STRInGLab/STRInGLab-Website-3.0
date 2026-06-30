@@ -6,11 +6,11 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      force_full_upload:
-        description: "Upload all non-ignored files instead of only Git diff changes"
+      repair_deploy_marker_to_commit:
+        description: "Optional: set Hostinger git-ftp marker to this deployed commit before incremental push"
         required: false
-        type: boolean
-        default: false
+        type: string
+        default: ""
 
 jobs:
   deploy:
@@ -43,7 +43,7 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FORCE_FULL_UPLOAD: ${{ github.event_name == 'workflow_dispatch' && inputs.force_full_upload }}
+          REPAIR_DEPLOY_MARKER_TO_COMMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.repair_deploy_marker_to_commit || '' }}
         run: |
           set -euo pipefail
 
@@ -58,7 +58,12 @@ jobs:
 
           COMMON_ARGS=(--user "${FTP_USERNAME}" --passwd "${FTP_PASSWORD}" --syncroot "." --disable-epsv "${FTP_URL}")
 
-          echo "Uploading all non-ignored files to Hostinger."
-          echo "Using a full upload because the previous git-ftp catchup marker recorded commits without uploading files."
-          git ftp push --all "${COMMON_ARGS[@]}"
-          echo "Full deployment completed."
+          if [ -n "${REPAIR_DEPLOY_MARKER_TO_COMMIT}" ]; then
+            echo "Repairing git-ftp marker to known deployed commit ${REPAIR_DEPLOY_MARKER_TO_COMMIT}."
+            echo "No site files are uploaded by catchup; the following push uploads only files changed after that commit."
+            git ftp catchup --commit "${REPAIR_DEPLOY_MARKER_TO_COMMIT}" "${COMMON_ARGS[@]}"
+          fi
+
+          echo "Uploading only files changed since the remote git-ftp marker."
+          git ftp push "${COMMON_ARGS[@]}"
+          echo "Incremental deployment completed."
