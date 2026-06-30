@@ -57,24 +57,8 @@ jobs:
           esac
 
           COMMON_ARGS=(--user "${FTP_USERNAME}" --passwd "${FTP_PASSWORD}" --syncroot "." --disable-epsv "${FTP_URL}")
-          REMOTE_SHA="$(git ftp show "${COMMON_ARGS[@]}" 2>/dev/null | tail -n 1 | tr -d '[:space:]' || true)"
 
-          if [ "${FORCE_FULL_UPLOAD}" = "true" ]; then
-            echo "Force full upload requested. Uploading every non-ignored file."
-            git ftp push --all "${COMMON_ARGS[@]}"
-            echo "Forced full deployment completed."
-            exit 0
-          fi
-
-          if [ -z "${REMOTE_SHA}" ]; then
-            echo "No git-ftp deployment marker found on the server."
-            echo "Uploading all non-ignored files and creating the deployment marker."
-            git ftp init "${COMMON_ARGS[@]}"
-            echo "Initial full deployment completed."
-            exit 0
-          fi
-
-          echo "Found remote deployment marker at commit ${REMOTE_SHA}."
-          echo "Uploading only files changed since the recorded deployment."
-          git ftp push "${COMMON_ARGS[@]}"
-          echo "Incremental deployment completed."
+          echo "Uploading all non-ignored files to Hostinger."
+          echo "Using a full upload because the previous git-ftp catchup marker recorded commits without uploading files."
+          git ftp push --all "${COMMON_ARGS[@]}"
+          echo "Full deployment completed."
