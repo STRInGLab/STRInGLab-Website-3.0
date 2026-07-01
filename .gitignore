@@ -3,3 +3,5 @@ fonts/icomoon/.DS_Store
 img/.DS_Store
 invoice/
 .DS_Store
+seo-reports/
+*.local.json
