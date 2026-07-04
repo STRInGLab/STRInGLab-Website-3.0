@@ -13,8 +13,9 @@ Disallow: /.local/
 Disallow: /.DS_Store
 Disallow: /stringlab.html
 
-# Crawl budget: keep bots focused on canonical pages and public assets
-Disallow: /*?*
+# Crawl budget: keep bots focused on canonical pages and public assets.
+# Do not blanket-block query URLs: legacy URLs such as /pricing/?country=in
+# need to be crawled so Google can see their 301 consolidation target.
 Allow: /assets/
 Allow: /sitemap.xml
 Allow: /robots.txt

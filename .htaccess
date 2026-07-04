@@ -22,9 +22,16 @@ DirectoryIndex index.html index.php
   RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
   RewriteRule ^index\.html$ / [R=301,L]
 
-  # Legacy service URLs still receiving Search Console impressions.
-  RewriteRule ^data-analytics/?$ /service-data [R=301,L,NC]
-  RewriteRule ^image-analysis/?$ /service-ai [R=301,L,NC]
+  # Legacy URLs still receiving Search Console impressions or 404 coverage alerts.
+  # Consolidate old SEO surfaces into current canonical service/solution pages.
+  RewriteRule ^data-analytics(?:\.html)?/?$ /service-data [R=301,L,NC]
+  RewriteRule ^image-analysis(?:\.html)?/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^use-case/financial-sentiment-analysis/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^use-case/commodity-forecasting/?$ /solution-forecast [R=301,L,NC]
+  RewriteRule ^blogs/ai-in-business/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^blogs/marketing-automation/?$ /service-automation [R=301,L,NC]
+  RewriteRule ^blogs/what-is-RAG/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^pricing/?$ /book [R=301,L,NC]
 
   # Canonical extensioned page URLs to extensionless URLs.
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.(html|php)[\s?] [NC]
