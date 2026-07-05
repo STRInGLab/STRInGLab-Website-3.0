@@ -33,12 +33,12 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <a href="/" class="logo-mark" aria-label="S.T.R.In.G"><img src="assets/string-logo.png" alt="S.T.R.In.G"/></a>
-          <p>Your trusted partner in innovation and technology — AI, data science, automation and engineering, shipped weekly from Mumbai to global teams.</p>
+          <p>Your trusted partner in innovation and technology — AI development, data analytics, automation and engineering, shipped weekly from Mumbai to global teams.</p>
         </div>
         <div>
           <h5>Services</h5>
           <ul>
-            <li><a href="/service-ai">AI Automation Services</a></li>
+            <li><a href="/service-ai">AI Development & Automation</a></li>
             <li><a href="/service-automation">Workflow Automation & RPA</a></li>
             <li><a href="/service-data">Data Analytics Consulting</a></li>
             <li><a href="/service-product">Custom Software Development</a></li>
