@@ -1,11 +1,14 @@
 # S.T.R.In.G Technology Solutions
 
-> S.T.R.In.G builds AI systems, data science models, workflow automation, product engineering, operations research tools and digital products for businesses.
+> S.T.R.In.G / StringLab builds AI development systems, AI automation, LLM agents, data analytics platforms, workflow automation, custom software, operations research tools and digital products for businesses.
 
 ## Core Pages
 
 - [Home](https://stringlab.org/): Overview of S.T.R.In.G services, solutions and case studies.
-- [Services](https://stringlab.org/services): AI, automation, data, product engineering, operations research and design services.
+- [Services](https://stringlab.org/services): AI development, AI automation, data analytics consulting, custom software development, workflow automation, operations research and design services.
+- [AI Development Services](https://stringlab.org/service-ai): LLM agents, RAG copilots, document AI, computer vision, predictive models and production MLOps.
+- [Custom Software Development](https://stringlab.org/service-product): Web apps, SaaS platforms, enterprise portals, APIs, mobile apps and cloud DevOps.
+- [Data Analytics Consulting](https://stringlab.org/service-data): Warehouses, pipelines, BI dashboards, attribution, experimentation, forecasting and governance.
 - [Solutions](https://stringlab.org/solutions): S.T.R.In.G-owned products and licensable platforms.
 - [Work](https://stringlab.org/work): Case studies and production outcomes.
 - [Industries](https://stringlab.org/industries): Industries served by S.T.R.In.G.
