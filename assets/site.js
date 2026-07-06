@@ -51,6 +51,78 @@
     document.head.appendChild(script);
   }
 
+
+  function eventPayload(extra) {
+    return Object.assign({
+      page_path: window.location.pathname,
+      page_title: document.title
+    }, extra || {});
+  }
+
+  function trackEvent(eventName, payload) {
+    const data = eventPayload(payload);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: eventName }, data));
+    if (window.gtag) {
+      window.gtag("event", eventName, data);
+    }
+  }
+
+  function linkText(link) {
+    return (link.textContent || link.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim().slice(0, 120);
+  }
+
+  function classifyLink(link) {
+    const href = link.getAttribute("href") || "";
+    const url = new URL(href, window.location.href);
+    const path = url.pathname.replace(/\/$/, "") || "/";
+    if (href.startsWith("tel:")) return "phone";
+    if (href.startsWith("mailto:")) return "email";
+    if (path === "/book") return "book_call";
+    if (path === "/contact") return "contact_page";
+    if (/^\/service-/.test(path)) return "service_cta";
+    if (/^\/solution-/.test(path)) return "solution_cta";
+    if (link.hasAttribute("download")) return "download";
+    if (url.hostname && url.hostname !== window.location.hostname) return "outbound";
+    return "internal";
+  }
+
+  function initConversionTracking() {
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest && event.target.closest("a[href]");
+      if (!link) return;
+      const href = link.getAttribute("href") || "";
+      const url = new URL(href, window.location.href);
+      const kind = classifyLink(link);
+      const payload = {
+        link_url: href,
+        link_text: linkText(link),
+        link_domain: url.hostname || "",
+        link_path: url.pathname || href,
+        link_kind: kind,
+        section: link.closest("section")?.querySelector(".label")?.textContent?.trim() || (link.closest("footer") ? "Footer" : "")
+      };
+      if (kind === "book_call") trackEvent("book_call_click", payload);
+      else if (kind === "phone" || kind === "email" || kind === "contact_page") trackEvent("contact_click", payload);
+      else if (kind === "service_cta") trackEvent("service_cta_click", payload);
+      else if (kind === "solution_cta") trackEvent("solution_cta_click", payload);
+      else if (kind === "download") trackEvent("download_click", payload);
+      else if (kind === "outbound") trackEvent("outbound_click", payload);
+    });
+
+    document.querySelectorAll("[data-form-handler]").forEach((form) => {
+      let started = false;
+      form.addEventListener("input", () => {
+        if (started) return;
+        started = true;
+        trackEvent("form_start", {
+          form_type: form.dataset.formType || "contact",
+          section: form.dataset.section || "Website Form"
+        });
+      }, { once: true });
+    });
+  }
+
   function setStatus(form, kind, message) {
     const status = form.querySelector("[data-form-status]");
     if (!status) return;
@@ -281,15 +353,7 @@
         section: form.dataset.section || "Website Form"
       };
 
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "generate_lead",
-        ...leadEvent
-      });
-
-      if (window.gtag) {
-        window.gtag("event", "generate_lead", leadEvent);
-      }
+      trackEvent("generate_lead", leadEvent);
     } catch (error) {
       setStatus(form, "error", error.message || "Something went wrong. Please try again.");
       resetRecaptcha(form);
@@ -310,6 +374,10 @@
       }
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        trackEvent("lead_submit_attempt", {
+          form_type: form.dataset.formType || "contact",
+          section: form.dataset.section || "Website Form"
+        });
         submitForm(form);
       });
     });
@@ -319,8 +387,12 @@
   ensureGoogleTag();
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initForms, { once: true });
+    document.addEventListener("DOMContentLoaded", () => {
+      initForms();
+      initConversionTracking();
+    }, { once: true });
   } else {
     initForms();
+    initConversionTracking();
   }
 })();
