@@ -31,6 +31,14 @@ DirectoryIndex index.html index.php
   RewriteRule ^blogs/ai-in-business/?$ /service-ai [R=301,L,NC]
   RewriteRule ^blogs/marketing-automation/?$ /service-automation [R=301,L,NC]
   RewriteRule ^blogs/what-is-RAG/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^contact-our-team/?$ /contact [R=301,L,NC]
+  RewriteRule ^data-science/?$ /service-data [R=301,L,NC]
+  RewriteRule ^machine-learning/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^operations-research/?$ /service-or [R=301,L,NC]
+  RewriteRule ^use-case/anomaly-detection/?$ /service-ai [R=301,L,NC]
+  RewriteRule ^use-case/inventory-management/?$ /solution-stocksense [R=301,L,NC]
+  RewriteRule ^use-case/routing-problem/?$ /service-or [R=301,L,NC]
+  RewriteRule ^ux/?$ /service-product [R=301,L,NC]
   RewriteRule ^pricing/?$ /book [R=301,L,NC]
 
   # Canonical extensioned page URLs to extensionless URLs.
