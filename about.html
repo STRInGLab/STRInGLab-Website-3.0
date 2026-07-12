@@ -40,6 +40,44 @@
     <link rel="stylesheet" href="assets/site.min.css" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <style>
+      .origin-layout {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .origin-video {
+        width: 358px;
+        height: 755px;
+        overflow: hidden;
+        border-radius: 20px;
+        position: relative;
+        background: #0b0b0c;
+      }
+
+      .origin-video video {
+        position: absolute;
+        width: 755px;
+        height: 358px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        object-fit: cover;
+      }
+
+      /* Tablet & Mobile */
+      @media (max-width: 992px) {
+        .origin-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .origin-video {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body data-route="about">
     <!-- Google Tag Manager (noscript) -->
@@ -91,51 +129,62 @@
 
     <section class="section">
       <div class="container">
-        <div class="two-col">
-          <span class="label">§ Origin</span>
-          <div class="prose" style="margin: 0">
-            <h2>Who we are.</h2>
-            <p>
-              Stringlab Technology Solutions is an AI, data science and
-              automation company delivering scalable digital solutions for
-              businesses worldwide. We specialize in intelligent systems, custom
-              software, analytics platforms and data-driven workflows that
-              improve efficiency, decision-making and growth.
-            </p>
-            <p>
-              Our work starts with scientific rigor and ends in production. We
-              research the problem, select the right technology, build the
-              system, and stay close enough after launch to make sure it keeps
-              performing.
-            </p>
-            <h2>What S.T.R.In.G stands for.</h2>
-            <ul>
-              <li>
-                <strong>Science.</strong> We use analytical methods,
-                experimentation and measurement to solve business problems
-                instead of guessing from trends.
-              </li>
-              <li>
-                <strong>Technology.</strong> We translate emerging tools into
-                robust software, automation and AI systems that fit real
-                operating environments.
-              </li>
-              <li>
-                <strong>Research.</strong> We investigate what has already been
-                solved, adapt proven methods and create future-proof solutions
-                within practical timelines.
-              </li>
-              <li>
-                <strong>Innovation.</strong> We implement new ideas only when
-                they improve efficiency, customer experience, cost, accuracy or
-                speed.
-              </li>
-              <li>
-                <strong>Group.</strong> We work as a cohesive team of engineers,
-                data scientists, designers and operations thinkers, with every
-                project shaped around client impact.
-              </li>
-            </ul>
+        <div class="two-col origin-layout">
+          <!-- Left -->
+          <div class="origin-video">
+            <video autoplay muted loop playsinline preload="auto">
+              <source
+                src="assets/img/landing/Stringlab_AboutUs.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </div>
+          <div>
+            <span class="label">§ Origin</span>
+            <div class="prose" style="margin: 0">
+              <h2>Who we are.</h2>
+              <p>
+                Stringlab Technology Solutions is an AI, data science and
+                automation company delivering scalable digital solutions for
+                businesses worldwide. We specialize in intelligent systems,
+                custom software, analytics platforms and data-driven workflows
+                that improve efficiency, decision-making and growth.
+              </p>
+              <p>
+                Our work starts with scientific rigor and ends in production. We
+                research the problem, select the right technology, build the
+                system, and stay close enough after launch to make sure it keeps
+                performing.
+              </p>
+              <h2>What S.T.R.In.G stands for.</h2>
+              <ul>
+                <li>
+                  <strong>Science.</strong> We use analytical methods,
+                  experimentation and measurement to solve business problems
+                  instead of guessing from trends.
+                </li>
+                <li>
+                  <strong>Technology.</strong> We translate emerging tools into
+                  robust software, automation and AI systems that fit real
+                  operating environments.
+                </li>
+                <li>
+                  <strong>Research.</strong> We investigate what has already
+                  been solved, adapt proven methods and create future-proof
+                  solutions within practical timelines.
+                </li>
+                <li>
+                  <strong>Innovation.</strong> We implement new ideas only when
+                  they improve efficiency, customer experience, cost, accuracy
+                  or speed.
+                </li>
+                <li>
+                  <strong>Group.</strong> We work as a cohesive team of
+                  engineers, data scientists, designers and operations thinkers,
+                  with every project shaped around client impact.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
