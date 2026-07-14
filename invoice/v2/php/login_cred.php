@@ -1,10 +1,12 @@
 <?php
 session_start();
-$host = '194.59.164.10';
-$db   = 'u758484694_string_contact';
-$user = 'u758484694_string_contact';
-$pass = ';@.2SGHOp5!UQ#1';
-$charset = 'utf8mb4';
+require_once __DIR__ . '/env.php';
+
+$host    = env('LOGIN_DB_HOST', 'localhost');
+$db      = env('LOGIN_DB_NAME', 'contact_db');
+$user    = env('LOGIN_DB_USER', 'db_user');
+$pass    = env('LOGIN_DB_PASS', '');
+$charset = env('DB_CHARSET', 'utf8mb4');
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -18,4 +20,3 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
-?>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'php/csrf.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -36,7 +37,7 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
-		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
+		<script>if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -74,6 +75,7 @@ License: For each use you must have a valid license purchased only from above li
 							<form class="form w-100 mb-13" novalidate="novalidate" action="login.php" method="post" id="kt_sing_in_two_factor_form">
                                 <!-- Hidden input to identify OTP submission -->
                                 <input type="hidden" name="otp_verification" value="1">
+                                <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>" />
                                 <!--begin::Icon-->
                                 <div class="text-center mb-10">
                                     <img alt="Logo" class="mh-125px" src="assets/media/svg/misc/smartphone-2.svg" />
@@ -192,7 +194,7 @@ License: For each use you must have a valid license purchased only from above li
             if (isset($_SESSION['error_message'])) {
                 echo "<script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        var errorMessage = '" . $_SESSION['error_message'] . "';
+                        var errorMessage = " . json_encode($_SESSION['error_message'], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ";
                         var toastHTML = '<div class=\"toast align-items-center text-bg-danger border-0\" role=\"alert\" aria-live=\"assertive\" aria-atomic=\"true\"><div class=\"d-flex\"><div class=\"toast-body\">' + errorMessage + '</div><button type=\"button\" class=\"btn-close btn-close-white me-2 m-auto\" data-bs-dismiss=\"toast\" aria-label=\"Close\"></button></div></div>';
                         var toastContainer = document.createElement('div');
                         toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';

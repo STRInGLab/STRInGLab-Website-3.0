@@ -1,70 +1,118 @@
 <?php
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
-// check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // if not logged in, redirect to signin.html
-    $_SESSION['redirect_back'] = $_SERVER['REQUEST_URI']; // or you could use a full URL if necessary
+    $_SESSION['redirect_back'] = $_SERVER['REQUEST_URI'];
     header('Location: signin.php');
     exit;
 }
-    require_once 'config.php';
-    
-    $conn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-    try {
-        $pdo = new PDO($conn, $user, $pass, $options);
-    } catch (\PDOException $e) {
-        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+
+require_once 'php/db.php';
+require_once 'php/csrf.php';
+
+function e(string $text): string {
+    return htmlspecialchars($text ?? '', ENT_QUOTES, 'UTF-8');
+}
+
+try {
+    $pdo = getPdo();
+} catch (PDOException $e) {
+    error_log('Invoices page DB error: ' . $e->getMessage());
+    die('Unable to connect to the database. Please try again later.');
+}
+
+// Delete handler (AJAX)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    header('Content-Type: application/json');
+
+    if (!csrf_validate($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        echo json_encode(['error' => 'Invalid security token.']);
+        exit;
     }
-    
-    // Corrected delete request logic
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
-        $id = $_POST['id'];
-        $type = $_POST['type'];
-        $sql = "DELETE FROM Invoice WHERE id = ? AND invoiceOrQuote = ?";
-        $stmt = $pdo->prepare($sql);
-        if ($stmt->execute([$id, $type])) {
-            echo "<script>alert('Record deleted successfully');</script>";
-        } else {
-            echo "<script>alert('Error deleting record.');</script>";
+
+    $id   = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+    $type = sanitize_input($_POST['type'] ?? '');
+
+    if ($id === false || $id === null || $type === '') {
+        http_response_code(400);
+        echo json_encode(['error' => 'Invalid request.']);
+        exit;
+    }
+
+    $sql = "DELETE FROM Invoice WHERE id = ? AND invoiceOrQuote = ?";
+    $stmt = $pdo->prepare($sql);
+    if ($stmt->execute([$id, $type])) {
+        echo json_encode(['success' => true, 'message' => 'Record deleted successfully']);
+    } else {
+        http_response_code(500);
+        echo json_encode(['error' => 'Error deleting record.']);
+    }
+    exit;
+}
+
+function sanitize_input($data) {
+    return is_array($data) ? array_map('sanitize_input', $data) : trim(stripslashes($data));
+}
+
+function countInvoices($type, $pdo): int {
+    $sql = "SELECT COUNT(*) as total FROM Invoice WHERE invoiceOrQuote = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$type]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return (int) ($result['total'] ?? 0);
+}
+
+function fetchData($type, $pdo, int $page = 1, int $limit = 25) {
+    $offset = ($page - 1) * $limit;
+    $sql = "SELECT id, invoiceTo, invoiceName, invoiceNo, date, advancePaid, taxType, invoiceOrQuote FROM Invoice WHERE invoiceOrQuote = ? ORDER BY date DESC LIMIT ? OFFSET ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$type, $limit, $offset]);
+    $result = $stmt->fetchAll();
+
+    if ($result) {
+        foreach ($result as $row) {
+            echo "<tr data-invoice-no='" . e($row['invoiceNo']) . "'>
+                    <td>" . e($row['id']) . "</td>
+                    <td>" . e($row['invoiceTo']) . "</td>
+                    <td>" . e($row['invoiceName']) . "</td>
+                    <td>" . e($row['invoiceNo']) . "</td>
+                    <td>" . e($row['date']) . "</td>
+                    <td>" . e($row['advancePaid']) . "</td>
+                    <td>" . e($row['taxType']) . "</td>
+                    <td class='text-end'>
+						<button class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4 me-1 delete-btn' data-id='" . e($row['id']) . "' data-type='" . e($type) . "'>Delete</button>
+						<a href='edit_page.php?id=" . e($row['id']) . "' class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4 badge-light-warning'>Edit</a>
+						<a href='invoice.php?invoiceNo=" . e($row['invoiceNo']) . "' class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4' target='_blank'>View</a>
+					</td>
+                 </tr>";
         }
+    } else {
+        echo "<tr><td colspan='8' class='text-center py-4'>No invoices found. <a href='create-invoice.php'>Create your first invoice</a>.</td></tr>";
     }
-    
-    // Corrected fetchData function definition
-    function fetchData($type, $pdo) { // Notice $pdo is now the correct parameter
-        $sql = "SELECT * FROM Invoice WHERE invoiceOrQuote = ? ORDER BY date";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$type]);
-        $result = $stmt->fetchAll();
-    
-        if ($result) {
-            foreach ($result as $row) {
-                echo "<tr data-invoice-no='{$row['invoiceNo']}'>
-                        <td>{$row['id']}</td>
-                        <td>{$row['invoiceTo']}</td>
-                        <td>{$row['invoiceName']}</td>
-                        <td>{$row['invoiceNo']}</td>
-                        <td>{$row['date']}</td>
-                        <td>{$row['advancePaid']}</td>
-                        <td>{$row['taxType']}</td>
-                        <td class='text-end'>
-							<button class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4 me-1 delete-btn' data-id='{$row['id']}' data-type='{$type}'>Delete</button>
-							<a href='edit_page.php?id={$row['id']}' class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4 badge-light-warning'>Edit</a>
-							<a href='invoice.php?invoiceNo={$row['invoiceNo']}' class='btn btn-bg-light btn-color-muted btn-active-color-primary btn-sm px-4' target='_blank'>View</a>
-						</td>
-                     </tr>";
-            }
-        } else {
-            echo "<tr><td colspan='10'>No Data Found</td></tr>";
-        }
+}
+
+function renderPagination(int $currentPage, int $totalRows, int $limit, string $baseUrl): void {
+    $totalPages = (int) ceil($totalRows / $limit);
+    if ($totalPages <= 1) {
+        return;
     }
+    echo '<nav aria-label="Invoice pagination"><ul class="pagination pagination-sm">';
+    $prevDisabled = $currentPage <= 1 ? ' disabled' : '';
+    $nextDisabled = $currentPage >= $totalPages ? ' disabled' : '';
+    $prevPage = max(1, $currentPage - 1);
+    $nextPage = min($totalPages, $currentPage + 1);
+    echo "<li class=\"page-item{$prevDisabled}\"><a class=\"page-link\" href=\"{$baseUrl}&page={$prevPage}\">Previous</a></li>";
+    for ($i = 1; $i <= $totalPages; $i++) {
+        $active = $i === $currentPage ? ' active' : '';
+        echo "<li class=\"page-item{$active}\"><a class=\"page-link\" href=\"{$baseUrl}&page={$i}\">{$i}</a></li>";
+    }
+    echo "<li class=\"page-item{$nextDisabled}\"><a class=\"page-link\" href=\"{$baseUrl}&page={$nextPage}\">Next</a></li>";
+    echo '</ul></nav>';
+}
 
 	function getTotalInvoices($pdo) {
 		$sql = "SELECT COUNT(*) as invoiceTotal FROM Invoice WHERE invoiceOrQuote = 'Invoice'";
@@ -572,10 +620,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!--end::Title-->
 
 												<?php
-												$totalInvoices = getTotalInvoices($pdo);
-												$paidInvoices = getPaidInvoices($pdo); // Assuming you have a function to get the number of paid invoices
-												$revenueFromInvoices = getRevenueFromInvoices($pdo); // Assuming you have a function to get the total revenue
-												$paidTaxFromInvoices = getPaidTaxFromInvoices($pdo); // Assuming you have a function to get the total tax
+												// Aggregates were already computed at the top of the page.
 
 												// Determine the class for the paid invoices icon
 												$paidInvoiceIconClass = $paidInvoices < $totalInvoices
@@ -725,7 +770,7 @@ License: For each use you must have a valid license purchased only from above li
 														<span class="path1"></span>
 														<span class="path2"></span>
 													</i>
-													<input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Report" />
+													<input type="text" data-kt-ecommerce-order-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search invoices..." />
 												</div>
 												<!--end::Search-->
 												<!--begin::Export buttons-->
@@ -790,10 +835,16 @@ License: For each use you must have a valid license purchased only from above li
 													</tr>
 												</thead>
 												<tbody class="fw-semibold text-gray-600">
-													<?php fetchData('Invoice', $pdo); ?>
+													<?php
+													$invoicePage = max(1, (int) ($_GET['page'] ?? 1));
+													$invoiceLimit = 25;
+													$invoiceTotal = countInvoices('Invoice', $pdo);
+													fetchData('Invoice', $pdo, $invoicePage, $invoiceLimit);
+													?>
 												</tbody>
 											</table>
 											<!--end::Table-->
+											<?php renderPagination($invoicePage, $invoiceTotal, $invoiceLimit, 'invoices.php?type=Invoice'); ?>
 										</div>
 										<!--end::Card body-->
 									</div>
@@ -4697,51 +4748,56 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
 		<!--end::Custom Javascript-->
-		$(document).on('click', '.delete-btn', function() {
-			var id = $(this).data('id');
-			var type = $(this).data('type');
-			if(confirm('Are you sure you want to delete this item?')) {
-				$.ajax({
-					url: 'dashboard.php', // Pointing to self for deletion
-					type: 'post',
-					data: {id: id, type: type},
-					success: function(response) {
-						location.reload();
-					}
-				});
-			}
-		});
-		</script>
-		<script>
-		$(document).ready(function() {
-			// Event listener for row clicks, excluding clicks on the delete button
-			$('table').on('click', 'tr', function(e) {
-				if (!$(e.target).closest('.delete-btn').length) {
-					var invoiceNo = $(this).data('invoice-no');
-					if (invoiceNo) {
-						window.open('https://stringlab.org/invoice/invoice.php?invoiceNo=' + invoiceNo, '_blank');
-					}
-				}
-			});
+<!--end::Custom Javascript-->
+<script>
+$(document).ready(function() {
+    // Row click opens invoice view (relative URL so it works in dev/staging).
+    $('table').on('click', 'tr', function(e) {
+        if (!$(e.target).closest('.delete-btn, a').length) {
+            var invoiceNo = $(this).data('invoice-no');
+            if (invoiceNo) {
+                window.open('invoice.php?invoiceNo=' + encodeURIComponent(invoiceNo), '_blank');
+            }
+        }
+    });
 
-			// Existing AJAX call for delete button
-			$(document).on('click', '.delete-btn', function() {
-				var id = $(this).data('id');
-				var type = $(this).data('type');
-				if(confirm('Are you sure you want to delete this item?')) {
-					$.ajax({
-						url: 'dashboard.php',
-						type: 'post',
-						data: {id: id, type: type},
-						success: function(response) {
-							location.reload();
-						}
-					});
-				}
-			});
-		});
+    // Delete button handler with CSRF protection.
+    $(document).on('click', '.delete-btn', function(e) {
+        e.stopPropagation();
+        var $btn = $(this);
+        var id = $btn.data('id');
+        var type = $btn.data('type');
+        if (!confirm('Are you sure you want to delete this item?')) {
+            return;
+        }
+        $btn.prop('disabled', true).text('Deleting...');
+        $.ajax({
+            url: 'invoices.php',
+            type: 'POST',
+            data: {
+                id: id,
+                type: type,
+                csrf_token: <?php echo json_encode(csrf_token()); ?>
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.success) {
+                    location.reload();
+                } else {
+                    alert(response && response.error ? response.error : 'Delete failed.');
+                    $btn.prop('disabled', false).text('Delete');
+                }
+            },
+            error: function() {
+                alert('An error occurred while deleting.');
+                $btn.prop('disabled', false).text('Delete');
+            }
+        });
+    });
+});
+</script>
+<!--end::Javascript-->
 
-		<!--end::Javascript-->
-	</body>
+</body>
 	<!--end::Body-->
 </html>
