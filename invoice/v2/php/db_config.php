@@ -1,11 +1,11 @@
 <?php
 session_start();
-// db_config.php
+require_once __DIR__ . '/env.php';
 
-$servername = "194.59.164.10";
-$username = "u758484694_stringpricing";
-$password = "Wj~7j@huK";
-$dbname = "u758484694_stringpricing";
+$servername = env('LEGACY_DB_HOST', 'localhost');
+$username   = env('LEGACY_DB_USER', 'db_user');
+$password   = env('LEGACY_DB_PASS', '');
+$dbname     = env('LEGACY_DB_NAME', 'invoice_db');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -14,4 +14,3 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-?>

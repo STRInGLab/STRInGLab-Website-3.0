@@ -1,31 +1,37 @@
 <?php
 session_start();
-// check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    // if not logged in, redirect to signin.html
-    $_SESSION['redirect_back'] = $_SERVER['REQUEST_URI']; // or you could use a full URL if necessary
+    $_SESSION['redirect_back'] = $_SERVER['REQUEST_URI'];
     header('Location: signin.php');
     exit;
 }
 
-require_once 'config.php';
+require_once 'php/db.php';
+require_once 'php/csrf.php';
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    $pdo = getPdo();
+    $stmt = $pdo->query("SELECT MAX(id) as last_invoice FROM Invoice");
+    $result = $stmt->fetch();
+    $lastInvoiceNo = $result['last_invoice'] ?? 0;
+    $newInvoiceNo = $lastInvoiceNo + 1;
+
+    // Fetch unique clients for dropdown
+    $clientStmt = $pdo->query("SELECT DISTINCT name, invoiceTo, gst_number FROM Invoice ORDER BY name");
+    $clients = $clientStmt->fetchAll();
+} catch (PDOException $e) {
+    error_log('Create invoice init error: ' . $e->getMessage());
+    $newInvoiceNo = 1;
+    $clients = [];
 }
 
-$stmt = $pdo->query("SELECT MAX(id) as last_invoice FROM Invoice");
-$result = $stmt->fetch();
-$lastInvoiceNo = $result['last_invoice'];
-$newInvoiceNo = $lastInvoiceNo + 1;
+$defaultTerms = "Payment is due within 15 days from the date of invoice.\n"
+    . "Late payments may attract interest at 1.5% per month.\n"
+    . "Goods / services once delivered will not be returned or refunded.\n"
+    . "All disputes are subject to Mumbai jurisdiction.";
+
+$defaultDate    = date('d, M Y');
+$defaultDueDate = date('d, M Y', strtotime('+7 days'));
 ?>
 <!DOCTYPE html>
 <!--
@@ -59,13 +65,12 @@ License: For each use you must have a valid license purchased only from above li
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Vendor Stylesheets(used for this page only)-->
-		<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
-		<script>// Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
+		<script>if (window.top != window.self) { window.top.location.replace(window.self.location.href); }</script>
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -304,7 +309,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Menu-->
 										</div>
 										<div class="menu-item px-5">
-											<a href="authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+											<a href="logout.php" class="menu-link px-5">Sign Out</a>
 										</div>
 										<!--end::Menu item-->
 									</div>
@@ -483,6 +488,7 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="card-body p-12">
 													<!--begin::Form-->
 													<form action="store.php" method="post" id="kt_invoice_form">
+													<input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>" />
 														<!--begin::Wrapper-->
 														<div class="d-flex flex-column align-items-start flex-xxl-row">
 															<!--begin::Input group-->
@@ -493,7 +499,7 @@ License: For each use you must have a valid license purchased only from above li
 																<!--begin::Input-->
 																<div class="position-relative d-flex align-items-center w-150px">
 																	<!--begin::Datepicker-->
-																	<input class="form-control form-control-transparent fw-bold pe-5" placeholder="Select date" name="invoice_date" id="date" required/>
+																	<input class="form-control form-control-transparent fw-bold pe-5" placeholder="Select date" name="invoice_date" id="date" value="<?php echo htmlspecialchars($defaultDate, ENT_QUOTES, 'UTF-8'); ?>" required/>
 																	<!--end::Datepicker-->
 																	<!--begin::Icon-->
 																	<i class="ki-duotone ki-down fs-4 position-absolute ms-4 end-0"></i>
@@ -504,12 +510,12 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Input group-->
 															<!--begin::Input group-->
 															<div class="d-flex flex-center flex-equal fw-row text-nowrap order-1 order-xxl-2 me-4" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Enter invoice number">
-																<select class="form-select form-select-solid fw-bold text-gray-800" name="invoice_type" aria-label="Select example" data-kt-element="tax-select" required>
+																<select class="form-select form-select-solid fw-bold text-gray-800" name="invoice_type" aria-label="Document type" required>
 																	<option value="Invoice">Invoice #</option>
 																	<option value="Quote">Quote #</option>
 																	<option value="Receipt">Receipt #</option>
 																</select>
-																<input type="text" class="form-control form-control-flush fw-bold text-muted fs-3 w-125px" name="invoiceNo" id="invoiceNo" value="<?php echo $newInvoiceNo; ?>" placehoder="..." />
+																<input type="text" class="form-control form-control-flush fw-bold text-muted fs-3 w-125px" name="invoiceNo" id="invoiceNo" value="<?php echo $newInvoiceNo; ?>" placeholder="..." readonly />
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
@@ -520,7 +526,7 @@ License: For each use you must have a valid license purchased only from above li
 																<!--begin::Input-->
 																<div class="position-relative d-flex align-items-center w-150px">
 																	<!--begin::Datepicker-->
-																	<input class="form-control form-control-transparent fw-bold pe-5" placeholder="Select date" name="invoice_due_date" />
+																	<input class="form-control form-control-transparent fw-bold pe-5" placeholder="Select date" name="invoice_due_date" value="<?php echo htmlspecialchars($defaultDueDate, ENT_QUOTES, 'UTF-8'); ?>" required />
 																	<!--end::Datepicker-->
 																	<!--begin::Icon-->
 																	<i class="ki-duotone ki-down fs-4 position-absolute end-0 ms-4"></i>
@@ -540,6 +546,20 @@ License: For each use you must have a valid license purchased only from above li
 															<!--begin::Col-->
 															<div class="col-lg-6">
 																<label class="form-label fs-6 fw-bold text-gray-700 mb-3">Bill To</label>
+																<!--begin::Client dropdown-->
+																<div class="mb-5">
+																	<select class="form-select form-select-solid" id="client_select" onchange="populateClient(this)">
+																		<option value="">-- Select existing client --</option>
+																		<?php foreach ($clients as $c): ?>
+																		<option value="<?php echo htmlspecialchars($c['name'], ENT_QUOTES, 'UTF-8'); ?>"
+																			data-address="<?php echo htmlspecialchars($c['invoiceTo'], ENT_QUOTES, 'UTF-8'); ?>"
+																			data-gst="<?php echo htmlspecialchars($c['gst_number'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+																			<?php echo htmlspecialchars($c['name'], ENT_QUOTES, 'UTF-8'); ?>
+																		</option>
+																	<?php endforeach; ?>
+																	</select>
+																</div>
+																<!--end::Client dropdown-->
 																<!--begin::Input group-->
 																<div class="mb-5">
 																	<input type="text" class="form-control form-control-solid" placeholder="Name" name="customer_name" id="customer_name" required />
@@ -552,9 +572,9 @@ License: For each use you must have a valid license purchased only from above li
 																<!--end::Input group-->
 																<!--begin::Input group-->
 																<div class="mb-5">
-																	<input type="gst" class="form-control form-control-solid" placeholder="GST Number" name="gst_number" id="gst_number" />
+																	<input type="text" class="form-control form-control-solid" placeholder="GST Number" name="gst_number" id="gst_number" maxlength="15" />
 																</div>
-																<!--end::Input group-->
+																<!--end::Input group--><!--end::Input group-->
 															</div>
 															<!--end::Col-->
 															<!--begin::Col-->
@@ -690,12 +710,12 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<div class="mb-0">
 																<label class="form-label fs-6 fw-bold text-gray-700">Terms & Conditions</label>
-																<textarea name="notes" class="form-control form-control-solid" rows="3"></textarea>
+																<textarea name="notes" class="form-control form-control-solid" rows="3"><?php echo htmlspecialchars($defaultTerms, ENT_QUOTES, 'UTF-8'); ?></textarea>
 															</div>
 														</div>
 														<!--end::Wrapper-->
 														<div class="mb-0 mt-5">
-															<button type="submit" class="btn btn-primary w-100" id="invoice_form">
+															<button type="submit" class="btn btn-primary w-100" id="main_save_btn">
 															<i class="ki-duotone ki-triangle fs-3">
 																<span class="path1"></span>
 																<span class="path2"></span>
@@ -722,7 +742,7 @@ License: For each use you must have a valid license purchased only from above li
 														<label class="form-label fw-bold fs-6 text-gray-700">Currency</label>
 														<!--end::Label-->
 														<!--begin::Select-->
-														<select name="currnecy" aria-label="Select a Timezone" data-control="select2" data-placeholder="Select currency" class="form-select form-select-solid">
+														<select name="currency" form="kt_invoice_form" aria-label="Select currency" data-control="select2" data-placeholder="Select currency" class="form-select form-select-solid">
 															<option value=""></option>
 															<option data-kt-flag="flags/united-states.svg" value="USD">
 															<b>USD</b>&nbsp;-&nbsp;USA dollar</option>
@@ -745,40 +765,19 @@ License: For each use you must have a valid license purchased only from above li
 													<!--begin::Separator-->
 													<div class="separator separator-dashed mb-8"></div>
 													<!--end::Separator-->
-													<!--begin::Input group-->
-													<div class="mb-8">
-														<!--begin::Option-->
-														<label class="form-check form-switch-sm form-check-custom form-check-solid flex-stack mb-5">
-															<span class="form-check-label ms-0 fw-bold fs-6 text-gray-700">Invoice</span>
-															<input class="form-check-input" type="checkbox" checked="checked" value="" />
-														</label>
-														<!--end::Option-->
-														<!--begin::Option-->
-														<label class="form-check form-switch-sm form-check-custom form-check-solid flex-stack mb-5">
-															<span class="form-check-label ms-0 fw-bold fs-6 text-gray-700">Quote</span>
-															<input class="form-check-input" type="checkbox" value="" />
-														</label>
-														<!--end::Option-->
-														<!--begin::Option-->
-														<label class="form-check form-switch-sm form-check-custom form-check-solid flex-stack">
-															<span class="form-check-label ms-0 fw-bold fs-6 text-gray-700">Receipt</span>
-															<input class="form-check-input" type="checkbox" value="" />
-														</label>
-														<!--end::Option-->
-													</div>
-													<!--end::Input group-->
-													<!--begin::Separator-->
-													<div class="separator separator-dashed mb-8"></div>
-													<!--end::Separator-->
 													<!--begin::Actions-->
+
 													<div class="mb-0">
-														<button type="submit" href="#" class="btn btn-primary w-100" id="invoice_form">
-														<i class="ki-duotone ki-triangle fs-3">
-															<span class="path1"></span>
-															<span class="path2"></span>
-															<span class="path3"></span>
-														</i>Save</button>
+
+														<button type="submit" form="kt_invoice_form" class="btn btn-primary w-100" id="sidebar_save_btn">
+															<i class="ki-duotone ki-triangle fs-3">
+																<span class="path1"></span>
+																<span class="path2"></span>
+																<span class="path3"></span>
+															</i>Save</button>
+
 													</div>
+
 													<!--end::Actions-->
 												</div>
 												<!--end::Card body-->
@@ -841,9 +840,18 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Vendors Javascript(used for this page only)-->
-		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 		<!--end::Vendors Javascript-->
 		<!--begin::Custom Javascript(used for this page only)-->
+		<script>
+		window.invoiceTaxConfig = {
+			intraState: "intra-state",
+			interState: "inter-state",
+			unionTerritory: "union-teritory",
+			cgstRate: 0.09,
+			sgstRate: 0.09,
+			igstRate: 0.18
+		};
+		</script>
 		<script src="assets/js/custom/apps/invoices/create.js"></script>
 		<script src="assets/js/widgets.bundle.js"></script>
 		<script src="assets/js/custom/widgets.js"></script>
@@ -865,62 +873,87 @@ License: For each use you must have a valid license purchased only from above li
 				const generatedId = prefix + '-' + formattedId;
 				invoiceNoField.value = generatedId;
 			}
+
+			function populateClient(select) {
+				const option = select.options[select.selectedIndex];
+				if (!option.value) return;
+				document.getElementById('customer_name').value = option.value;
+				document.getElementById('customer_address').value = option.getAttribute('data-address') || '';
+				document.getElementById('gst_number').value = option.getAttribute('data-gst') || '';
+			}
 		</script>
 
 <script>
 $(document).ready(function() {
+    // Bind client dropdown via jQuery (works with native select and Select2)
+    $('#client_select').on('change', function() {
+        var $opt = $(this).find('option:selected');
+        if (!$opt.val()) return;
+        $('#customer_name').val($opt.val());
+        $('#customer_address').val($opt.data('address') || '');
+        $('#gst_number').val($opt.data('gst') || '');
+    });
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     $('#kt_invoice_form').on('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
+        e.preventDefault();
+
+        var $form = $(this);
+        var $buttons = $('#main_save_btn, #sidebar_save_btn');
+        var originalText = $buttons.first().html();
+
+        $buttons.prop('disabled', true).html('<span class="spinner-border spinner-border-sm align-middle me-2"></span>Saving...');
 
         $.ajax({
             type: 'POST',
             url: 'store.php',
-            data: $(this).serialize(),
-            success: function(response) {
-                try {
-                    const res = typeof response === 'string' ? JSON.parse(response) : response;
+            data: $form.serialize(),
+            dataType: 'json',
+            success: function(res) {
+                $buttons.prop('disabled', false).html(originalText);
 
-                    if (res.success) {
-                        // Show Toastr success message
-                        toastr.success(res.success);
-
-                        // Reload the page after a short delay to allow the Toastr message to display
-                        setTimeout(function() {
-                            location.reload(); // This will reload the entire page
-                        }, 2000); // Adjust the delay as needed
-                    } else if (res.error) {
-                        toastr.error('Error: ' + res.error);
-                    } else {
-                        toastr.error('An unexpected error occurred.');
-                    }
-                } catch (e) {
-                    toastr.error('An unexpected error occurred while processing the response.');
+                if (res && res.success) {
+                    toastr.success(res.success);
+                    setTimeout(function() {
+                        if (res.invoiceNo) {
+                            window.open('invoice.php?invoiceNo=' + encodeURIComponent(res.invoiceNo), '_blank');
+                        }
+                        location.reload();
+                    }, 1500);
+                } else if (res && res.error) {
+                    toastr.error('Error: ' + res.error);
+                } else {
+                    toastr.error('An unexpected error occurred.');
                 }
             },
             error: function(xhr, status, error) {
-                toastr.error('An error occurred: ' + error); // Display error message
+                $buttons.prop('disabled', false).html(originalText);
+                var message = 'An error occurred while saving.';
+                try {
+                    var res = JSON.parse(xhr.responseText);
+                    if (res && res.error) message = res.error;
+                } catch (e) {}
+                toastr.error(message);
             }
         });
     });
 });
-
-toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": true,
-  "positionClass": "toast-top-right", // You can change the position (e.g., 'toast-bottom-right')
-  "preventDuplicates": true,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000", // Duration the toast will remain visible
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
 </script>
 		<!--end::Custom Javascript-->
 		<!--end::Javascript-->
