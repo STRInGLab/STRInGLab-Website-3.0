@@ -161,13 +161,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div>
         <span class="label">Pick a time</span>
+        <div style="margin-top: 20px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,0.03);">
+          <p style="font-family: var(--serif); font-size: 18px; line-height: 1.35; color: var(--ink); margin-bottom: 10px;">"We came in with a vague AI idea and left with a concrete 6-week scope."</p>
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--mute); text-transform: uppercase; letter-spacing: 0.1em;">VP Engineering · Series B SaaS, UK</div>
+        </div>
         <div class="cal-embed-shell">
           <div class="cal-embed">
             <div id="cal-quick-chat" class="cal-frame" aria-label="Cal.com booking widget"></div>
           </div>
           <p class="cal-fallback">If the scheduler does not load, use <a href="https://cal.com/stringlab/quick-chat" target="_blank" rel="noopener noreferrer">direct booking link</a>.</p>
         </div>
-        <p style="font-family: var(--mono); font-size: 11px; color: var(--mute); margin-top: 12px; letter-spacing: 0.1em;">Times shown in India timezone (IST). Video link sent automatically on booking.</p>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--mute); margin-top: 12px; letter-spacing: 0.1em;">Times shown in your local timezone. Video link sent automatically on booking.</p>
+        <div style="margin-top: 16px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius); text-align: center;">
+          <p style="font-size: 14px; color: var(--mute); margin-bottom: 8px;">Rather start with email?</p>
+          <a href="/contact" class="btn ghost" style="font-size: 13px;">Send a message →</a>
+          <span style="display: block; margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--mute-d);">or</span>
+          <a href="mailto:info@stringlab.org" style="font-family: var(--mono); font-size: 11px; color: var(--accent); text-decoration: none;">info@stringlab.org</a>
+        </div>
       </div>
     </div>
   </div>
@@ -208,7 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const CAL_LINK = "stringlab/quick-chat";
   const CAL_ORIGIN = "https://cal.com";
   const CAL_NAMESPACE = "quickChatEmbed";
-  const CAL_TIMEZONE = "Asia/Kolkata";
+  const CAL_TIMEZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata";
   const embedRoot = document.getElementById("cal-quick-chat");
   if (!embedRoot) return;
 
