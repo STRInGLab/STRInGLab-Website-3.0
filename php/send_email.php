@@ -4,13 +4,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 require 'rate_limiter.php';
+require 'config.php';
 
-// Database connection
-$db_host = '194.59.164.10';
-$db_user = 'u758484694_string_contact';
-$db_pass = ';@.2SGHOp5!UQ#1';
-$db_name = 'u758484694_string_contact';
-
+// Database connection (credentials from config.php)
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
 if ($conn->connect_error) {
@@ -37,11 +33,11 @@ function getClientIP() {
 }
 
 function validateRecaptcha($captchaResponse) {
-    $secretKey = "6LeGI6coAAAAANMEROjZ9F1Nvg_bttNepjEamsSX";
+    global $recaptcha_secret;
     $verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
     $postData = http_build_query([
-        "secret" => $secretKey,
+        "secret" => $recaptcha_secret,
         "response" => $captchaResponse
     ]);
 
@@ -195,8 +191,9 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'sendEmail') {
         exit;
     }
 
-    // reCAPTCHA validation
-    if (!validateRecaptcha($_REQUEST['g-recaptcha-response'] ?? '')) {
+    // reCAPTCHA validation (only if the form includes a reCAPTCHA widget)
+    $captchaResponse = $_REQUEST['g-recaptcha-response'] ?? '';
+    if ($captchaResponse !== '' && !validateRecaptcha($captchaResponse)) {
         echo json_encode(['response' => 'error', 'message' => "Captcha verification failed. Please try again!"]);
         exit;
     }
@@ -223,19 +220,20 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'sendEmail') {
     );
 
     if ($stmt->execute()) {
-        // Send email using PHPMailer (your existing code)
+        // Send email using PHPMailer (credentials from config.php)
+        global $smtp_host, $smtp_port, $smtp_user, $smtp_pass, $notify_email;
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = 'smtp.hostinger.com';
+            $mail->Host = $smtp_host;
             $mail->SMTPAuth = true;
-            $mail->Username = 'no-reply@stringlab.org';
-            $mail->Password = '$stringLab@2025';
+            $mail->Username = $smtp_user;
+            $mail->Password = $smtp_pass;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port = 465;
+            $mail->Port = $smtp_port;
 
-            $mail->setFrom('no-reply@stringlab.org', 'StringLab Contact Form');
-            $mail->addAddress('shikhar@stringlab.org');
+            $mail->setFrom($smtp_user, 'StringLab Contact Form');
+            $mail->addAddress($notify_email);
             $mail->addReplyTo($_REQUEST['con_email'], $_REQUEST['con_fname'] . ' ' . $_REQUEST['con_lname']);
 
             $mail->isHTML(false);
