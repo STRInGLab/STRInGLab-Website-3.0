@@ -4,4 +4,4 @@ img/.DS_Store
 invoice/
 .DS_Store
 seo-reports/
-*.local.json
+*.local.jsonphp/config.php
