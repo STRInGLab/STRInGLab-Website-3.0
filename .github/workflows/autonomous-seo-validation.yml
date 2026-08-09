@@ -24,22 +24,23 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Check patch formatting
-        run: git diff --check HEAD^ HEAD
-
-      - name: Find changed HTML files
-        id: changed-html
+      - name: Validate proposed SEO change
         shell: bash
         run: |
-          mapfile -t files < <(git diff-tree --no-commit-id --name-only -r HEAD -- '*.html')
+          set -euo pipefail
+          git diff --check HEAD^ HEAD
+
+          mapfile -d '' -t files < <(
+            git diff-tree --no-commit-id --name-only -r -z HEAD -- '*.html'
+          )
           if [ "${#files[@]}" -eq 0 ]; then
-            echo "files=" >> "$GITHUB_OUTPUT"
             echo "No changed HTML files require validation."
             exit 0
           fi
-          printf 'files=%s\n' "${files[*]}" >> "$GITHUB_OUTPUT"
-          printf 'Validating: %s\n' "${files[*]}"
 
-      - name: Validate changed HTML files
-        if: steps.changed-html.outputs.files != ''
-        run: npx --yes html-validate@9.4.2 ${{ steps.changed-html.outputs.files }}
+          for index in "${!files[@]}"; do
+            files[$index]="./${files[$index]}"
+          done
+
+          printf 'Validating: %s\n' "${files[*]}"
+          npx --yes html-validate@9.4.2 "${files[@]}"
