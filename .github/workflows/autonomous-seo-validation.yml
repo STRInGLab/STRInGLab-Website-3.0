@@ -1,0 +1,45 @@
+name: Autonomous SEO validation
+
+on:
+  push:
+    branches:
+      - "autonomous-seo/validate-**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: autonomous-seo-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate proposed SEO change
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check patch formatting
+        run: git diff --check HEAD^ HEAD
+
+      - name: Find changed HTML files
+        id: changed-html
+        shell: bash
+        run: |
+          mapfile -t files < <(git diff-tree --no-commit-id --name-only -r HEAD -- '*.html')
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "files=" >> "$GITHUB_OUTPUT"
+            echo "No changed HTML files require validation."
+            exit 0
+          fi
+          printf 'files=%s\n' "${files[*]}" >> "$GITHUB_OUTPUT"
+          printf 'Validating: %s\n' "${files[*]}"
+
+      - name: Validate changed HTML files
+        if: steps.changed-html.outputs.files != ''
+        run: npx --yes html-validate@9.4.2 ${{ steps.changed-html.outputs.files }}
